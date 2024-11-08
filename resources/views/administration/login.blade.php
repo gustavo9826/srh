@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/login/style.css" />
     <link rel="stylesheet" href="assets/icons/fontawesome-free-6.6/css/all.min.css">
     <link rel="shortcut icon" href="assets/images/imss/favicon.png" />
+    <link rel="stylesheet" href="assets/messages/notyf/notyf.min.css">
 </head>
 
 <body>
@@ -22,13 +23,14 @@
                                     style="width: 300px; height: auto" />
                             </div>
                             <h4>Sistema Integral para Recursos Humanos</h4>
-                            <h6 class="font-weight-light">Iniciar sesion</h6>
-                            <form class="pt-3" method="POST">
+                            <h6 class="font-weight-light">Iniciar sesión</h6>
+
+                            <form class="pt-3" method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" name="user" class="form-control form-control-lg"
-                                        placeholder="Usuario" value="{{ old('user') }}" />
-                                    @error('user')
+                                    <input type="text" name="email" class="form-control form-control-lg"
+                                        placeholder="Usuario" value="{{ old('email') }}" />
+                                    @error('email')
                                         <x-error-message-required>
                                             {{ $message }}
                                         </x-error-message-required>
@@ -64,6 +66,14 @@
             </div>
         </div>
     </div>
+
+    <script src="assets/messages/notyf/notyf.min.js"></script>
+
+
+    @if (session('estatus'))
+        <x-template-message :message="session('message')" :value="session('value')" />
+    @endif
+
 </body>
 
 </html>

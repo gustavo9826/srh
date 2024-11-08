@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class LoginM extends Model
 {
-    //
+    public function validate()
+    {
+        return "true";
+    }
 }

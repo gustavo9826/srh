@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Administration;
 
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class LoginC extends Controller
 {
@@ -14,12 +16,24 @@ class LoginC extends Controller
 
     public function authenticate(Request $request)
     {
-        $user = request('user');
-        $password = request('password');
+        // Validación de los campos
+        $credentials = $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
 
-        $request->validate([
-            'user' => ['required'],
-            'password' => ['required']
+        // Intentar autenticar con las credenciales proporcionadas
+        if (Auth::attempt($credentials)) {
+            // Si la autenticación es exitosa, regeneramos la sesión y redirigimos al dashboard
+            $request->session()->regenerate();
+            return redirect()->intended('dashboard');
+        }
+
+        //Redireccion a login con el mensaje de error
+        return back()->with([
+            'value' => 'error', //VALUE_IS(error, warning, success)
+            'message' => 'Información de inicio de sesión incorrecta.',
+            'estatus' => 'true'
         ]);
     }
 }

@@ -11,4 +11,5 @@ Route::get('/register', RegisterC::class)->name('register'); ///ROUTE_REGISTER
 Route::get('/recover', RecoverC::class)->name('recover');//ROUTE_RECOVER
 Route::post('/login', [LoginC::class, 'authenticate']);///ROUTE_AUTHENTICATE
 
-Route::get('/dashboard', [DashboardC::class, 'dashboard']); //ROUTE_DASBOARD
+///IS_PROTECT
+Route::get('/dashboard', [DashboardC::class, 'dashboard'])->middleware('auth'); //ROUTE_DASH BOARD
