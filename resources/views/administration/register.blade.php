@@ -24,16 +24,15 @@
                             </div>
                             <h4>Sistema Integral para Recursos Humanos</h4>
                             <h6 class="font-weight-light">Registro</h6>
-                            <h6 class="font-weight-light">S&oacutelo se necesitan unos pocos pasos</h6>
                             <form class="pt-3">
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-lg" placeholder="CURP" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" placeholder="Correo" />
+                                    <input type="email" class="form-control form-control-lg" placeholder="Correo electrónico" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" placeholder="Confirmar correo" />
+                                    <input type="email" class="form-control form-control-lg" placeholder="Confirmar correo electrónico" />
                                 </div>
                                 <div class="mt-3">
                                     <a style="background-color: #6c757d"
@@ -42,7 +41,7 @@
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
                                     ¿Ya tienes una cuenta? <a href="{{ route('login') }}" class="text-primary">
-                                        Iniciar sesi&oacuten</a>
+                                        Inicia sesi&oacuten</a>
                                 </div>
                             </form>
                         </div>

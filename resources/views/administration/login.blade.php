@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>SIRH</title>
     <link rel="stylesheet" href="assets/css/login/style.css" />
-    <!--
-    <link rel="shortcut icon" href="../../images/favicon.png" />
--->
+    <link rel="stylesheet" href="assets/icons/fontawesome-free-6.6/css/all.min.css">
+    <link rel="shortcut icon" href="assets/images/imss/favicon.png" />
 </head>
 
 <body>
@@ -24,18 +23,31 @@
                             </div>
                             <h4>Sistema Integral para Recursos Humanos</h4>
                             <h6 class="font-weight-light">Iniciar sesion</h6>
-                            <form class="pt-3">
+                            <form class="pt-3" method="POST">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" placeholder="Usuario" />
+                                    <input type="text" name="user" class="form-control form-control-lg"
+                                        placeholder="Usuario" value="{{ old('user') }}" />
+                                    @error('user')
+                                        <x-error-message-required>
+                                            {{ $message }}
+                                        </x-error-message-required>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg"
-                                        placeholder="Contraseña" />
+                                    <input type="password" name="password" class="form-control form-control-lg"
+                                        placeholder="Contraseña" value="{{ old('password') }}" />
+                                    @error('password')
+                                        <x-error-message-required>
+                                            {{ $message }}
+                                        </x-error-message-required>
+                                    @enderror
                                 </div>
                                 <div class="mt-3">
-                                    <a style="background-color: #6c757d"
-                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
-                                        href="../../index.html">Ingresar</a>
+                                    <button type="submit" style="background-color: #6c757d"
+                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
+                                        Ingresar
+                                    </button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
                                     <a href="{{ route('recover') }}" class="text-primary">
