@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRH</title>
-</head>
+<x-app-head />
 
 <body>
-    <header></header>
-    {{$slot}}
-    <footer></footer>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper">
+            <header>
+                <x-app-header />
+            </header>
+            <x-app-menu />
+            {{$slot}}
+            <footer />
+        </div>
+    </div>
 </body>
 
-<script>
-</script>
+<x-app-library />
 
 </html>

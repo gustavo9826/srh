@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Administration;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
 
 class LoginC extends Controller
 {
@@ -29,7 +28,7 @@ class LoginC extends Controller
             return redirect()->intended('dashboard');
         }
 
-        //Redireccion a login con el mensaje de error
+        //Redireccion a login con el mensaje 
         return back()->with([
             'value' => 'error', //VALUE_IS(error, warning, success)
             'message' => 'Información de inicio de sesión incorrecta.',

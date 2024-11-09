@@ -12,4 +12,4 @@ Route::get('/recover', RecoverC::class)->name('recover');//ROUTE_RECOVER
 Route::post('/login', [LoginC::class, 'authenticate']);///ROUTE_AUTHENTICATE
 
 ///IS_PROTECT
-Route::get('/dashboard', [DashboardC::class, 'dashboard'])->middleware('auth'); //ROUTE_DASH BOARD
+Route::get('/dashboard', [DashboardC::class, 'dashboard'])->name('dashboard')->middleware('auth'); //ROUTE_DASH BOARD
