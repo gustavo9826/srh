@@ -1,8 +1,11 @@
-<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="background:red">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2"
-                alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a>
+        <a class="navbar-brand brand-logo mr-5" href="{{ route('dashboard') }}">
+            <img src="assets/images/imss/logo_imss_blanco.png" class="mr-2" alt="logo"
+                style="width: 200px; height: auto;" />
+        </a>
+        <a class="navbar-brand brand-logo-mini" href="{{ route('dashboard') }}"><img
+                src="assets/images/imss/logo_imss_mini_white.png" alt="logo" /></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -10,7 +13,8 @@
         </button>
         <ul class="navbar-nav mr-lg-2">
             <li class="nav-item nav-search d-none d-lg-block">
-                <H6>HOLA</H1>
+                <H6>
+                    </H1>
             </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">

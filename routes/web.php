@@ -3,8 +3,10 @@
 use App\Http\Controllers\Administration\LoginC;
 use App\Http\Controllers\Administration\RecoverC;
 use App\Http\Controllers\Administration\RegisterC;
+use App\Http\Controllers\Home\AboutC;
 use App\Http\Controllers\Home\DashboardC;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/login', LoginC::class)->name('login'); ///ROUTE_LOGIN
 Route::get('/register', RegisterC::class)->name('register'); ///ROUTE_REGISTER
@@ -13,3 +15,4 @@ Route::post('/login', [LoginC::class, 'authenticate']);///ROUTE_AUTHENTICATE
 
 ///IS_PROTECT
 Route::get('/dashboard', [DashboardC::class, 'dashboard'])->name('dashboard')->middleware('auth'); //ROUTE_DASH BOARD
+Route::get('/about', AboutC::class)->name('about')->middleware('auth'); //ROUTE_ABOUT

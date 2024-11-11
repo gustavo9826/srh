@@ -1,0 +1,8 @@
+.fondo-rojo {
+    background-color: red; /* Fondo rojo */
+    min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+}
+
+.app-white-color {
+    color: #ffffff;
+}

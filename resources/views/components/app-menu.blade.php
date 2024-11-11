@@ -1,11 +1,14 @@
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+<nav class="sidebar sidebar-offcanvas" id="sidebar" style="background:#777777">
     <ul class="nav">
+        <!-- Item de inicio -->
         <li class="nav-item">
             <a class="nav-link" href="{{ route('dashboard') }}">
                 <i class="icon-grid menu-icon"></i>
                 <span class="menu-title">Inicio</span>
             </a>
         </li>
+
+        <!-- Item Administracion -->
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="fa fa-cog menu-icon"></i>
@@ -14,15 +17,15 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Usuarios</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Roles</a></li>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Roles</a></li>
                 </ul>
             </div>
         </li>
 
+        <!-- Item Acerca de -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route('about') }}">
                 <i class="icon-paper menu-icon"></i>
                 <span class="menu-title">Acerca de</span>
             </a>
