@@ -35,4 +35,9 @@ class LoginC extends Controller
             'estatus' => 'true'
         ]);
     }
+
+    public function logout()
+    {
+        return "ok";
+    }
 }

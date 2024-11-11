@@ -35,38 +35,10 @@
                         <div class="preview-item-content">
                             <h6 class="preview-subject font-weight-normal">Nuevo usuario</h6>
                             <p class="font-weight-light small-text mb-0 text-muted">
-                               Activo
+                                Activo
                             </p>
                         </div>
                     </a>
-                    <!--
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <div class="preview-icon bg-warning">
-                                <i class="ti-settings mx-0"></i>
-                            </div>
-                        </div>
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject font-weight-normal">Settings</h6>
-                            <p class="font-weight-light small-text mb-0 text-muted">
-                                Private message
-                            </p>
-                        </div>
-                    </a>
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <div class="preview-icon bg-info">
-                                <i class="ti-user mx-0"></i>
-                            </div>
-                        </div>
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject font-weight-normal">New user registration</h6>
-                            <p class="font-weight-light small-text mb-0 text-muted">
-                                2 days ago
-                            </p>
-                        </div>
-                    </a>
--->
                 </div>
             </li>
             <li class="nav-item nav-profile dropdown">
@@ -78,10 +50,12 @@
                         <i class="ti-settings text-primary"></i>
                         Configuraci&oacuten
                     </a>
-                    <a class="dropdown-item">
-                        <i class="ti-power-off text-primary"></i>
-                        Salir
-                    </a>
+                    <form action="/logout" method="POST">
+                        <a class="dropdown-item" onclick="this.closest('form').submit();">
+                            <i class="ti-power-off text-primary"></i>
+                            Salir
+                        </a>
+                    </form>
                 </div>
             </li>
         </ul>

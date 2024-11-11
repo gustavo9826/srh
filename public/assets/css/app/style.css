@@ -27283,6 +27283,42 @@ code {
   color: #ffffff;
 }
 
+.card.card-administration {
+  background: #1F1F1F;
+  color: #ffffff;
+}
+
+.card.card-central {
+  background: #2E3B31;
+  color: #ffffff;
+}
+
+.card.card-hraes {
+  background: #4B2E83    ;
+  color: #ffffff;
+}
+
+.card.card-transferidos {
+  background: #3B4C2B     ;
+  color: #ffffff;
+}
+
+.card.card-correspondencia  {
+  background: #2F3A3D       ;
+  color: #ffffff;
+}
+
+.card.card-evaluacion  {
+  background: #1C2B2A        ;
+  color: #ffffff;
+}
+
+.card.card-cursos  {
+  background: #5B3D29         ;
+  color: #ffffff;
+}
+
+
 .card.card-dark-blue:hover {
   background: #5050b2;
 }
@@ -36580,7 +36616,7 @@ div.tagsinput span.tag a {
 }
 
 .sidebar .nav .nav-item.active > .nav-link {
-  background: #BC955C;
+  background: #555555;
   position: relative;
 }
 
@@ -36612,7 +36648,7 @@ div.tagsinput span.tag a {
 
 .sidebar .nav:not(.sub-menu) > .nav-item:hover > .nav-link,
 .sidebar .nav:not(.sub-menu) > .nav-item:hover[aria-expanded="true"] {
-  background: #4b49ac;
+  background: #555555;
   color: #fff;
 }
 
@@ -36622,7 +36658,7 @@ div.tagsinput span.tag a {
 
 .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link[aria-expanded="true"] {
   border-radius: 8px 8px 0 0;
-  background: #4b49ac;
+  background: #555555;
   color: #fff;
 }
 
@@ -36635,7 +36671,7 @@ div.tagsinput span.tag a {
   margin-top: 0;
   list-style: none;
   padding: 0.25rem 0 0 3.07rem;
-  background: #BC955C;
+  background: #555555;
   padding-bottom: 12px;
 }
 
