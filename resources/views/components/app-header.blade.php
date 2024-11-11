@@ -9,7 +9,7 @@
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-            <span class="icon-menu"></span>
+            <span style="color:white" class="icon-menu"></span>
         </button>
         <ul class="navbar-nav mr-lg-2">
             <li class="nav-item nav-search d-none d-lg-block">
@@ -21,12 +21,11 @@
             <li class="nav-item dropdown">
                 <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                     data-toggle="dropdown">
-                    <i class="icon-bell mx-0"></i>
-                    <span class="count"></span>
+                    <i style="color:#fff" class="icon-bell mx-0"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                     aria-labelledby="notificationDropdown">
-                    <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+                    <p class="mb-0 font-weight-normal float-left dropdown-header">Notificaciones</p>
                     <a class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <div class="preview-icon bg-success">
@@ -34,12 +33,13 @@
                             </div>
                         </div>
                         <div class="preview-item-content">
-                            <h6 class="preview-subject font-weight-normal">Application Error</h6>
+                            <h6 class="preview-subject font-weight-normal">Nuevo usuario</h6>
                             <p class="font-weight-light small-text mb-0 text-muted">
-                                Just now
+                               Activo
                             </p>
                         </div>
                     </a>
+                    <!--
                     <a class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <div class="preview-icon bg-warning">
@@ -66,20 +66,21 @@
                             </p>
                         </div>
                     </a>
+-->
                 </div>
             </li>
             <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                    <img src="images/faces/face28.jpg" alt="profile" />
+                    <img src="assets/images/app/icon_user.png" alt="profile" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                     <a class="dropdown-item">
                         <i class="ti-settings text-primary"></i>
-                        Settings
+                        Configuraci&oacuten
                     </a>
                     <a class="dropdown-item">
                         <i class="ti-power-off text-primary"></i>
-                        Logout
+                        Salir
                     </a>
                 </div>
             </li>
