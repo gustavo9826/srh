@@ -2,9 +2,9 @@
     title="{{ $title }}">
     <a href="{{ $href }}" class="{{ $class }}">
         <div class="card-body">
-            <p class="mb-4"><strong>{{ $field }}</strong></p>
-            <p class="fs-30 mb-2">{{ $value }}</p>
-            <p>{{ $description }}</p>
+            <p style="color:white" class="mb-4"><strong>{{ $field }}</strong></p>
+            <p style="color:white" class="fs-30 mb-2">{{ $value }}</p>
+            <p style="color:white" >{{ $description }}</p>
         </div>
     </a>
 </div>

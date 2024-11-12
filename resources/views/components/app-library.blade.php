@@ -6,6 +6,9 @@
 <script src="assets/js/other/settings.js"></script>
 <script src="assets/js/other/todolist.js"></script>
 
+
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
 @if (session('estatus'))
     <x-template-message :message="session('message')" :value="session('value')" />
 @endif

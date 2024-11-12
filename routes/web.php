@@ -18,3 +18,6 @@ Route::get('/dashboard', [DashboardC::class, 'dashboard'])->name('dashboard')->m
 Route::get('/about', AboutC::class)->name('about')->middleware('auth'); //ROUTE_ABOUT
 Route::get('/user', UserC::class)->name('user')->middleware('auth'); //ROUTE_USER
 Route::post('/logout', [LoginC::class, 'logout'])->middleware('auth');//ROUTE_LOGOUT
+
+
+Route::post('/user/users', [UserC::class, 'getUsers']);

@@ -10723,7 +10723,7 @@ pre code {
 .tt-hint:focus {
   color: #495057;
   background-color: #fff;
-  border-color: #80bdff;
+  border-color: #929292;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
@@ -49050,5 +49050,139 @@ div.tagsinput span.tag a {
     display: none;
   }
 }
+
+
+        /* Card que se extiende a lo largo de la pantalla */
+        .card {
+          width: 100%;
+          /* Tamaño del ancho, puede ser ajustado */
+          max-width: 1200px;
+          /* Ancho máximo para evitar que sea demasiado grande en pantallas grandes */
+          background-color: #fff;
+          border-radius: 10px;
+          /* Bordes redondeados */
+          box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+          /* Sombra en los bordes */
+          overflow: hidden;
+          margin: 10px;
+          transition: box-shadow 0.3s ease-in-out;
+      }
+
+      /* Sombra más intensa cuando la card está en hover */
+      .card:hover {
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 8px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Estilo del encabezado de la card */
+      .card-header {
+          background-color: #fff;
+          /* Color azul */
+          color: white;
+
+          text-align: center;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+      }
+
+      /* Estilo del cuerpo de la card */
+      .card-body {
+          padding: 20px;
+          text-align: left;
+          font-size: 16px;
+          color: #333;
+      }
+
+      /* Estilo del pie de la card */
+      .card-footer {
+          padding: 10px;
+          text-align: center;
+          background-color: #f8f9fa;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+      }
+
+      /* Estilo del botón */
+      .btn {
+          background-color: #28a745;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+          background-color: #218838;
+      }
+
+      .custom-btn {
+          padding: 4px 8px;
+          /* Ajusta el tamaño del botón */
+          font-size: 15px;
+          /* Ajusta el tamaño del texto si es necesario */
+      }
+
+      .custom-icon {
+          font-size: 3rem;
+          /* Tamaño más grande para el icono */
+      }
+
+      .custom-card {
+          width: 100%;
+          /* Establece el ancho de la tarjeta */
+          height: 500px;
+          /* Establece la altura de la tarjeta */
+      }
+
+      .circle-label {
+          display: inline-flex;
+          /* Asegura que el label tenga un ancho ajustado al contenido */
+          justify-content: center;
+          /* Centra el texto horizontalmente */
+          align-items: center;
+          /* Centra el texto verticalmente */
+          width: 20px;
+          /* Ancho del círculo */
+          height: 20px;
+          /* Altura del círculo */
+          border-radius: 50%;
+          /* Hace el label circular */
+          background-color: black;
+          /* Fondo negro */
+          color: white;
+          /* Texto blanco */
+          font-size: 16px;
+          /* Tamaño del texto */
+          text-align: center;
+          /* Asegura que el texto esté centrado */
+      }
+
+      .circle-label-none {
+          display: inline-flex;
+          /* Asegura que el label tenga un ancho ajustado al contenido */
+          justify-content: center;
+          /* Centra el texto horizontalmente */
+          align-items: center;
+          /* Centra el texto verticalmente */
+          width: 20px;
+          /* Ancho del círculo */
+          height: 20px;
+          /* Altura del círculo */
+          border-radius: 50%;
+          /* Hace el label circular */
+          background-color: white;
+          /* Fondo negro */
+          color: black;
+          /* Texto blanco */
+          font-size: 16px;
+          /* Tamaño del texto */
+          text-align: center;
+          /* Asegura que el texto esté centrado */
+      }
+
+
+
 
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */
