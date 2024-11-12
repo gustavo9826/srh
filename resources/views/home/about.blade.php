@@ -19,6 +19,13 @@
                             @else
                                 <p>No se encontraron roles para este usuario.</p>
                             @endif
+
+                            <h4>value</h4>
+                            <h6>{{ config('custom_config.ADM_TOTAL') }}</h6>
+
+                           
+
+
                         </div>
                     </div>
                 </div>

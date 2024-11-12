@@ -9,19 +9,24 @@
         </li>
 
         <!-- Item Administracion -->
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <i class="fa fa-cog menu-icon"></i>
-                <span class="menu-title">Administraci&oacuten</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('user') }}">Usuarios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Roles</a></li>
-                </ul>
-            </div>
-        </li>
+        @if(session('SESSION_ROLE_USER'))
+            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="fa fa-cog menu-icon"></i>
+                        <span class="menu-title">Administraci&oacuten</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{ route('user') }}">Usuarios</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Roles</a></li>
+                        </ul>
+                    </div>
+                </li>
+            @endif
+        @endif
+
 
         <!-- Item Acerca de -->
         <li class="nav-item">

@@ -19,9 +19,23 @@
                     <div class="row">
 
                         <!-- item menu users-->
-                        <x-menu-button-dash class="card card-administration" title="Usuarios del sistema"
-                            field="ADMINISTRACIÓN" href="{{ route('user') }}" value="4006"
-                            description="Total de usuarios" />
+                        @if(session('SESSION_ROLE_USER'))
+                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
+                                <x-menu-button-dash class="card card-administration" title="Usuarios del sistema"
+                                    field="ADMINISTRACIÓN" href="{{ route('user') }}" value="4006"
+                                    description="Total de usuarios" />
+                            @endif
+                        @endif
+
+                        <!-- item menu users-->
+                        @if(session('SESSION_ROLE_USER'))
+                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
+                                <x-menu-button-dash class="card card-administration" title="Roles del sistema"
+                                    field="ADMINISTRACIÓN" href="{{ route('user') }}" value="12"
+                                    description="Total de roles" />
+                            @endif
+                        @endif
+
 
                     </div>
 

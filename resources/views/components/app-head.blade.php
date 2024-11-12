@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="assets/messages/notyf/notyf.min.css">
     <link rel="stylesheet" href="assets/icons/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" href="assets/icons/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/app/app_style.css"/>
-    <link rel="stylesheet" href="assets/css/app/style.css"/>
+    <link rel="stylesheet" href="assets/css/app/app_style.css" />
+    <link rel="stylesheet" href="assets/css/app/style.css" />
     <link rel="stylesheet" href="assets/vendors/feather/feather.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
 </head>
