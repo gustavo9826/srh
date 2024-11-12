@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Administration;
 
 use App\Http\Controllers\Controller;
+use App\Models\Administration\LoginM;
 use Auth;
 use Illuminate\Http\Request;
-
+use Redirect;
+use Illuminate\Support\Facades\DB;
 class LoginC extends Controller
 {
     public function __invoke()
@@ -15,6 +17,9 @@ class LoginC extends Controller
 
     public function authenticate(Request $request)
     {
+        //objetos
+        $loginM = new LoginM();
+
         // Validación de los campos
         $credentials = $request->validate([
             'email' => 'required',
@@ -25,6 +30,9 @@ class LoginC extends Controller
         if (Auth::attempt($credentials)) {
             // Si la autenticación es exitosa, regeneramos la sesión y redirigimos al dashboard
             $request->session()->regenerate();
+            $userId = Auth::id();
+            $roleUser = $loginM->validate($userId);
+            session()->put('SESSION_ROLE_USER', $roleUser);
             return redirect()->intended('dashboard');
         }
 
@@ -36,8 +44,12 @@ class LoginC extends Controller
         ]);
     }
 
-    public function logout()
+    public function logout(Request $request, Redirect $redirect)
     {
-        return "ok";
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        session()->forget('SESSION_ROLE_USER');
+        return Redirect::to('/login');
     }
 }

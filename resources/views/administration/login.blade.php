@@ -29,7 +29,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" name="email" class="form-control form-control-lg"
-                                        placeholder="Usuario" value="{{ old('email') }}" />
+                                        placeholder="Usuario" value="{{ old('email') }}" autocomplete="username" />
                                     @error('email')
                                         <x-error-message-required>
                                             {{ $message }}
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="password" class="form-control form-control-lg"
-                                        placeholder="Contraseña" value="{{ old('password') }}" />
+                                        placeholder="Contraseña" value="" autocomplete="current-password">
                                     @error('password')
                                         <x-error-message-required>
                                             {{ $message }}
