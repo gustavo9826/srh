@@ -13,5 +13,4 @@
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 </head>

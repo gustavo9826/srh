@@ -20,4 +20,4 @@ Route::get('/user', UserC::class)->name('user')->middleware('auth'); //ROUTE_USE
 Route::post('/logout', [LoginC::class, 'logout'])->middleware('auth');//ROUTE_LOGOUT
 
 
-Route::post('/user/users', [UserC::class, 'getUsers']);
+Route::get('user/users', [UserC::class, 'getUsers'])->name('getUsers');

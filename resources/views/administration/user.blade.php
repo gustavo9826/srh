@@ -28,7 +28,7 @@
                                 </p>
                             </div>
                             <div class="input-group" style="max-width: 300px;">
-                    
+
                                 <div class="input-group-prepend">
                                     <span style="background:#10312B" class="input-group-text" id="basic-addon1">
                                         <i class="fas fa-search"></i>
@@ -37,9 +37,7 @@
                                 <input type="text" class="form-control" placeholder="Buscar" id="search-user">
                             </div>
                         </div>
--->
 
-                        <!--
                         <div class="table-responsive pt-3">
                             <table class="table table-bordered">
                                 <thead>
@@ -114,33 +112,20 @@
 
 
 
-
-                        <table id="example" class="display">
+                        <table id="myTable" class="display">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Edad</th>
-                                    <th>Ciudad</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Age</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Ana</td>
-                                    <td>23</td>
-                                    <td>Madrid</td>
-                                </tr>
-                                <tr>
-                                    <td>Carlos</td>
-                                    <td>30</td>
-                                    <td>Barcelona</td>
-                                </tr>
-                                <tr>
-                                    <td>Laura</td>
-                                    <td>25</td>
-                                    <td>Valencia</td>
-                                </tr>
+                                <!-- Data will be populated here by AJAX -->
                             </tbody>
                         </table>
+
 
                     </div>
                 </div>
