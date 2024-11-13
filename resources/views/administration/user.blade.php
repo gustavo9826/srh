@@ -19,7 +19,7 @@
                 <div class="card custom-card">
                     <div class="card-body">
 
-                        <!--
+
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h4 class="card-title">Usuarios del sistema</h4>
@@ -34,7 +34,8 @@
                                         <i class="fas fa-search"></i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Buscar" id="search-user">
+                                <input onkeyup="searchValue();" type="text" class="form-control" placeholder="Buscar"
+                                    id="search-user">
                             </div>
                         </div>
 
@@ -84,48 +85,33 @@
                         <br>
                         <div class="container d-flex justify-content-center">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button style="background-color: transparent; width: 25px; padding: 5px;" type="button"
+                                <button onclick="paginatorMin5();"
+                                    style="background-color: transparent; width: 25px; padding: 5px;" type="button"
                                     class="btn btn-primary">
                                     <i class="ti-control-skip-backward" style="font-size: 10px; color:#777777"></i>
                                 </button>
-                                <button type="button" style="background-color: transparent; width: 25; padding: 5px;"
+                                <button onclick="paginatorMin1();" type="button"
+                                    style="background-color: transparent; width: 25; padding: 5px;"
                                     class="btn btn-primary">
                                     <i class="ti-arrow-left" style="font-size: 10px; color:#777777"></i>
                                 </button>
 
-                                <label for="" class="circle-label-none">0</label>
-                                <label for="" class="circle-label">1</label>
-                                <label for="" class="circle-label-none">2</label>
+                                <label id="is_iteratorMin" class="circle-label-none"></label>
+                                <label id="is_iterator" class="circle-label"></label>
+                                <label id="is_iteratorMax" class="circle-label-none"></label>
 
-                                <button type="button" style="background-color: transparent; width: 25px; padding: 5px;"
+                                <button onclick="paginatorMax1();" type="button"
+                                    style="background-color: transparent; width: 25px; padding: 5px;"
                                     class="btn btn-primary">
                                     <i class="ti-arrow-right" style="font-size: 10px; color:#777777"></i>
                                 </button>
-                                <button type="button" style="background-color: transparent; width: 25px; padding: 5px;"
+                                <button onclick="paginatorMax5();" type="button"
+                                    style="background-color: transparent; width: 25px; padding: 5px;"
                                     class="btn btn-primary">
                                     <i class="ti-control-skip-forward" style="font-size: 10px; color:#777777"></i>
                                 </button>
                             </div>
                         </div>
--->
-
-
-
-
-                        <table id="myTable" class="display">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Age</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Data will be populated here by AJAX -->
-                            </tbody>
-                        </table>
-
 
                     </div>
                 </div>
