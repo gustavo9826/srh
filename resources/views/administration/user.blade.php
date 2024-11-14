@@ -35,49 +35,26 @@
                                     </span>
                                 </div>
                                 <input onkeyup="searchValue();" type="text" class="form-control" placeholder="Buscar"
-                                    id="search-user">
+                                    id="searchValue">
                             </div>
                         </div>
 
                         <div class="table-responsive pt-3">
-                            <table class="table table-bordered">
+                            <table id="user-table" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>
-                                            #
+                                            Menú
                                         </th>
                                         <th>
-                                            First name
+                                            Usuario
                                         </th>
                                         <th>
-                                            Progress
-                                        </th>
-                                        <th>
-                                            Amount
-                                        </th>
-                                        <th>
-                                            Deadline
+                                            Correo electrónico
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            Herman Beck
-                                        </td>
-                                        <td>
-                                            value
-                                        </td>
-                                        <td>
-                                            $ 77.99
-                                        </td>
-                                        <td>
-                                            May 15, 2015
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -112,6 +89,7 @@
                                 </button>
                             </div>
                         </div>
+
 
                     </div>
                 </div>
