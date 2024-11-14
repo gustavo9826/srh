@@ -6,37 +6,32 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserM extends Model
 {
-    //SCRIP: Para obtener la informacion de usuario de sistema
     public function list($iterator, $searchValue)
     {
-        // Si $searchValue está vacío, no aplicamos el filtro de búsqueda
-        if (empty($searchValue)) {
-            $query = 'SELECT 
-                    administration.users.id AS id,
-                    UPPER(administration.users.name) AS name,
-                    administration.users.email AS email
-                  FROM administration.users
-                  ORDER BY administration.users.id ASC
-                  LIMIT 5 OFFSET :iterator';
+        // Construir la cláusula WHERE solo si $searchValue no está vacío
+        $whereClause = '';
+        $params = ['iterator' => $iterator];
 
-            // Ejecutar la consulta sin filtro de búsqueda
-            return DB::select($query, ['iterator' => $iterator]);
+        if (!empty($searchValue)) {
+            // Usamos TRIM, UPPER, UNACCENT para normalizar la búsqueda
+            $whereClause = ' WHERE (UPPER(TRIM(administration.users.name)) LIKE UPPER(TRIM(:searchValue)) 
+                                OR UPPER(TRIM(administration.users.email)) LIKE UPPER(TRIM(:searchValue)))';
+
+            // Se añaden los parámetros de búsqueda con el % para hacer la búsqueda más flexible
+            $params['searchValue'] = '%' . $searchValue . '%';
         }
 
-        // Si $searchValue no está vacío, aplicamos el filtro
+        // Consulta base
         $query = 'SELECT 
-                administration.users.id AS id,
-                UPPER(administration.users.name) AS name,
-                administration.users.email AS email
-              FROM administration.users
-              WHERE (administration.users.name LIKE :searchValue OR administration.users.email LIKE :searchValue)
-              ORDER BY administration.users.id ASC
-              LIMIT 5 OFFSET :iterator';
+                        administration.users.id AS id,
+                        UPPER(administration.users.name) AS name,
+                        administration.users.email AS email
+                  FROM administration.users'
+            . $whereClause . '  '  // Concatenar la cláusula WHERE si es necesario
+            . ' ORDER BY administration.users.id ASC
+                  LIMIT 5 OFFSET :iterator';
 
-        // Ejecutar la consulta con el filtro de búsqueda
-        return DB::select($query, [
-            'searchValue' => '%' . $searchValue . '%',  // Parametro de búsqueda con el wildcard %
-            'iterator' => $iterator
-        ]);
+        // Ejecutar la consulta con los parámetros adecuados
+        return DB::select($query, $params);
     }
 }

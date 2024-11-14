@@ -22,10 +22,6 @@ class UserC extends Controller
             $userM = new UserM();
             $value = $userM->list($iterator, $searchValue);
 
-
-
-
-
             return response()->json([ // Lógica para procesar la solicitud+
                 'value' => $value,
                 'status' => true,

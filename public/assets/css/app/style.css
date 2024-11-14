@@ -49210,3 +49210,133 @@ div.tagsinput span.tag a {
 }
 
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */
+
+.item-icon-menu {
+    color: white;
+    margin-right: 0px;
+    font-size: 0.9rem;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-top: 7.5px;
+}
+
+/* Estilo para el contenedor del icono (cuadrado verde) */
+.icon-container-template {
+    display: flex;
+    justify-content: center;
+    /* Alineación horizontal del icono */
+    align-items: center;
+    /* Alineación vertical del icono */
+    width: 27px;
+    /* Ajusta el tamaño del cuadrado */
+    height: 27px;
+    /* Ajusta el tamaño del cuadrado */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    /* Fondo verde */
+    margin-right: 10px;
+    /* Espaciado entre el icono y el texto */
+    color: white;
+    /* Asegura que el icono dentro sea blanco */
+}
+
+/* Estilo para el icono blanco dentro del cuadrado verde */
+.icon-white {
+    color: white;
+    /* Color blanco para el icono */
+    font-size: 2.4rem;
+    /* Tamaño del icono ajustado */
+    line-height: 1;
+    /* Asegura que el icono se alinee verticalmente */
+}
+
+/* Estilo adicional para el texto dentro de los items del dropdown */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    /* Alineación vertical del texto */
+    padding-left: 10px;
+    /* Espaciado entre el icono y el texto */
+    font-size: 1rem;
+    /* Tamaño de fuente para el texto */
+}
+
+/* Para hacer que el contenedor sea más pequeño */
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+    /* Fondo ligeramente gris cuando el item es hover */
+}
+
+/* Estilo para el botón del icono (cuando el cursor pasa sobre él) */
+.icon-btn {
+    background: transparent !important;
+    /* Fondo transparente para el botón */
+    border: none;
+    /* Sin borde */
+    padding: 0;
+    /* Sin padding */
+    transition: all 0.3s ease;
+    /* Transición suave para cambios */
+}
+
+.icon-btn i {
+    color: white;
+    /* Cambiar color de los iconos dentro del botón a blanco */
+    font-size: 2rem;
+    /* Tamaño original del icono */
+    transition: all 0.3s ease;
+    /* Transición para el cambio de color y tamaño */
+}
+
+/* Efecto cuando el cursor pasa sobre el botón */
+.icon-btn:hover i {
+    color: #28a745;
+    /* Cambiar color a verde cuando se pasa el cursor */
+    font-size: 2.5rem;
+    /* Aumentar el tamaño del icono */
+}
+
+/* Tooltip personalizado */
+.icon-btn:hover {
+    cursor: pointer;
+    /* Cambiar el cursor a pointer */
+}
+
+/* Centrar toda la tabla */
+#template-table.custom-table {
+    width: 100%;
+    /* Puedes ajustar el porcentaje según sea necesario */
+    margin: 0 auto;
+    /* Centra la tabla horizontalmente */
+    border-collapse: collapse;
+    /* Asegura que los bordes de la tabla no se dupliquen */
+}
+
+/* Reducir el ancho del primer <th> y su columna correspondiente */
+#template-table.custom-table th:nth-child(1) {
+    width: 50px;
+    /* Ajusta el ancho del primer th (puedes poner el valor que prefieras) */
+    white-space: nowrap;
+    /* Evita que el contenido se divida en varias líneas */
+    text-align: center;
+    /* Centra el contenido del primer encabezado */
+}
+
+/* Centrar el contenido de todas las celdas y cabeceras */
+#template-table.custom-table th,
+#template-table.custom-table td {
+    padding: 12px;
+    text-align: center;
+    /* Centra el contenido de las celdas */
+    border: 1px solid #ddd;
+    /* Borde suave para las celdas */
+}
+
+/* Si quieres un tamaño específico para la primera columna */
+#template-table.custom-table td:nth-child(1),
+#template-table.custom-table th:nth-child(1) {
+    width: 50px;
+    /* Ajusta el tamaño de la primera columna (similar al th) */
+    white-space: nowrap;
+    /* Asegura que el contenido no se divida */
+}

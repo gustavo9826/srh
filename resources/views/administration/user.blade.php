@@ -1,3 +1,4 @@
+<!-- TEMPLATE APP-->
 <x-app-layout>
 
     <div class="main-panel">
@@ -13,83 +14,45 @@
                 </div>
             </div>
 
-
-
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card custom-card">
                     <div class="card-body">
-
 
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h4 class="card-title">Usuarios del sistema</h4>
                                 <p class="card-description">
-                                    Agregar usuario <code>.agregar aqui</code>
+                                    ¿Deseas agregar un usuario nuevo? <a href="#" class="text-danger"
+                                        style="margin-left: 10px;">
+                                        <i class="fa fa-arrow-up"></i> Agregar Usuario
+                                    </a>
                                 </p>
                             </div>
                             <div class="input-group" style="max-width: 300px;">
-
-                                <div class="input-group-prepend">
-                                    <span style="background:#10312B" class="input-group-text" id="basic-addon1">
-                                        <i class="fas fa-search"></i>
-                                    </span>
-                                </div>
-                                <input onkeyup="searchValue();" type="text" class="form-control" placeholder="Buscar"
-                                    id="searchValue">
+                                <!-- TEMPLATE SEARCH-->
+                                <x-template-search />
                             </div>
                         </div>
 
-                        <div class="table-responsive pt-3">
-                            <table id="user-table" class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Menú
-                                        </th>
-                                        <th>
-                                            Usuario
-                                        </th>
-                                        <th>
-                                            Correo electrónico
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
+                        <!-- TEMPLATE TABLE -->
+                        <x-template-table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Menú
+                                    </th>
+                                    <th>
+                                        Usuario
+                                    </th>
+                                    <th>
+                                        Correo electrónico
+                                    </th>
+                                </tr>
+                            </thead>
+                        </x-template-table>
 
-                        <br>
-                        <div class="container d-flex justify-content-center">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button onclick="paginatorMin5();"
-                                    style="background-color: transparent; width: 25px; padding: 5px;" type="button"
-                                    class="btn btn-primary">
-                                    <i class="ti-control-skip-backward" style="font-size: 10px; color:#777777"></i>
-                                </button>
-                                <button onclick="paginatorMin1();" type="button"
-                                    style="background-color: transparent; width: 25; padding: 5px;"
-                                    class="btn btn-primary">
-                                    <i class="ti-arrow-left" style="font-size: 10px; color:#777777"></i>
-                                </button>
-
-                                <label id="is_iteratorMin" class="circle-label-none"></label>
-                                <label id="is_iterator" class="circle-label"></label>
-                                <label id="is_iteratorMax" class="circle-label-none"></label>
-
-                                <button onclick="paginatorMax1();" type="button"
-                                    style="background-color: transparent; width: 25px; padding: 5px;"
-                                    class="btn btn-primary">
-                                    <i class="ti-arrow-right" style="font-size: 10px; color:#777777"></i>
-                                </button>
-                                <button onclick="paginatorMax5();" type="button"
-                                    style="background-color: transparent; width: 25px; padding: 5px;"
-                                    class="btn btn-primary">
-                                    <i class="ti-control-skip-forward" style="font-size: 10px; color:#777777"></i>
-                                </button>
-                            </div>
-                        </div>
-
+                        <!-- TEMPLATE PAGINATOR-->
+                        <x-template-paginator />
 
                     </div>
                 </div>
@@ -98,6 +61,7 @@
         </div>
     </div>
 
+    <!-- CODE SCRIPT-->
     <script src="assets/js/app/administration/table.js"></script>
 
 </x-app-layout>
