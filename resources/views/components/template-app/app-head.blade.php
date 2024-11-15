@@ -3,6 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>&nbsp;SIRH</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="stylesheet" href="{{ asset('assets/icons/fontawesome-free-6.6/css/all.min.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/images/imss/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('assets/messages/notyf/notyf.min.css') }}">

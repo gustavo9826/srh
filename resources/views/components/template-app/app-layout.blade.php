@@ -17,5 +17,6 @@
 </body>
 
 <x-template-app.app-library />
+<x-template-app.app-message />
 
 </html>

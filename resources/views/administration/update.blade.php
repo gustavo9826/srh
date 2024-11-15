@@ -1,4 +1,4 @@
-<!-- TEMPLATE APP-->
+<!-- TEMPLATE APP -->
 <x-template-app.app-layout>
 
     <div class="main-panel">
@@ -24,17 +24,18 @@
 
                                 <div class="row">
                                     <x-template-form.template-form-input label="Nombre" type="text" name="name"
-                                        id="name" placeholder="Nombre" grid="6" />
+                                        id="name" placeholder="Nombre" grid="6" autocomplete="" />
                                     <x-template-form.template-form-input label="Email" type="email" name="email"
-                                        id="email" placeholder="Correo electrónico" grid="6" />
+                                        id="email" placeholder="Correo electrónico" autocomplete="" grid="6" />
                                 </div>
 
                                 <div class="row">
                                     <x-template-form.template-form-input label="Password" type="password"
-                                        name="password" id="password" placeholder="Password" grid="6" />
-                                    <x-template-form.template-form-input label="Confirmar Password" type="password"
-                                        name="confirmPassword" id="confirmPassword" placeholder="Confirmar password"
+                                        name="password" id="password" placeholder="Password" autocomplete="new-password"
                                         grid="6" />
+                                    <x-template-form.template-form-input label="Confirmar Password" type="password"
+                                        name="confirmPassword" id="confirmPassword" autocomplete="new-password"
+                                        placeholder="Confirmar password" grid="6" />
                                 </div>
 
                                 <x-template-tittle.tittle-caption-secon tittle="Roles y perfiles" />
@@ -60,13 +61,24 @@
                                 </div>
 
                                 <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="nomina" class="form-label">Nomina</label>
+                                        <select id="nomina" class="form-control selectpicker" data-live-search="true">
+                                            <option value="AL">123</option>
+                                            <option value="WY">Wyoming</option>
+                                            <option value="AM">America</option>
+                                            <option value="CA">Canada</option>
+                                            <option value="RU">Russia</option>
+                                        </select>
+                                    </div>
+
+
+                                    <!-- CURP -->
                                     <x-template-form.template-form-input label="CURP" type="text" name="curp" id="curp"
-                                        placeholder="CURP" grid="6" />
+                                        placeholder="CURP" autocomplete="" grid="6" />
                                 </div>
 
-
-
-
+                                <!-- Botón de acción -->
                                 <x-template-button.button-form-footer />
 
                             </form>
@@ -78,3 +90,10 @@
     </div>
 
 </x-template-app.app-layout>
+
+<!-- Script de inicialización de Bootstrap Select -->
+<script>
+    $(document).ready(function () {
+        console.log('success');
+    });
+</script>
