@@ -31,18 +31,18 @@
                                     <input type="text" name="email" class="form-control form-control-lg"
                                         placeholder="Usuario" value="{{ old('email') }}" autocomplete="username" />
                                     @error('email')
-                                        <x-error-message-required>
+                                        <x-template-message-required>
                                             {{ $message }}
-                                        </x-error-message-required>
+                                        </x-template-message-required>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="password" class="form-control form-control-lg"
                                         placeholder="Contraseña" value="" autocomplete="current-password">
                                     @error('password')
-                                        <x-error-message-required>
+                                        <x-template-message-required>
                                             {{ $message }}
-                                        </x-error-message-required>
+                                        </x-template-message-required>
                                     @enderror
                                 </div>
                                 <div class="mt-3">
