@@ -22,7 +22,7 @@
                         @if(session('SESSION_ROLE_USER'))
                             @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
                                 <x-template-button-dash class="card card-administration" title="Usuarios del sistema"
-                                    field="ADMINISTRACIÓN" href="{{ route('user') }}" value="4006"
+                                    field="ADMINISTRACIÓN" href="{{ route('user.list') }}" value="4006"
                                     description="Total de usuarios" />
                             @endif
                         @endif
@@ -31,7 +31,7 @@
                         @if(session('SESSION_ROLE_USER'))
                             @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
                                 <x-template-button-dash class="card card-administration" title="Roles del sistema"
-                                    field="ADMINISTRACIÓN" href="{{ route('user') }}" value="12"
+                                    field="ADMINISTRACIÓN" href="{{ route('user.list') }}" value="12"
                                     description="Total de roles" />
                             @endif
                         @endif

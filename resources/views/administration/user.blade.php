@@ -22,7 +22,7 @@
                             <div>
                                 <h4 class="card-title">Usuarios del sistema</h4>
                                 <p class="card-description">
-                                    ¿Deseas agregar un usuario nuevo? <a href="#" class="text-danger"
+                                    ¿Deseas agregar un usuario nuevo? <a href="{{ route('user.update') }}" class="text-danger"
                                         style="margin-left: 10px;">
                                         <i class="fa fa-arrow-up"></i> Agregar Usuario
                                     </a>

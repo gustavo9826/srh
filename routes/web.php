@@ -19,7 +19,8 @@ Route::get('/about', AboutC::class)->name('about')->middleware('auth'); //ROUTE_
 Route::post('/logout', [LoginC::class, 'logout'])->middleware('auth');//ROUTE_LOGOUT
 
 //ROUTE_USER
-Route::get('/user', UserC::class)->name('user')->middleware('auth'); //ROUTE_USER
+Route::get('/user', UserC::class)->name('user.list')->middleware('auth'); //ROUTE_USER
 Route::get('/user/list', [UserC::class, 'list'])->middleware('auth'); //ROUTE_LIST_OF_USER
+Route::get('/user/create', [UserC::class, 'update'])->name('user.update')->middleware('auth'); //ROUTE_CREATE
 
 

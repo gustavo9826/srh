@@ -12,6 +12,10 @@ class UserC extends Controller
         return view('administration/user');
     }
 
+    public function update()
+    {
+        return view('administration/update');
+    }
     public function list(Request $request)
     {
         try {
