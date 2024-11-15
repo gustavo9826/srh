@@ -39,7 +39,16 @@
 
                                 <x-template-tittle.tittle-caption-secon tittle="Roles y perfiles" />
                                 <div class="row">
-
+                                    <div class="form-group">
+                                        <label>ROLE</label>
+                                        <select class="js-example-basic-multiple w-100" multiple="multiple">
+                                            <option value="AL">Alabama</option>
+                                            <option value="WY">Wyoming</option>
+                                            <option value="AM">America</option>
+                                            <option value="CA">Canada</option>
+                                            <option value="RU">Russia</option>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <x-template-tittle.tittle-caption-secon tittle="Asociacion con Nómina" />
@@ -54,6 +63,8 @@
                                     <x-template-form.template-form-input label="CURP" type="text" name="curp" id="curp"
                                         placeholder="CURP" grid="6" />
                                 </div>
+
+
 
 
                                 <x-template-button.button-form-footer />

@@ -5,6 +5,11 @@
 <script src="{{ asset('assets/js/other/template.js') }}"></script>
 <script src="{{ asset('assets/js/other/settings.js') }}"></script>
 <script src="{{ asset('assets/js/other/todolist.js') }}"></script>
+<script src="{{ asset('assets/vendors/select2/select2.min.js') }}"></script>
+<script src="{{ asset('assets/vendors/typeahead.js/typeahead.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/other/file-upload.js') }}"></script>
+<script src="{{ asset('assets/js/other/typeahead.js') }}"></script>
+<script src="{{ asset('assets/js/other/select2.js') }}"></script>
 
 
 @if (session('estatus'))

@@ -27660,7 +27660,7 @@ code {
     .form-check-label
     input[type="checkbox"]:checked
     + .input-helper:before {
-    background: #4b49ac;
+    background: #6c757d;
     border-width: 0;
 }
 
@@ -27771,7 +27771,7 @@ code {
     .form-check-label
     input[type="radio"]:disabled
     + .input-helper:before {
-    border-color: #ced4da;
+    border-color: red;
 }
 
 .form-check

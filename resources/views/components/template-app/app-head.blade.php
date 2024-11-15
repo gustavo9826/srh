@@ -7,11 +7,12 @@
     <link rel="shortcut icon" href="{{ asset('assets/images/imss/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('assets/messages/notyf/notyf.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/icons/ti-icons/css/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/icons/ti-icons/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/app/app_style.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/app/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
