@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<x-app-head />
+<x-template-app.app-head />
 
 <body>
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper">
             <header>
-                <x-app-header />
+                <x-template-app.app-header />
             </header>
-            <x-app-menu />
+            <x-template-app.app-menu />
             {{$slot}}
             <footer />
         </div>
     </div>
 </body>
 
-<x-app-library />
+<x-template-app.app-library />
 
 </html>

@@ -1,5 +1,5 @@
 <!-- TEMPLATE APP-->
-<x-app-layout>
+<x-template-app.app-layout>
 
     <div class="main-panel">
         <div class="content-wrapper">
@@ -30,12 +30,12 @@
                             </div>
                             <div class="input-group" style="max-width: 300px;">
                                 <!-- TEMPLATE SEARCH-->
-                                <x-template-search />
+                                <x-template-table.template-search />
                             </div>
                         </div>
 
                         <!-- TEMPLATE TABLE -->
-                        <x-template-table>
+                        <x-template-table.template-table>
                             <thead>
                                 <tr>
                                     <th>
@@ -49,10 +49,10 @@
                                     </th>
                                 </tr>
                             </thead>
-                        </x-template-table>
+                        </x-template-table.template-table>
 
                         <!-- TEMPLATE PAGINATOR-->
-                        <x-template-paginator />
+                        <x-template-table.template-paginator />
 
                     </div>
                 </div>
@@ -64,4 +64,4 @@
     <!-- CODE SCRIPT-->
     <script src="assets/js/app/administration/table.js"></script>
 
-</x-app-layout>
+</x-template-app.app-layout>

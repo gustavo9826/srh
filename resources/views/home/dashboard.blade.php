@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-template-app.app-layout>
 
     <div class="main-panel">
         <div class="content-wrapper">
@@ -43,4 +43,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-template-app.app-layout>
