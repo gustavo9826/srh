@@ -40,6 +40,8 @@
 
                                 <x-template-tittle.tittle-caption-secon tittle="Roles y perfiles" />
                                 <div class="row">
+
+                                    <!--
                                     <div class="form-group">
                                         <label>ROLE</label>
                                         <select class="js-example-basic-multiple w-100" multiple="multiple">
@@ -50,6 +52,7 @@
                                             <option value="RU">Russia</option>
                                         </select>
                                     </div>
+-->
                                 </div>
 
                                 <x-template-tittle.tittle-caption-secon tittle="Asociacion con Nómina" />
@@ -60,7 +63,66 @@
                                     </div>
                                 </div>
 
+                                <style>
+                                    .bootstrap-select .dropdown-toggle .filter-option {
+                                        position: static;
+                                        top: 0;
+                                        left: 0;
+                                        float: left;
+                                        height: 100%;
+                                        width: 100%;
+                                        text-align: left;
+                                        overflow: hidden;
+                                        -webkit-box-flex: 0;
+                                        -webkit-flex: 0 1 auto;
+                                        -ms-flex: 0 1 auto;
+                                        flex: 0 1 auto;
+                                        color: #495057;
+                                        font-size: 0.875rem;
+                                        font-family: inherit;
+                                    }
+
+                                    .btn {
+                                        background-color: white;
+                                    }
+                                </style>
+
+
+
                                 <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label"
+                                                style="font-size: 1rem; color: #333;">Tipo de nómina</label>
+                                            <div class="col-sm-9">
+                                                <select class=" selectpicker dropup show-tick"
+                                                    data-width="auto" data-size="5" data-live-search="true"
+                                                    data-dropup-auto="false">
+                                                    <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda
+                                                    </option>
+                                                    <option data-tokens="mustard">Burger, Shake and a Smile</option>
+                                                    <option data-tokens="frosting">Sugar, Spice and all things nice
+                                                    </option>
+                                                    <option data-tokens="frosting">Sugar, Spice and all things nice
+                                                    </option>
+                                                    <option data-tokens="frosting">Sugar, Spice and all things nice
+                                                    </option>
+                                                    <option data-tokens="frosting">Sugar, Spice and all things nice
+                                                    </option>
+                                                    <option data-tokens="frosting">Sugar, Spice and all things nice
+                                                    </option>
+                                                    <option data-tokens="frosting">Sugar, Spice and all things nice
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <!--
                                     <div class="col-md-6">
                                         <label for="nomina" class="form-label">Nomina</label>
                                         <select id="nomina" class="form-control selectpicker" data-live-search="true">
@@ -71,7 +133,7 @@
                                             <option value="RU">Russia</option>
                                         </select>
                                     </div>
-
+-->
 
                                     <!-- CURP -->
                                     <x-template-form.template-form-input label="CURP" type="text" name="curp" id="curp"
@@ -95,5 +157,6 @@
 <script>
     $(document).ready(function () {
         console.log('success');
+        $('select').selectpicker();
     });
 </script>
