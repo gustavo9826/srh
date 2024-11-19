@@ -38,4 +38,12 @@ class UserC extends Controller
             ], 500);
         }
     }
+
+    public function save(Request $request)
+    {
+
+        $name = $request->name;
+
+        return "success $name";
+    }
 }

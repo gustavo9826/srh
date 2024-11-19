@@ -21,6 +21,6 @@ Route::post('/logout', [LoginC::class, 'logout'])->middleware('auth');//ROUTE_LO
 //ROUTE_USER
 Route::get('/user', UserC::class)->name('user.list')->middleware('auth'); //ROUTE_USER
 Route::get('/user/list', [UserC::class, 'list'])->middleware('auth'); //ROUTE_LIST_OF_USER
-Route::get('/user/create', [UserC::class, 'update'])->name('user.update')->middleware('auth'); //ROUTE_CREATE
-
+Route::get('/user/create', [UserC::class, 'update'])->name('user.create')->middleware('auth'); //ROUTE_CREATE
+Route::post('/user/save', [UserC::class, 'save'])->name('user.save')->middleware('auth');
 

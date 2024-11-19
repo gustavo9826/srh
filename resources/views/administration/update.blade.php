@@ -18,7 +18,8 @@
                         <x-template-tittle.tittle-caption tittle="Agregar / Modificar Usuarios"
                             route="{{ route('user.list') }}" />
                         <div>
-                            <form class="form-sample">
+                            <form action="{{ route('user.save') }}" method="post" class="form-sample">
+                                @csrf
 
                                 <x-template-tittle.tittle-caption-secon tittle="Datos del usuario" />
 
@@ -96,9 +97,8 @@
                                             <label class="col-sm-3 col-form-label"
                                                 style="font-size: 1rem; color: #333;">Tipo de nómina</label>
                                             <div class="col-sm-9">
-                                                <select class=" selectpicker dropup show-tick"
-                                                    data-width="auto" data-size="5" data-live-search="true"
-                                                    data-dropup-auto="false">
+                                                <select class=" selectpicker dropup show-tick" data-width="auto"
+                                                    data-size="5" data-live-search="true" data-dropup-auto="false">
                                                     <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda
                                                     </option>
                                                     <option data-tokens="mustard">Burger, Shake and a Smile</option>
@@ -141,7 +141,7 @@
                                 </div>
 
                                 <!-- Botón de acción -->
-                                <x-template-button.button-form-footer />
+                                <x-template-button.button-form-footer routeBack="{{ route('user.list') }}" />
 
                             </form>
                         </div>
