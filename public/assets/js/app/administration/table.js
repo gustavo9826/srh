@@ -24,6 +24,9 @@ function searchInit() {
             // Si hay datos, iterar sobre ellos
             response.value.forEach(function (user) {
                 // Crear el menú desplegable con las opciones de cada usuario user.id
+
+                const finalUrl = '/srh/public/user/edit/' + user.id;
+
                 $('#template-table tbody').append(
                     '<tr>' +
                     '<td>' +
@@ -37,8 +40,7 @@ function searchInit() {
                     '<div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">' +
                     '<h6 class="dropdown-header">Acciones</h6>' +
 
-                    // Modificar
-                    '<a class="dropdown-item" href="#">' +
+                    '<a class="dropdown-item" href="' + finalUrl + '">' +
                     '<span style="background:#1D5B3B" class="icon-container-template">' +
                     '<div style="text-align: center;">' +
                     '<i class="fa fa-pencil item-icon-menu"></i>' +

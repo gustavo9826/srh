@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Administration;
 
 use App\Models\Administration\UserM;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+
 class UserC extends Controller
 {
     public function __invoke()
@@ -12,9 +14,11 @@ class UserC extends Controller
         return view('administration/user');
     }
 
-    public function update()
+    public function create()
     {
-        return view('administration/update');
+        $userM = new UserM();
+        $item = $userM->getfillable;
+        return view('administration/update', compact('item'));
     }
     public function list(Request $request)
     {
@@ -45,5 +49,12 @@ class UserC extends Controller
         $name = $request->name;
 
         return "success $name";
+    }
+
+    public function edit(string $id)
+    {
+        $item = User::find($id);
+        return view('administration/update', compact('item'));
+
     }
 }

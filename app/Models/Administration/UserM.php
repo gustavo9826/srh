@@ -6,6 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserM extends Model
 {
+    protected $table = 'administration.users';
+    protected $fillable = [
+        'id',
+        'name',
+        'email',
+        'email_verified_at',
+        'password',
+        'remember_token',
+        'created_at',
+        'updated_at',
+        'id_tbl_empleados_hraes',
+        'id_tbl_empleados_central',
+        'id_tbl_empleados_trasnferidos',
+        'id_tbl_empleados_aux',
+        'es_por_nomina'
+    ];
     public function list($iterator, $searchValue)
     {
         // Construir la cláusula WHERE solo si $searchValue no está vacío

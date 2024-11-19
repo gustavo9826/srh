@@ -25,18 +25,19 @@
 
                                 <div class="row">
                                     <x-template-form.template-form-input label="Nombre" type="text" name="name"
-                                        id="name" placeholder="Nombre" grid="6" autocomplete="" />
+                                        placeholder="Nombre" grid="6" autocomplete="" value="{{ optional($item)->name ?? '' }}" />
                                     <x-template-form.template-form-input label="Email" type="email" name="email"
-                                        id="email" placeholder="Correo electrónico" autocomplete="" grid="6" />
+                                        placeholder="Correo electrónico" value="{{ optional($item)->name ?? '' }}" autocomplete=""
+                                        grid="6" />
                                 </div>
 
                                 <div class="row">
                                     <x-template-form.template-form-input label="Password" type="password"
-                                        name="password" id="password" placeholder="Password" autocomplete="new-password"
-                                        grid="6" />
+                                        name="password" value="{{ optional($item)->name ?? '' }}" placeholder="Password"
+                                        autocomplete="new-password" grid="6" />
                                     <x-template-form.template-form-input label="Confirmar Password" type="password"
-                                        name="confirmPassword" id="confirmPassword" autocomplete="new-password"
-                                        placeholder="Confirmar password" grid="6" />
+                                        name="confirmPassword" autocomplete="new-password"
+                                        placeholder="Confirmar password" value="{{ optional($item)->name ?? '' }}" grid="6" />
                                 </div>
 
                                 <x-template-tittle.tittle-caption-secon tittle="Roles y perfiles" />
@@ -59,7 +60,7 @@
                                 <x-template-tittle.tittle-caption-secon tittle="Asociacion con Nómina" />
                                 <div class="container">
                                     <div class="row">
-                                        <x-template-form.template-form-check name="nomina" id="nomina"
+                                        <x-template-form.template-form-check name="nomina"
                                             value="¿Vincular con nómina?" />
                                     </div>
                                 </div>
@@ -136,8 +137,8 @@
 -->
 
                                     <!-- CURP -->
-                                    <x-template-form.template-form-input label="CURP" type="text" name="curp" id="curp"
-                                        placeholder="CURP" autocomplete="" grid="6" />
+                                    <x-template-form.template-form-input label="CURP" type="text" name="curp"
+                                        placeholder="CURP" autocomplete="" grid="6" value="{{ optional($item)->name ?? '' }}" />
                                 </div>
 
                                 <!-- Botón de acción -->
