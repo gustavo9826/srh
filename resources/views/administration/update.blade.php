@@ -15,52 +15,72 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card custom-card">
                     <div class="card-body">
-                        <x-template-tittle.tittle-caption tittle="Agregar / Modificar Usuarios"
+                        <x-template-tittle.tittle-caption tittle="{{ isset($item) ? 'Modificar' : 'Agregar ' }} usuario"
                             route="{{ route('user.list') }}" />
                         <div>
-                            <form action="{{ route('user.save') }}" method="post" class="form-sample">
+                            <form action="{{ route('user.save') }}" method="POST" class="form-sample">
                                 @csrf
+
+                                <x-template-form.template-form-input-hidden name="userId"
+                                    value="{{ optional($item)->id ?? '' }}" />
 
                                 <x-template-tittle.tittle-caption-secon tittle="Datos del usuario" />
 
                                 <div class="row">
-                                    <x-template-form.template-form-input label="Nombre" type="text" name="name"
-                                        placeholder="Nombre" grid="6" autocomplete="" value="{{ optional($item)->name ?? '' }}" />
-                                    <x-template-form.template-form-input label="Email" type="email" name="email"
-                                        placeholder="Correo electrónico" value="{{ optional($item)->name ?? '' }}" autocomplete=""
-                                        grid="6" />
+                                    <x-template-form.template-form-input label="Nombre" type="text" name="userName"
+                                        placeholder="Nombre" grid="6" autocomplete=""
+                                        value="{{ optional($item)->name ?? '' }}" />
+                                    @error('userName')
+                                        <x-template-message-required>
+                                            {{ $message }}
+                                        </x-template-message-required>
+                                    @enderror
+
+                                    <x-template-form.template-form-input label="Email" type="email" name="userEmail"
+                                        placeholder="Correo electrónico" value="{{ optional($item)->email ?? '' }}"
+                                        autocomplete="" grid="6" />
+                                    @error('userEmail')
+                                        <x-template-message-required>
+                                            {{ $message }}
+                                        </x-template-message-required>
+                                    @enderror
                                 </div>
 
-                                <div class="row">
-                                    <x-template-form.template-form-input label="Password" type="password"
-                                        name="password" value="{{ optional($item)->name ?? '' }}" placeholder="Password"
-                                        autocomplete="new-password" grid="6" />
-                                    <x-template-form.template-form-input label="Confirmar Password" type="password"
-                                        name="confirmPassword" autocomplete="new-password"
-                                        placeholder="Confirmar password" value="{{ optional($item)->name ?? '' }}" grid="6" />
-                                </div>
+                                @if (!isset($item)) <!-- Ocultar contenido en caso de modificar-->
+                                    <div class="row">
+                                        <x-template-form.template-form-input label="Password" type="password"
+                                            name="userPassword" value="" placeholder="Password" autocomplete="new-password"
+                                            grid="6" />
+                                        <x-template-form.template-form-input label="Confirmar Password" type="password"
+                                            name="userConfirmPassword" autocomplete="new-password"
+                                            placeholder="Confirmar password" value="" grid="6" />
+                                    </div>
+                                @endif
+
 
                                 <x-template-tittle.tittle-caption-secon tittle="Roles y perfiles" />
                                 <div class="row">
-
-                                    <!--
-                                    <div class="form-group">
-                                        <label>ROLE</label>
-                                        <select class="js-example-basic-multiple w-100" multiple="multiple">
-                                            <option value="AL">Alabama</option>
-                                            <option value="WY">Wyoming</option>
-                                            <option value="AM">America</option>
-                                            <option value="CA">Canada</option>
-                                            <option value="RU">Russia</option>
-                                        </select>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label"
+                                                style="font-size: 1rem; color: #333;">Roles</label>
+                                            <div class="col-sm-9">
+                                                <select class="js-example-basic-multiple w-100" multiple="multiple">
+                                                    <option value="AL">Alabama</option>
+                                                    <option value="WY">Wyoming</option>
+                                                    <option value="AM">America</option>
+                                                    <option value="CA">Canada</option>
+                                                    <option value="RU">Russia</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
--->
                                 </div>
 
                                 <x-template-tittle.tittle-caption-secon tittle="Asociacion con Nómina" />
                                 <div class="container">
                                     <div class="row">
-                                        <x-template-form.template-form-check name="nomina"
+                                        <x-template-form.template-form-check name="userNomina"
                                             value="¿Vincular con nómina?" />
                                     </div>
                                 </div>
@@ -120,25 +140,10 @@
                                         </div>
                                     </div>
 
-
-
-
-                                    <!--
-                                    <div class="col-md-6">
-                                        <label for="nomina" class="form-label">Nomina</label>
-                                        <select id="nomina" class="form-control selectpicker" data-live-search="true">
-                                            <option value="AL">123</option>
-                                            <option value="WY">Wyoming</option>
-                                            <option value="AM">America</option>
-                                            <option value="CA">Canada</option>
-                                            <option value="RU">Russia</option>
-                                        </select>
-                                    </div>
--->
-
                                     <!-- CURP -->
                                     <x-template-form.template-form-input label="CURP" type="text" name="curp"
-                                        placeholder="CURP" autocomplete="" grid="6" value="{{ optional($item)->name ?? '' }}" />
+                                        placeholder="CURP" autocomplete="" grid="6"
+                                        value="{{ optional($item)->name ?? '' }}" />
                                 </div>
 
                                 <!-- Botón de acción -->

@@ -46,15 +46,20 @@ class UserC extends Controller
     public function save(Request $request)
     {
 
-        $name = $request->name;
+        $request->validate([
+            'userName' => 'required',
+            'userEmail' => 'required',
+        ]);
+
+        $name = $request->userName;
 
         return "success $name";
     }
 
     public function edit(string $id)
     {
-        $item = User::find($id);
-        return view('administration/update', compact('item'));
-
+        $userM = new UserM();
+        $item = $userM->edit($id);
+        return view('administration.update', compact('item'));
     }
 }

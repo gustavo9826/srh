@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserM extends Model
 {
-    protected $table = 'administration.users';
     protected $fillable = [
         'id',
         'name',
@@ -49,5 +48,20 @@ class UserM extends Model
 
         // Ejecutar la consulta con los parámetros adecuados
         return DB::select($query, $params);
+    }
+
+    public function edit(string $id)
+    {
+        // Realizamos la consulta con parámetros para evitar inyecciones de SQL
+        $query = DB::select('
+            SELECT id, name, email, email_verified_at, password, remember_token, created_at, updated_at,
+                   id_tbl_empleados_hraes, id_tbl_empleados_central, id_tbl_empleados_trasnferidos, 
+                   id_tbl_empleados_aux, es_por_nomina
+            FROM administration.users 
+            WHERE id = :id
+        ', ['id' => $id]);
+
+        // Devolvemos el primer resultado o null si no existe
+        return $query[0] ?? null;
     }
 }
