@@ -18,4 +18,15 @@ class CatalogM extends Model
 
         return DB::select($query);  // Ejecutamos la consulta y devolvemos los resultados
     }
+
+    public function deleteRolUser($userId, $rolId)
+    {
+        // Ejecuta la consulta DELETE utilizando Query Builder
+        $deleted = DB::table('administration.rel_rol_usuario')
+            ->where('id', $userId)
+            ->where('id_cat_modulo_rol', $rolId)
+            ->delete();
+        // Verifica si el número de filas eliminadas es mayor que 0
+        return $deleted > 0;
+    }
 }

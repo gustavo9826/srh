@@ -31,7 +31,7 @@
                                         placeholder="Nombre" grid="6" autocomplete=""
                                         value="{{optional($item)->name ?? '' }}"  />
 
-                                    <x-template-form.template-form-input-required label="Email" type="email" name="userEmail"
+                                    <x-template-form.template-form-input-required label="Email" type="text" name="userEmail"
                                         placeholder="Correo electrónico" value="{{ optional($item)->email ?? '' }}"
                                         autocomplete="" grid="6" />
                                 </div>
@@ -75,6 +75,8 @@
                                 </div>
 
                                 <x-template-tittle.tittle-caption-secon tittle="Asociacion con Nómina" />
+                                
+                               
                                 <div class="container">
                                     <div class="row">
                                         <x-template-form.template-form-check name="userEsPorNomina"
@@ -85,7 +87,7 @@
                               
 
 
-                        <div id="is_nomina"> <!-- Oculta/muestra dependiendo del chackbox-->
+                        <div id="is_nomina"> 
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group row">
@@ -114,13 +116,14 @@
                                         </div>
                                     </div>
 
-                                    <!-- CURP -->
+                                    
                                     <x-template-form.template-form-input-required label="CURP" type="text" name="curp"
                                         placeholder="CURP" autocomplete="" grid="6"
                                         value="{{ optional($item)->name ?? '' }}" />
                                 </div>
                                 </div>
-                                <!-- Botón de acción -->
+
+                                
                                 <x-template-button.button-form-footer routeBack="{{ route('user.list') }}" />
 
                             </form>

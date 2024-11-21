@@ -7,6 +7,7 @@ use App\Models\Administration\CatalogM;
 use App\Models\Administration\UserM;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserC extends Controller
 {
@@ -49,30 +50,49 @@ class UserC extends Controller
     public function save(Request $request)
     {
         $messagecC = new MessagesC();
-        $validateC = new ValidateC();
-        if (!isset($request->userId)) { //add
+        $userM = new UserM();
 
+        // Validación común para creación y edición
+        $validated = $request->validate([
+            'userName' => 'required',
+            'userEmail' => 'required',
+            'userRoles' => 'required|array|min:1',
+        ]);
+
+        // Si estamos creando un nuevo usuario (no existe userId)
+        if (!isset($request->userId)) {
+
+            /*
+            // Validaciones adicionales para creación (contraseña)
             $request->validate([
-                'userName' => 'required',
-                'userEmail' => 'required',
                 'userPassword' => 'required',
                 'userConfirmPassword' => 'required',
-                'userRoles' => 'required|array|min:1',
             ]);
 
-            if ($validateC->validatePassword($request->userPassword, $request->userConfirmPassword)) {
-                return "contraseñas correctas";
-            } else {
+            // Validación de contraseñas
+            if ($request->userPassword !== $request->userConfirmPassword) {
                 return $messagecC->messageErrorBack('Las contraseñas no coinciden');
             }
 
-        } else { //adit
-            $request->validate([
-                'userName' => 'required',
-                'userEmail' => 'required',
-                'userRoles' => 'required|array|min:1',
-            ]);
+            // Validación de correo (verificar si ya existe)
+            if (!$userM->validateEmail($request->userEmail)) {
+                return $messagecC->messageErrorBack('Ya existe una cuenta asociada a este correo electrónico.');
+            }
+
+            // Si todo es correcto, concatenar los roles y retornar el mensaje adecuado
+            /*
+            $rolesString = implode(',', $request->userRoles);
+            return $rolesString . ' ' . Auth::user()->id;
+*/
+            foreach ($request->userRoles as $key => $value) {
+                echo "Clave: $key, Valor: ";
+                print_r($value);  // Imprime el contenido del valor
+                echo "<br>";
+            }
         }
+
+        // Si estamos editando un usuario, no se necesitan las validaciones de contraseña
+        return 'Edición exitosa'; // Aquí podrías hacer algo más, según lo que necesites al editar.
     }
 
     public function edit(string $id)
@@ -81,4 +101,6 @@ class UserC extends Controller
         $item = $userM->edit($id);
         return view('administration.form', compact('item'));
     }
+
+
 }

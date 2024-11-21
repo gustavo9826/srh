@@ -17,5 +17,5 @@ function checkboxState() {
 
 //Se oculta/muestra el div dependiendo si se selecciona el check o no
 document.getElementById('userEsPorNomina').addEventListener('change', function () {
-    this.checked ? showDiv('is_nomina') : hideDiv('is_nomina');// se muestra u oculta el contenido dependiendo del check
+    //this.checked ? showDiv('is_nomina') : hideDiv('is_nomina');// se muestra u oculta el contenido dependiendo del check
 });

@@ -61,7 +61,17 @@ class UserM extends Model
             WHERE id = :id
         ', ['id' => $id]);
 
-        // Devolvemos el primer resultado o null si no existe
         return $query[0] ?? null;
+    }
+
+    public function validateEmail($email)
+    {
+        $query = DB::select('SELECT 
+                        administration.users.id
+                     FROM administration.users
+                     WHERE TRIM(UPPER(administration.users.email)) = TRIM(UPPER(:email));',
+            ['email' => $email]
+        );
+        return $query ? false : true;
     }
 }
