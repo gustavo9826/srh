@@ -49340,3 +49340,25 @@ div.tagsinput span.tag a {
     white-space: nowrap;
     /* Asegura que el contenido no se divida */
 }
+
+.bootstrap-select .dropdown-toggle .filter-option {
+    position: static;
+    top: 0;
+    left: 0;
+    float: left;
+    height: 100%;
+    width: 100%;
+    text-align: left;
+    overflow: hidden;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    color: #495057;
+    font-size: 0.875rem;
+    font-family: inherit;
+}
+
+.btn {
+    background-color: white;
+}

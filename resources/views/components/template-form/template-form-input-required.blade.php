@@ -6,6 +6,13 @@
             <input type="{{ $type }}" name="{{ $name }}" id="{{ $name }}" placeholder="{{ $placeholder }}"
                 autocomplete="{{ $autocomplete }}" value="{{ old($name, $value) }}" class="form-control"
                 style="font-size: 1rem;" />
+
+            @error($name)
+                <small style="color:red; font-family: Arial, sans-serif;">
+                    <i class="fas fa-exclamation-circle" style="color:red;"></i>
+                    {{ $message }}
+                </small>
+            @enderror
         </div>
     </div>
 </div>

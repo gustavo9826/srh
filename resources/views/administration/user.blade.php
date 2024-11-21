@@ -22,8 +22,8 @@
                             <div>
                                 <h4 class="card-title">Usuarios del sistema</h4>
                                 <p class="card-description">
-                                    ¿Deseas agregar un usuario nuevo? <a href="{{ route('user.create') }}" class="text-danger"
-                                        style="margin-left: 10px;">
+                                    ¿Deseas agregar un usuario nuevo? <a href="{{ route('user.create') }}"
+                                        class="text-danger" style="margin-left: 10px;">
                                         <i class="fa fa-arrow-up"></i> Agregar Usuario
                                     </a>
                                 </p>
@@ -62,6 +62,6 @@
     </div>
 
     <!-- CODE SCRIPT-->
-    <script src="assets/js/app/administration/table.js"></script>
+    <script src="{{ asset('assets/js/app/administration/user/table.js') }}"></script>
 
 </x-template-app.app-layout>

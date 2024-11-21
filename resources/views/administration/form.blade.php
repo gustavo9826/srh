@@ -15,7 +15,7 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card custom-card">
                     <div class="card-body">
-                        <x-template-tittle.tittle-caption tittle="{{ isset($item) ? 'Modificar' : 'Agregar ' }} usuario"
+                        <x-template-tittle.tittle-caption tittle="{{ isset($item->id) ? 'Modificar' : 'Agregar ' }} usuario"
                             route="{{ route('user.list') }}" />
                         <div>
                             <form action="{{ route('user.save') }}" method="POST" class="form-sample">
@@ -27,51 +27,48 @@
                                 <x-template-tittle.tittle-caption-secon tittle="Datos del usuario" />
 
                                 <div class="row">
-                                    <x-template-form.template-form-input label="Nombre" type="text" name="userName"
+                                    <x-template-form.template-form-input-required label="Nombre" type="text" name="userName"
                                         placeholder="Nombre" grid="6" autocomplete=""
-                                        value="{{ optional($item)->name ?? '' }}" />
-                                    @error('userName')
-                                        <x-template-message-required>
-                                            {{ $message }}
-                                        </x-template-message-required>
-                                    @enderror
+                                        value="{{optional($item)->name ?? '' }}"  />
 
-                                    <x-template-form.template-form-input label="Email" type="email" name="userEmail"
+                                    <x-template-form.template-form-input-required label="Email" type="email" name="userEmail"
                                         placeholder="Correo electrónico" value="{{ optional($item)->email ?? '' }}"
                                         autocomplete="" grid="6" />
-                                    @error('userEmail')
-                                        <x-template-message-required>
-                                            {{ $message }}
-                                        </x-template-message-required>
-                                    @enderror
                                 </div>
 
-                                @if (!isset($item)) <!-- Ocultar contenido en caso de modificar-->
+                                @if (!isset($item->id)) <!-- Ocultar contenido en caso de modificar-->
                                     <div class="row">
-                                        <x-template-form.template-form-input label="Password" type="password"
+                                        <x-template-form.template-form-input-required label="Password" type="password"
                                             name="userPassword" value="" placeholder="Password" autocomplete="new-password"
                                             grid="6" />
-                                        <x-template-form.template-form-input label="Confirmar Password" type="password"
+                                        <x-template-form.template-form-input-required label="Confirmar Password" type="password"
                                             name="userConfirmPassword" autocomplete="new-password"
                                             placeholder="Confirmar password" value="" grid="6" />
                                     </div>
                                 @endif
 
 
-                                <x-template-tittle.tittle-caption-secon tittle="Roles y perfiles" />
+                                <x-template-tittle.tittle-caption-secon tittle="Roles y estatus" />
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label"
                                                 style="font-size: 1rem; color: #333;">Roles</label>
                                             <div class="col-sm-9">
-                                                <select class="js-example-basic-multiple w-100" multiple="multiple">
-                                                    <option value="AL">Alabama</option>
-                                                    <option value="WY">Wyoming</option>
-                                                    <option value="AM">America</option>
-                                                    <option value="CA">Canada</option>
-                                                    <option value="RU">Russia</option>
-                                                </select>
+                                            <select class="js-example-basic-multiple w-100" name="userRoles[]" multiple="multiple">
+                                                @foreach($roleOptions as $role)
+                                                    <option value="{{ $role->id }}"
+                                                        @if(in_array($role->id, old('userRoles', []))) selected @endif>
+                                                        {{ $role->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('userRoles')
+                                                <small style="color:red; font-family: Arial, sans-serif;">
+                                                    <i class="fas fa-exclamation-circle" style="color:red;"></i>
+                                                    {{ $message }}
+                                                </small>
+                                            @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -80,39 +77,16 @@
                                 <x-template-tittle.tittle-caption-secon tittle="Asociacion con Nómina" />
                                 <div class="container">
                                     <div class="row">
-                                        <x-template-form.template-form-check name="userNomina"
-                                            value="¿Vincular con nómina?" />
+                                        <x-template-form.template-form-check name="userEsPorNomina"
+                                        value="{{ !isset($item->es_por_nomina) ? 'false' : $item->es_por_nomina }}" text="Vincular con nómina"/>
                                     </div>
                                 </div>
 
-                                <style>
-                                    .bootstrap-select .dropdown-toggle .filter-option {
-                                        position: static;
-                                        top: 0;
-                                        left: 0;
-                                        float: left;
-                                        height: 100%;
-                                        width: 100%;
-                                        text-align: left;
-                                        overflow: hidden;
-                                        -webkit-box-flex: 0;
-                                        -webkit-flex: 0 1 auto;
-                                        -ms-flex: 0 1 auto;
-                                        flex: 0 1 auto;
-                                        color: #495057;
-                                        font-size: 0.875rem;
-                                        font-family: inherit;
-                                    }
-
-                                    .btn {
-                                        background-color: white;
-                                    }
-                                </style>
+                              
 
 
-
+                        <div id="is_nomina"> <!-- Oculta/muestra dependiendo del chackbox-->
                                 <div class="row">
-
                                     <div class="col-md-6">
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label"
@@ -141,11 +115,11 @@
                                     </div>
 
                                     <!-- CURP -->
-                                    <x-template-form.template-form-input label="CURP" type="text" name="curp"
+                                    <x-template-form.template-form-input-required label="CURP" type="text" name="curp"
                                         placeholder="CURP" autocomplete="" grid="6"
                                         value="{{ optional($item)->name ?? '' }}" />
                                 </div>
-
+                                </div>
                                 <!-- Botón de acción -->
                                 <x-template-button.button-form-footer routeBack="{{ route('user.list') }}" />
 
@@ -159,10 +133,5 @@
 
 </x-template-app.app-layout>
 
-<!-- Script de inicialización de Bootstrap Select -->
-<script>
-    $(document).ready(function () {
-        console.log('success');
-        $('select').selectpicker();
-    });
-</script>
+<!-- CODE SCRIPT-->
+<script src="{{ asset('assets/js/app/administration/user/form.js') }}"></script>
