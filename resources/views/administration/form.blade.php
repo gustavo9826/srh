@@ -47,35 +47,7 @@
                                     </div>
                                 @endif
 
-                <style>
-/* Color de fondo y texto por defecto de las opciones */
-.select2-container--default .select2-results__option {
-    background-color: #f0f0f0; /* Color de fondo normal */
-    color: #333; /* Color del texto */
-}
-
-/* Efecto hover (cuando el cursor pasa sobre una opción) */
-.select2-container--default .select2-results__option:hover {
-    background-color: #565585; /* Fondo cuando pasa el cursor */
-    color: #fff; /* Color del texto cuando pasa el cursor */
-}
-
-/* Color de fondo de las opciones seleccionadas */
-.select2-container--default .select2-selection__choice {
-    background-color: #565585; /* Fondo de la opción seleccionada */
-    color: #fff; /* Texto de la opción seleccionada */
-}
-
-/* Asegura que las opciones seleccionadas mantengan su color después de que el cursor las deje */
-.select2-container--default .select2-selection__choice:hover {
-    background-color: #565585; /* Mantén el fondo cuando se pasa el cursor sobre una opción seleccionada */
-    color: #fff; /* Mantén el color del texto */
-}
-                </style>
-
-
-
-                      <x-template-tittle.tittle-caption-secon tittle="Roles y estatus" />
+                            <x-template-tittle.tittle-caption-secon tittle="Roles y estatus" />
 
                                 <div class="row">
                                     <div class="col-md-6">
@@ -83,14 +55,19 @@
                                             <label class="col-sm-3 col-form-label"
                                                 style="font-size: 1rem; color: #333;">Roles</label>
                                             <div class="col-sm-9">
-                                            <select class="js-example-basic-multiple w-100" name="userRoles[]" multiple="multiple">
-                                            @foreach($roleOptions as $role)
-                                                <option value="{{ $role->id }}"
-                                                    @if(in_array($role->id, old('userRoles', $userRoles->pluck('id')->toArray()))) selected @endif>
-                                                    {{ $role->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+
+                                            <select style="width: 100%;" class="js-example-basic-multiple w-100 custom-select" name="userRoles[]" multiple="multiple">
+                                                @foreach($roleOptions as $role)
+                                                    <option value="{{ $role->id }}"
+                                                        @php
+                                                            $userRolesIds = !isset($item->id) ? array_column($userRoles, 'id') : $userRoles->pluck('id')->toArray();
+                                                        @endphp
+                                                        @if(in_array($role->id, old('userRoles', $userRolesIds))) selected @endif>
+                                                        {{ $role->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+
                                             @error('userRoles')
                                                 <small style="color:red; font-family: Arial, sans-serif;">
                                                     <i class="fas fa-exclamation-circle" style="color:red;"></i>

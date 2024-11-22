@@ -63,14 +63,24 @@ class UserM extends Model
         return $user ?? null;
     }
 
-    public function validateEmail($email)
+    public function validateEmail($userEmail, $userId)
     {
-        // Realizamos la consulta utilizando el Query Builder de Laravel
-        $user = DB::table('administration.users')
-            ->whereRaw('UPPER(TRIM(email)) = ?', [strtoupper(trim($email))])
-            ->first(); // Usamos first() para obtener el primer registro
+        // Limpiamos el email (convertimos a mayúsculas y eliminamos espacios)
+        $cleanEmail = strtoupper(trim($userEmail));
 
-        // Retornamos true si no se encuentra el email, false si existe
+        // Construimos la consulta base
+        $query = DB::table('administration.users')
+            ->whereRaw('UPPER(TRIM(email)) = ?', [$cleanEmail]);
+
+        // Si $userId está definido, excluimos ese usuario de la búsqueda
+        if (!empty($userId)) {
+            $query->where('id', '<>', $userId);
+        }
+
+        // Ejecutamos la consulta
+        $user = $query->first();
+
+        // Retornamos true si el correo no existe (no se encontró un registro), false si ya existe
         return $user ? false : true;
     }
 }

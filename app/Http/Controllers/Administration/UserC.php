@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Administration;
 
 use App\Http\Controllers\Admin\MessagesC;
-use App\Models\Administration\RelRoleUserM;
 use App\Models\Administration\UserM;
 use App\Http\Controllers\Controller;
 use App\Models\Administration\UserRoleM;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class UserC extends Controller
 {
@@ -64,55 +64,80 @@ class UserC extends Controller
     {
         $messagesC = new MessagesC();
         $userM = new UserM();
-        $now = 'NOW()'; //Variable de timestamp
-        $checkbox = isset($request->userEsPorNomina) ? true : false; //Si el chacbox esta marcado sera true, de lo contrario false
+        $now = Carbon::now(); // Usando Carbon para la fecha actual
+        $checkbox = $request->has('userEsPorNomina'); // Verifica si el checkbox está marcado
 
-        if (!isset($request->userId)) {// Si estamos creando un nuevo usuario (no existe userId)
-            $request->validate([//Validacion de campos, tipos de daros y max/min de caracteres
-                'userName' => 'required',
-                'userEmail' => 'required|email',
-                'userRoles' => 'required|array|min:1',
+        // Validaciones comunes
+        $validated = $request->validate([
+            'userName' => 'required',
+            'userEmail' => 'required|email',
+            'userRoles' => 'required|array|min:1',
+        ]);
+
+        // Verifica si estamos creando o actualizando un usuario
+        if (!isset($request->userId)) { // Creación de nuevo usuario
+            $request->validate([
                 'userPassword' => 'required',
                 'userConfirmPassword' => 'required',
             ]);
 
-            if ($request->userPassword !== $request->userConfirmPassword) {// Validación de contraseñas
+            if ($request->userPassword !== $request->userConfirmPassword) {
                 return $messagesC->messageErrorBack('Las contraseñas no coinciden');
             }
 
-            if (!$userM->validateEmail($request->userEmail)) {// Validación de correo (verificar si ya existe)
+            // Validación del correo
+            if (!$userM->validateEmail($request->userEmail, $request->userId)) {
                 return $messagesC->messageErrorBack('Ya existe una cuenta asociada a este correo electrónico.');
             }
 
-            $userM::create([ //Agregar datos de usuario a la DB
+            // Crear usuario
+            $user = $userM::create([
                 'name' => $request->userName,
                 'email' => $request->userEmail,
-                'password' => Hash::make($request->userPassword), //crypto
+                'password' => Hash::make($request->userPassword),
                 'es_por_nomina' => $checkbox,
-                'estatus' => true, //burron active
+                'estatus' => true, // Activo
                 'id_usuario' => Auth::user()->id,
                 'fecha_usuario' => $now,
             ]);
 
-            $userId = UserM::where('email', $request->userEmail)->pluck('id')->first(); //Obtener el id de usuario partiendo de su correo para la inserccion de los roles
-
-            foreach ($request->userRoles as $key => $idModRole) {
-                RelRoleUserM::create([
-                    'id' => $userId, //Id de usuario para la seleccion de roles
-                    'id_cat_modulo_rol' => $idModRole, //Id de role seleccionado
+            // Asignar roles
+            foreach ($request->userRoles as $idModRole) {
+                UserRoleM::create([
+                    'id' => $user->id,
+                    'id_cat_modulo_rol' => $idModRole,
                 ]);
             }
 
-            return $messagesC->messageSuccessRedirect('user.list', 'Usuario añadido exitosamente.'); //Retornar el estatus con una variable
-        } else {
-            $request->validate([//Validacion de campos, tipos de daros y max/min de caracteres
-                'userName' => 'required',
-                'userEmail' => 'required|email',
-                'userRoles' => 'required|array|min:1',
-            ]);
-        }
+            return $messagesC->messageSuccessRedirect('user.list', 'Usuario añadido exitosamente.');
+        } else { // Actualización de usuario
+            // Validación del correo
+            if (!$userM->validateEmail($request->userEmail, $request->userId)) {
+                return $messagesC->messageErrorBack('Ya existe una cuenta asociada a este correo electrónico.');
+            }
 
-        // Si estamos editando un usuario, no se necesitan las validaciones de contraseña
-        //return 'Edición exitosa'; // Aquí podrías hacer algo más, según lo que necesites al editar.
+            // Actualizar usuario
+            $userM::where('id', $request->userId)
+                ->update([
+                    'name' => $request->userName,
+                    'email' => $request->userEmail,
+                    'es_por_nomina' => $checkbox,
+                    'estatus' => true, // Activo
+                    'id_usuario' => Auth::user()->id,
+                    'fecha_usuario' => $now,
+                ]);
+
+            // Actualizar roles
+            UserRoleM::where('id', $request->userId)->delete();
+
+            foreach ($request->userRoles as $idModRole) {
+                UserRoleM::create([
+                    'id' => $request->userId,
+                    'id_cat_modulo_rol' => $idModRole,
+                ]);
+            }
+
+            return $messagesC->messageSuccessRedirect('user.list', 'El usuario se ha modificado correctamente.');
+        }
     }
 }

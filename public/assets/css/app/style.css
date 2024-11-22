@@ -49080,94 +49080,6 @@ div.tagsinput span.tag a {
     }
 }
 
-.select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice:nth-child(5n + 1) {
-    background: #777777;
-    color: white;
-    font-family: monospace;
-    font-size: 0.8rem;
-}
-.select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice:nth-child(5n + 2) {
-    background: #777777;
-    color: white;
-    font-family: monospace;
-    font-size: 0.8rem;
-}
-
-.select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice:nth-child(5n + 3) {
-    background: #777777;
-    color: white;
-    font-family: monospace;
-    font-size: 0.8rem;
-}
-
-.select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice:nth-child(5n + 4) {
-    background: #777777;
-    color: white;
-    font-family: monospace;
-    font-size: 0.8rem;
-}
-
-.select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice:nth-child(5n + 5) {
-    background: #777777;
-    color: white;
-    font-family: monospace;
-    font-size: 0.8rem;
-}
-
-.select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice:nth-child(5n + 6) {
-    background: #777777;
-    color: white;
-    font-family: monospace;
-    font-size: 0.8rem;
-}
-
-.select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice:nth-child(5n + 7) {
-    background: #777777;
-    color: white;
-    font-family: monospace;
-    font-size: 0.8rem;
-}
-
-.select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice:nth-child(5n + 8) {
-    background: #777777;
-    color: white;
-    font-family: monospace;
-    font-size: 0.8rem;
-}
-
-.select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice:nth-child(5n + 9) {
-    background: #777777;
-    color: white;
-    font-family: monospace;
-    font-size: 0.8rem;
-}
-
-.select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice:nth-child(5n + 10) {
-    background: #777777;
-    color: white;
-    font-family: monospace;
-    font-size: 0.8rem;
-}
 /* Card que se extiende a lo largo de la pantalla */
 .card {
     width: 100%;
@@ -49449,4 +49361,154 @@ div.tagsinput span.tag a {
 
 .btn {
     background-color: white;
+}
+
+/*
+
+.select2-container--default .select2-results__option {
+    background-color: white; 
+    color: #333; 
+}
+
+
+.select2-container--default .select2-results__option:hover {
+    background-color: #10312b; 
+    color: #fff; 
+}
+
+
+.select2-container--default .select2-selection__choice {
+    background-color: #10312b; 
+    color: #fff; 
+}
+
+
+.select2-container--default .select2-selection__choice:hover {
+    background-color: #10312b; 
+    color: #fff; 
+}
+
+*/
+
+
+
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 1) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 2) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 3) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 4) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 5) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 6) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 7) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 8) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 9) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 10) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.custom-select {
+    font-size: 16px; /* Aumenta el tamaño de las letras */
+    padding: 10px; /* Añade padding para un mejor espaciado */
+    background-color: #f8f9fa; /* Fondo claro */
+    color: #495057; /* Color de texto */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ced4da; /* Borde sutil */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+/* Cambios cuando el select tiene focus */
+.custom-select:focus {
+    background-color: #ffffff; /* Fondo blanco cuando está enfocado */
+    color: #007bff; /* Color de texto azul */
+    border-color: #80bdff; /* Borde azul claro */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); /* Sombra azul */
+}
+
+/* Personaliza la apariencia de las opciones */
+.custom-select option {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #495057; /* Color de texto */
+}
+
+/* Cambio de fondo cuando la opción está seleccionada */
+.custom-select option:checked {
+    background-color: #007bff; /* Fondo azul */
+    color: white; /* Texto blanco */
 }

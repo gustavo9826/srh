@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserRoleM extends Model
 {
+    protected $table = 'administration.rel_rol_usuario';
+    public $timestamps = false;
+    protected $fillable = [
+        'id_rel_rol_usuario',
+        'id',
+        'id_cat_modulo_rol',
+    ];
+
     public function catRolList()
     {
         return DB::table('administration.cat_modulo_rol')
