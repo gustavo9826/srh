@@ -12,8 +12,7 @@ class LoginM extends Model
     {
         $roles = DB::table('administration.rel_rol_usuario')
             ->where('id', $userId)
-            ->pluck('id_rel_rol_usuario'); 
-
+            ->pluck('id_cat_modulo_rol');
         return $roles->toArray();
     }
 }

@@ -49080,6 +49080,94 @@ div.tagsinput span.tag a {
     }
 }
 
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 1) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 2) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 3) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 4) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 5) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 6) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 7) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 8) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 9) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice:nth-child(5n + 10) {
+    background: #777777;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
 /* Card que se extiende a lo largo de la pantalla */
 .card {
     width: 100%;

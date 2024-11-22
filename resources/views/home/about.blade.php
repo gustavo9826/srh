@@ -9,7 +9,15 @@
                             <h6 class="font-weight-normal mb-0">version</h6>
 
 
-
+                            @if(session('SESSION_ROLE_USER'))
+                                <ul>
+                                    @foreach(session('SESSION_ROLE_USER') as $role)
+                                        <li>{{ $role }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <p>No se encontraron roles para este usuario.</p>
+                            @endif
                             <!--
                                 Space for manuals, downloads, versions.
                                 -->

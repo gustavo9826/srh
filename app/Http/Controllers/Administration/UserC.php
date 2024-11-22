@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Administration;
 
 use App\Http\Controllers\Admin\MessagesC;
-use App\Models\Administration\CatalogM;
+use App\Models\Administration\RelRoleUserM;
 use App\Models\Administration\UserM;
 use App\Http\Controllers\Controller;
+use App\Models\Administration\UserRoleM;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserC extends Controller
 {
@@ -19,10 +21,21 @@ class UserC extends Controller
     public function create()
     {
         $userM = new UserM();
-        $catalogM = new CatalogM();
-        $roleOptions = $catalogM->catRolList();
+        $userRoleM = new UserRoleM();
+        $roleOptions = collect($userRoleM->catRolList()); // Hacer que los roles sean una colección
         $item = $userM->getFillable();
-        return view('administration/form', compact('item', 'roleOptions'));
+        $userRoles = []; // Inicializar como arreglo vacío para crear usuario sin roles
+        return view('administration.form', compact('item', 'roleOptions', 'userRoles'));
+    }
+
+    public function edit(string $id)
+    {
+        $userM = new UserM();
+        $userRoleM = new UserRoleM();
+        $item = $userM->edit($id);
+        $roleOptions = $userRoleM->catRolList();
+        $userRoles = $userRoleM->catRolEdit($id);
+        return view('administration.form', compact('item', 'roleOptions', 'userRoles'));
     }
     public function list(Request $request)
     {
@@ -49,58 +62,57 @@ class UserC extends Controller
 
     public function save(Request $request)
     {
-        $messagecC = new MessagesC();
+        $messagesC = new MessagesC();
         $userM = new UserM();
+        $now = 'NOW()'; //Variable de timestamp
+        $checkbox = isset($request->userEsPorNomina) ? true : false; //Si el chacbox esta marcado sera true, de lo contrario false
 
-        // Validación común para creación y edición
-        $validated = $request->validate([
-            'userName' => 'required',
-            'userEmail' => 'required',
-            'userRoles' => 'required|array|min:1',
-        ]);
-
-        // Si estamos creando un nuevo usuario (no existe userId)
-        if (!isset($request->userId)) {
-
-            /*
-            // Validaciones adicionales para creación (contraseña)
-            $request->validate([
+        if (!isset($request->userId)) {// Si estamos creando un nuevo usuario (no existe userId)
+            $request->validate([//Validacion de campos, tipos de daros y max/min de caracteres
+                'userName' => 'required',
+                'userEmail' => 'required|email',
+                'userRoles' => 'required|array|min:1',
                 'userPassword' => 'required',
                 'userConfirmPassword' => 'required',
             ]);
 
-            // Validación de contraseñas
-            if ($request->userPassword !== $request->userConfirmPassword) {
-                return $messagecC->messageErrorBack('Las contraseñas no coinciden');
+            if ($request->userPassword !== $request->userConfirmPassword) {// Validación de contraseñas
+                return $messagesC->messageErrorBack('Las contraseñas no coinciden');
             }
 
-            // Validación de correo (verificar si ya existe)
-            if (!$userM->validateEmail($request->userEmail)) {
-                return $messagecC->messageErrorBack('Ya existe una cuenta asociada a este correo electrónico.');
+            if (!$userM->validateEmail($request->userEmail)) {// Validación de correo (verificar si ya existe)
+                return $messagesC->messageErrorBack('Ya existe una cuenta asociada a este correo electrónico.');
             }
 
-            // Si todo es correcto, concatenar los roles y retornar el mensaje adecuado
-            /*
-            $rolesString = implode(',', $request->userRoles);
-            return $rolesString . ' ' . Auth::user()->id;
-*/
-            foreach ($request->userRoles as $key => $value) {
-                echo "Clave: $key, Valor: ";
-                print_r($value);  // Imprime el contenido del valor
-                echo "<br>";
+            $userM::create([ //Agregar datos de usuario a la DB
+                'name' => $request->userName,
+                'email' => $request->userEmail,
+                'password' => Hash::make($request->userPassword), //crypto
+                'es_por_nomina' => $checkbox,
+                'estatus' => true, //burron active
+                'id_usuario' => Auth::user()->id,
+                'fecha_usuario' => $now,
+            ]);
+
+            $userId = UserM::where('email', $request->userEmail)->pluck('id')->first(); //Obtener el id de usuario partiendo de su correo para la inserccion de los roles
+
+            foreach ($request->userRoles as $key => $idModRole) {
+                RelRoleUserM::create([
+                    'id' => $userId, //Id de usuario para la seleccion de roles
+                    'id_cat_modulo_rol' => $idModRole, //Id de role seleccionado
+                ]);
             }
+
+            return $messagesC->messageSuccessRedirect('user.list', 'Usuario añadido exitosamente.'); //Retornar el estatus con una variable
+        } else {
+            $request->validate([//Validacion de campos, tipos de daros y max/min de caracteres
+                'userName' => 'required',
+                'userEmail' => 'required|email',
+                'userRoles' => 'required|array|min:1',
+            ]);
         }
 
         // Si estamos editando un usuario, no se necesitan las validaciones de contraseña
-        return 'Edición exitosa'; // Aquí podrías hacer algo más, según lo que necesites al editar.
+        //return 'Edición exitosa'; // Aquí podrías hacer algo más, según lo que necesites al editar.
     }
-
-    public function edit(string $id)
-    {
-        $userM = new UserM();
-        $item = $userM->edit($id);
-        return view('administration.form', compact('item'));
-    }
-
-
 }
