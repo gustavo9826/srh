@@ -49,13 +49,13 @@ function searchInit() {
                     'Modificar </a>' +
 
                     // Password
-                    '<a class="dropdown-item" href="#">' +
+                    '<button class="dropdown-item" onclick="showModalTempleta(' + user.id + ')" >' +
                     '<span style="background:#707070" class="icon-container-template">' +
                     '<div style="text-align: center;">' +
                     '<i class="fa fa-unlock item-icon-menu"></i>' +
                     '</div>' +
                     '</span>' +
-                    'Password </a>' +
+                    'Password </button>' +
 
                     // Usuario
                     '<a class="dropdown-item" href="#">' +
