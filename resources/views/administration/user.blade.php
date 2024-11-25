@@ -144,7 +144,9 @@
 
                         <!-- FINALLY ON THE SCRIP -->
                         <!-- Botón para abrir el modal -->
+                        <!--
                         <button id="openModal" style="font-size: 1rem; padding: 10px 20px;">Abrir Modal</button>
+                        -->
 
                         <!-- El modal -->
                         <div id="myModal" class="modal">

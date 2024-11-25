@@ -17,7 +17,6 @@
                 <div class="col-md-12 grid-margin transparent">
 
                     <div class="row">
-
                         <!-- item menu users-->
                         @if(session('SESSION_ROLE_USER'))
                             @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
@@ -26,7 +25,6 @@
                                     description="Total de usuarios" />
                             @endif
                         @endif
-
                         <!-- item menu users-->
                         @if(session('SESSION_ROLE_USER'))
                             @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
@@ -35,8 +33,61 @@
                                     description="Total de roles" />
                             @endif
                         @endif
+                    </div>
 
+                    <!-- CORRESPONDENCIA-->
+                    <div class="row">
+                        <!-- item menu administracion-->
+                        @if(session('SESSION_ROLE_USER'))
+                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
+                                <x-template-button-dash class="card card-correspondencia" title="Administración de correspondencia"
+                                    field="CORRESPONDENCIA" href="" value="0" description="Administración" />
+                            @endif
+                        @endif
 
+                        <!-- item menu administracion-->
+                        @if(session('SESSION_ROLE_USER'))
+                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
+                                <x-template-button-dash class="card card-correspondencia" title="correspondencia"
+                                    field="CORRESPONDENCIA" href="" value="0" description="Correspondencia" />
+                            @endif
+                        @endif
+
+                        <!-- item menu administracion-->
+                        @if(session('SESSION_ROLE_USER'))
+                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
+                                <x-template-button-dash class="card card-correspondencia" title="Expedientes"
+                                    field="CORRESPONDENCIA" href="" value="0" description="Expedientes" />
+                            @endif
+                        @endif
+
+                        <!-- item menu administracion-->
+                        @if(session('SESSION_ROLE_USER'))
+                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
+                                <x-template-button-dash class="card card-correspondencia" title="Circulares"
+                                    field="CORRESPONDENCIA" href="" value="0" description="Circulares" />
+                            @endif
+                        @endif
+
+                    </div>
+
+                    <!-- CORRESPONDENCIA-->
+                    <div class="row">
+                        <!-- item menu Interno-->
+                        @if(session('SESSION_ROLE_USER'))
+                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
+                                <x-template-button-dash class="card card-correspondencia" title="Interno"
+                                    field="CORRESPONDENCIA" href="" value="0" description="Interno" />
+                            @endif
+                        @endif
+
+                        <!-- item menu oficios-->
+                        @if(session('SESSION_ROLE_USER'))
+                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
+                                <x-template-button-dash class="card card-correspondencia" title="Oficios"
+                                    field="CORRESPONDENCIA" href="" value="0" description="Oficios" />
+                            @endif
+                        @endif
                     </div>
 
                 </div>

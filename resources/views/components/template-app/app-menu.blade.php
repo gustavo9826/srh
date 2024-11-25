@@ -27,6 +27,30 @@
             @endif
         @endif
 
+        <!-- Item Correspondencia -->
+        @if(session('SESSION_ROLE_USER'))
+            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic_corres" aria-expanded="false"
+                        aria-controls="ui-basic">
+                        <i class="fa fa-file-text menu-icon"></i>
+                        <span class="menu-title">Correspondencia</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic_corres">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="#">Administración</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Correspondencia</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Expedientes</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Ciculares</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Interno</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Oficios</a></li>
+                        </ul>
+                    </div>
+                </li>
+            @endif
+        @endif
+
 
         <!-- Item Acerca de -->
         <li class="nav-item">
