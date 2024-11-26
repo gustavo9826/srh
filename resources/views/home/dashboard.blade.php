@@ -1,5 +1,5 @@
 <x-template-app.app-layout>
-
+    <?php include(resource_path('views/config.php')); ?>
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="row">
@@ -15,21 +15,6 @@
 
             <div class="row">
                 <div class="col-md-12 grid-margin transparent">
-
-                    <!-- item menu administracion-->
-                    @php
-                        $userRole = session('SESSION_ROLE_USER', []);
-                        $adminRole = [
-                            config('custom_config.ADM_TOTAL'),
-                        ];
-                        $letterRole = [
-                            config('custom_config.ADM_TOTAL'),
-                            config('custom_config.COR_USUARIO'),
-                            config('custom_config.COR_ENLACE')
-                        ];
-                        $letterMatch = !empty(array_intersect($userRole, $letterRole));
-                        $adminMatch = !empty(array_intersect($userRole, $adminRole));
-                    @endphp
 
                     <div class="row">
                         <!-- item menu users-->

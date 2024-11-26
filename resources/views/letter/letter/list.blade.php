@@ -1,4 +1,5 @@
 <!-- TEMPLATE APP-->
+<?php include(resource_path('views/config.php')); ?>
 <x-template-app.app-layout>
 
     <div class="main-panel">
@@ -21,12 +22,14 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h4 class="card-title">Correspondencia</h4>
-                                <p class="card-description">
-                                    ¿Deseas agregar un registro? <a href="{{ route('user.create') }}"
-                                        class="text-danger" style="margin-left: 10px;">
-                                        <i class="fa fa-arrow-up"></i> Agregar Registro
-                                    </a>
-                                </p>
+                                @if($letterAdminMatch)
+                                    <p class="card-description">
+                                        ¿Deseas agregar un registro? <a href="{{ route('letter.create') }}"
+                                            class="text-danger" style="margin-left: 10px;">
+                                            <i class="fa fa-arrow-up"></i> Agregar Registro
+                                        </a>
+                                    </p>
+                                @endif
                             </div>
                             <div class="input-group" style="max-width: 300px;">
                                 <!-- TEMPLATE SEARCH-->
