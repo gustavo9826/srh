@@ -10,11 +10,14 @@ function searchInit() {
     const searchValue = document.getElementById('searchValue').value;
     const iteradorAux = (iterator * 5) - 5;
 
-    $.get('/srh/public/user/list', {
+    $.get('/srh/public/letter/table', {
         iterator: iteradorAux,
         searchValue: searchValue
     }, function (response) {
 
+        console.log(response);
+
+        /*
         const tbody = $('#template-table tbody');
         tbody.empty(); // Limpiar la tabla
 
@@ -82,7 +85,7 @@ function searchInit() {
             tbody.html('<tr><td colspan="8" class="text-center">No se encontraron resultados</td></tr>');
             emptyContent = true;
             setValue();
-        }
+        }*/
     });
 }
 
