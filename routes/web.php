@@ -6,6 +6,7 @@ use App\Http\Controllers\Administration\RegisterC;
 use App\Http\Controllers\Administration\UserC;
 use App\Http\Controllers\Home\AboutC;
 use App\Http\Controllers\Home\DashboardC;
+use App\Http\Controllers\Letter\Letter\LetterC;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', LoginC::class)->name('login'); ///ROUTE_LOGIN
@@ -24,3 +25,6 @@ Route::get('/user/list', [UserC::class, 'list'])->middleware('auth'); //ROUTE_LI
 Route::get('/user/create', [UserC::class, 'create'])->name('user.create')->middleware('auth'); //ROUTE_CREATE
 Route::post('/user/save', [UserC::class, 'save'])->name('user.save')->middleware('auth');
 Route::get('/user/edit/{id}', [UserC::class, 'edit'])->name('user.edit')->middleware('auth');
+
+//ROUTE_LETTER
+Route::get('/letter/list', LetterC::class)->name('letter.list')->middleware('auth');

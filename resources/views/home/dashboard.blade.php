@@ -40,8 +40,9 @@
                         <!-- item menu administracion-->
                         @if(session('SESSION_ROLE_USER'))
                             @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
-                                <x-template-button-dash class="card card-correspondencia" title="Administración de correspondencia"
-                                    field="CORRESPONDENCIA" href="" value="0" description="Administración" />
+                                <x-template-button-dash class="card card-correspondencia"
+                                    title="Administración de correspondencia" field="CORRESPONDENCIA" href="" value="0"
+                                    description="Administración" />
                             @endif
                         @endif
 
@@ -49,7 +50,8 @@
                         @if(session('SESSION_ROLE_USER'))
                             @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
                                 <x-template-button-dash class="card card-correspondencia" title="correspondencia"
-                                    field="CORRESPONDENCIA" href="" value="0" description="Correspondencia" />
+                                    field="CORRESPONDENCIA" href="{{ route('letter.list') }}" value="0"
+                                    description="Correspondencia" />
                             @endif
                         @endif
 
