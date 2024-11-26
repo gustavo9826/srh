@@ -16,59 +16,57 @@
             <div class="row">
                 <div class="col-md-12 grid-margin transparent">
 
+                    <!-- item menu administracion-->
+                    @php
+                        $userRole = session('SESSION_ROLE_USER', []);
+                        $adminRole = [
+                            config('custom_config.ADM_TOTAL'),
+                        ];
+                        $letterRole = [
+                            config('custom_config.ADM_TOTAL'),
+                            config('custom_config.COR_USUARIO'),
+                            config('custom_config.COR_ENLACE')
+                        ];
+                        $letterMatch = !empty(array_intersect($userRole, $letterRole));
+                        $adminMatch = !empty(array_intersect($userRole, $adminRole));
+                    @endphp
+
                     <div class="row">
                         <!-- item menu users-->
-                        @if(session('SESSION_ROLE_USER'))
-                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
-                                <x-template-button-dash class="card card-administration" title="Usuarios del sistema"
-                                    field="ADMINISTRACIÓN" href="{{ route('user.list') }}" value="4006"
-                                    description="Total de usuarios" />
-                            @endif
+                        @if($adminMatch)
+                            <x-template-button-dash class="card card-administration" title="Usuarios del sistema"
+                                field="ADMINISTRACIÓN" href="{{ route('user.list') }}" value="4006"
+                                description="Total de usuarios" />
                         @endif
                         <!-- item menu users-->
-                        @if(session('SESSION_ROLE_USER'))
-                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
-                                <x-template-button-dash class="card card-administration" title="Roles del sistema"
-                                    field="ADMINISTRACIÓN" href="{{ route('user.list') }}" value="12"
-                                    description="Total de roles" />
-                            @endif
+                        @if($adminMatch)
+                            <x-template-button-dash class="card card-administration" title="Roles del sistema"
+                                field="ADMINISTRACIÓN" href="{{ route('user.list') }}" value="12"
+                                description="Total de roles" />
                         @endif
                     </div>
 
                     <!-- CORRESPONDENCIA-->
                     <div class="row">
                         <!-- item menu administracion-->
-                        @if(session('SESSION_ROLE_USER'))
-                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
-                                <x-template-button-dash class="card card-correspondencia"
-                                    title="Administración de correspondencia" field="CORRESPONDENCIA" href="" value="0"
-                                    description="Administración" />
-                            @endif
+
+                        @if($letterMatch)
+                            <x-template-button-dash class="card card-correspondencia" title="correspondencia"
+                                field="CORRESPONDENCIA" href="{{ route('letter.list') }}" value="0"
+                                description="Correspondencia" />
                         @endif
 
                         <!-- item menu administracion-->
-                        @if(session('SESSION_ROLE_USER'))
-                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
-                                <x-template-button-dash class="card card-correspondencia" title="correspondencia"
-                                    field="CORRESPONDENCIA" href="{{ route('letter.list') }}" value="0"
-                                    description="Correspondencia" />
-                            @endif
+                        @if($letterMatch)
+                            <x-template-button-dash class="card card-correspondencia" title="Expedientes"
+                                field="CORRESPONDENCIA" href="" value="0" description="Expedientes" />
+
                         @endif
 
                         <!-- item menu administracion-->
-                        @if(session('SESSION_ROLE_USER'))
-                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
-                                <x-template-button-dash class="card card-correspondencia" title="Expedientes"
-                                    field="CORRESPONDENCIA" href="" value="0" description="Expedientes" />
-                            @endif
-                        @endif
-
-                        <!-- item menu administracion-->
-                        @if(session('SESSION_ROLE_USER'))
-                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
-                                <x-template-button-dash class="card card-correspondencia" title="Circulares"
-                                    field="CORRESPONDENCIA" href="" value="0" description="Circulares" />
-                            @endif
+                        @if($letterMatch)
+                            <x-template-button-dash class="card card-correspondencia" title="Circulares"
+                                field="CORRESPONDENCIA" href="" value="0" description="Circulares" />
                         @endif
 
                     </div>
@@ -76,19 +74,15 @@
                     <!-- CORRESPONDENCIA-->
                     <div class="row">
                         <!-- item menu Interno-->
-                        @if(session('SESSION_ROLE_USER'))
-                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
-                                <x-template-button-dash class="card card-correspondencia" title="Interno"
-                                    field="CORRESPONDENCIA" href="" value="0" description="Interno" />
-                            @endif
+                        @if($letterMatch)
+                            <x-template-button-dash class="card card-correspondencia" title="Interno"
+                                field="CORRESPONDENCIA" href="" value="0" description="Interno" />
                         @endif
 
                         <!-- item menu oficios-->
-                        @if(session('SESSION_ROLE_USER'))
-                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
-                                <x-template-button-dash class="card card-correspondencia" title="Oficios"
-                                    field="CORRESPONDENCIA" href="" value="0" description="Oficios" />
-                            @endif
+                        @if($letterMatch)
+                            <x-template-button-dash class="card card-correspondencia" title="Oficios"
+                                field="CORRESPONDENCIA" href="" value="0" description="Oficios" />
                         @endif
                     </div>
 

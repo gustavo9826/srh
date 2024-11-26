@@ -15,15 +15,16 @@ function searchInit() {
         searchValue: searchValue
     }, function (response) {
 
+        console.log('success');
         console.log(response);
 
-        /*
+
         const tbody = $('#template-table tbody');
         tbody.empty(); // Limpiar la tabla
 
         if (response.value && response.value.length > 0) {
-            response.value.forEach(function (user) {
-                const finalUrl = `/srh/public/user/edit/${user.id}`;
+            response.value.forEach(function (object) {
+                const finalUrl = `/srh/public/object/edit/${object.id}`;
 
                 // Generar el HTML con template literals
                 const rowHTML = `
@@ -43,7 +44,7 @@ function searchInit() {
                                         </span>
                                         Modificar
                                     </a>
-                                    <button class="dropdown-item" onclick="showModalTempleta(${user.id})">
+                                    <button class="dropdown-item" onclick="showModalTempleta(${object.id})">
                                         <span style="background:#707070" class="icon-container-template">
                                             <div style="text-align: center;">
                                                 <i class="fa fa-unlock item-icon-menu"></i>
@@ -54,7 +55,7 @@ function searchInit() {
                                     <a class="dropdown-item" href="#">
                                         <span style="background:#003366" class="icon-container-template">
                                             <div style="text-align: center;">
-                                                <i class="fa fa-user item-icon-menu"></i>
+                                                <i class="fa fa-object item-icon-menu"></i>
                                             </div>
                                         </span>
                                         Usuario
@@ -70,12 +71,13 @@ function searchInit() {
                                 </div>
                             </div>
                         </td>
-                        <td>${user.email}</td>
-                        <td>${user.name}</td>
-                        <td>${user.email}</td>
-                        <td>${user.email}</td>
-                        <td>${user.email}</td>
-                        <td>${user.email}</td>
+                        <td>${object.num_turno_sistema}</td>
+                        <td>${object.num_documento}</td>
+                        <td>${object.estatus}</td>
+                        <td>${object.tramite}</td>
+                        <td>${object.area}</td>
+                        <td>${object.fecha_inicio}</td>
+                        <td>${object.fecha_fin}</td>
                     </tr>
                 `;
                 tbody.append(rowHTML);
@@ -85,40 +87,51 @@ function searchInit() {
             tbody.html('<tr><td colspan="8" class="text-center">No se encontraron resultados</td></tr>');
             emptyContent = true;
             setValue();
-        }*/
+        }
     });
 }
 
-function updateIterator(increment) {
-    iterator = emptyContent ? iterator : Math.max(1, iterator + increment); // Evitar valores negativos
+//Funcion para que al pulsar el boton se incremente uno
+function paginatorMax1() {
+
+    iterator = emptyContent ? iterator : iterator += 1;
     setValue();
     searchInit();
 }
 
-function paginatorMax1() {
-    updateIterator(1); // Incrementar en 1
-}
-
+//Funcion para que al pulsar el boton se incrementen 5
 function paginatorMax5() {
-    updateIterator(5); // Incrementar en 5
+    iterator = emptyContent ? iterator : iterator += 5;
+    setValue();
+    searchInit();
 }
 
-function paginatorMin1() {
-    updateIterator(-1); // Decrementar en 1
-}
-
+//Funcion para que al pulsar el boton se disminuyan 5
 function paginatorMin5() {
-    updateIterator(-5); // Decrementar en 5
+    let iteratorAux = iterator;
+    iterator = (iteratorAux -= 5) > 0 ? (iterator -= 5) : 1;
+    setValue();
+    searchInit();
 }
 
+//Funcion para que al pulsar el boton se disminuyan 1
+function paginatorMin1() {
+    let iteratorAux = iterator;
+    iterator = (iteratorAux -= 1) > 0 ? (iterator -= 1) : 1;
+    setValue();
+    searchInit();
+}
+
+// se establan los valores de los lavel 
 function setValue() {
+
     let iteratorAux = iterator;
     document.getElementById("is_iterator").innerHTML = iteratorAux;
-    document.getElementById("is_iteratorMin").innerHTML = iteratorAux - 1;
-    document.getElementById("is_iteratorMax").innerHTML = iteratorAux + 1;
+    document.getElementById("is_iteratorMin").innerHTML = iteratorAux -= 1;
+    document.getElementById("is_iteratorMax").innerHTML = iteratorAux += 2;
 }
 
-// Al momento de escribir en el buscador, resetear el iterador a 1
+//Al momento de escribir en buscador resetar variable a 1
 function searchValue() {
     iterator = 1;
     setValue();
