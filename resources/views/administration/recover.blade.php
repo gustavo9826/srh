@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>SIRH</title>
     <link rel="stylesheet" href="assets/css/login/style.css" />
-    <!--
-    <link rel="shortcut icon" href="../../images/favicon.png" />
--->
+    <!-- <link rel="shortcut icon" href="../../images/favicon.png" /> -->
 </head>
 
 <body>
@@ -19,25 +17,34 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo">
-                                <img src="assets/images/imss/logo_imss.png" alt="logo"
-                                    style="width: 300px; height: auto" />
+                                <img src="assets/images/imss/logo_imss.png" alt="logo" style="width: 300px; height: auto" />
                             </div>
                             <h4>Sistema Integral para Recursos Humanos</h4>
                             <h6 class="font-weight-light">Restablecer la contraseña</h6>
-                            <form class="pt-3">
+                            <form class="pt-3" method="POST" action="{{ route('reset.recover') }}">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" placeholder="Correo electrónico" />
-                                </div>
-                                <div class="mt-3">
-                                    <a style="background-color: #6c757d"
-                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
-                                        href="../../index.html">Enviar</a>
+                                    <input name="email" type="email" class="form-control form-control-lg" placeholder="Correo electrónico" value="{{ old('email') }}" autocomplete="username" required />
+                                    @error('email')
+                                        <x-template-message-required>
+                                            {{ $message }}
+                                        </x-template-message-required>
+                                    @enderror
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                     <a href="{{ route('login') }}" class="text-primary">
-                                        Regresar al inicio</a>
+                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" style="background-color: #6c757d;">
+                                        Restablecer
+                                    </button>
                                 </div>
                             </form>
+                            @if (session('status'))
+                                <div class="alert alert-success mt-4">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            <div class="text-center mt-4">
+                                <a href="{{ route('login') }}" class="font-weight-light" style="text-decoration: none; color: #6c757d;">Volver al inicio de sesión</a>
+                            </div>
                         </div>
                     </div>
                 </div>
