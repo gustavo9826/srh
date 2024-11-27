@@ -22,4 +22,15 @@ class CollectionRelEnlaceM extends Model
             ->where('id_usuario', $idUser)              // Agregamos la condición para el id_usuario
             ->pluck('id_cat_area');                      // Obtenemos los valores de id_cat_area
     }
+
+    //la funcion se utiliza en catalagos, cuando se selecciona el catalogo de area. muestra los enlaces asociados a ese catalogo
+    public function idUsuarioByArea($idArea)
+    {
+        return DB::table('administration.users')
+            ->select(DB::raw('id, UPPER(name) as name'))
+            ->join('correspondencia.rel_enlace_usuario', 'administration.users.id', '=', 'correspondencia.rel_enlace_usuario.id_usuario')
+            ->where('correspondencia.rel_enlace_usuario.id_cat_area', $idArea)
+            ->where('correspondencia.rel_enlace_usuario.estatus', true)
+            ->get();
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Administration\RegisterC;
 use App\Http\Controllers\Administration\UserC;
 use App\Http\Controllers\Home\AboutC;
 use App\Http\Controllers\Home\DashboardC;
+use App\Http\Controllers\Letter\Collection\CollectionAreaC;
 use App\Http\Controllers\Letter\Letter\LetterC;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,4 @@ Route::get('/letter/table', [LetterC::class, 'table'])->name('letter.table')->mi
 Route::get('/letter/create', [LetterC::class, 'create'])->name('letter.create')->middleware('auth');
 Route::get('/letter/edit/{id}', [LetterC::class, 'edit'])->name('letter.edit')->middleware('auth');
 Route::post('/letter/save', [LetterC::class, 'save'])->name('letter.save')->middleware('auth');
+Route::post('/letter/collection/collectionArea', [CollectionAreaC::class, 'collection'])->name('letter.collection.area')->middleware('auth');

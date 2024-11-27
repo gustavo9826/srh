@@ -38,47 +38,30 @@ class LetterC extends Controller
     {
         $letterM = new LetterM();
         $collectionAreaM = new CollectionAreaM();
-        $item = $letterM->getFillable();
-        $selectArea = $collectionAreaM->list();
-        $selectAreaEdit = [];
-        return view('letter.letter.form', compact('item', 'selectArea', 'selectAreaEdit'));
-        /*
-        $userM = new UserM();
-                $userRoleM = new UserRoleM();
-                $roleOptions = collect($userRoleM->catRolList()); // Hacer que los roles sean una colección
-                $item = $userM->getFillable();
-                $userRoles = []; // Inicializar como arreglo vacío para crear usuario sin roles
-                return view('administration.form', compact('item', 'roleOptions', 'userRoles'));
-        */
+        $item = $letterM->getFillable(); //object edit
+
+        $selectArea = $collectionAreaM->list(); //Catalogo de area
+        $selectAreaEdit = []; //catalogo de area null
+
+        $selectUser = []; //Catalogo de Area - usuario, al crear comienza en vacio 
+        $selectUserEdit = []; //Catalogo de Area - usuario, al crear comienza en vacio 
+
+        $selectEnlace = []; //Catalogo de Area - enlace, al crear comienza en vacio 
+        $selectEnlaceEdit = []; //Catalogo de Area - enlace, al crear comienza en vacio 
+
+        return view('letter.letter.form', compact('item', 'selectArea', 'selectAreaEdit', 'selectUser', 'selectUserEdit', 'selectEnlace', 'selectEnlaceEdit'));
     }
 
     public function edit(string $id)
     {
         $letterM = new LetterM();
         $collectionAreaM = new CollectionAreaM();
+        $item = $letterM->edit($id); // Obtener el elemento con el ID pasado
 
-        // Obtener el elemento con el ID pasado
-        $item = $letterM->edit($id);
+        $selectArea = $collectionAreaM->list();// Obtener todos los registros del catálogo de áreas
 
-        // Obtener todos los registros del catálogo de áreas
-        $selectArea = $collectionAreaM->list();
+        $selectAreaEdit = isset($item->id_cat_area) ? $collectionAreaM->edit($item->id_cat_area) : [];
 
-        // Obtener el registro de área editado
-        $selectAreaEdit = $collectionAreaM->edit($item->id_cat_area); // Asegúrate que esto sea un objeto, no una colección
-
-        // Verifica si $selectAreaEdit no es null y si es un objeto
-        if ($selectAreaEdit) {
-            // Asegurándonos de que selectArea es una colección
-            // Usamos filter para eliminar el área seleccionada de la colección
-            $selectArea = $selectArea->reject(function ($area) use ($selectAreaEdit) {
-                return $area->id == $selectAreaEdit->id; // Aquí filtras correctamente con la propiedad id
-            });
-
-            // Ahora agregamos el área seleccionada al principio de la colección
-            $selectArea->prepend($selectAreaEdit);
-        }
-
-        // Pasar los datos a la vista
         return view('letter.letter.form', compact('item', 'selectArea', 'selectAreaEdit'));
     }
 
