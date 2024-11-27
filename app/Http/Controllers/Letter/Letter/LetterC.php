@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Letter\Letter;
 
+use App\Models\Letter\Collection\CollectionStatusM;
+use App\Models\Letter\Collection\CollectionUnidadM;
 use App\Http\Controllers\Controller;
 use App\Models\Letter\Collection\CollectionAreaM;
 use App\Models\Letter\Collection\CollectionRelUsuarioM;
 use App\Models\Letter\Letter\LetterM;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
 
 class LetterC extends Controller
 {
@@ -38,6 +41,9 @@ class LetterC extends Controller
     {
         $letterM = new LetterM();
         $collectionAreaM = new CollectionAreaM();
+        $collectionUnidadM = new CollectionUnidadM();
+        $collectionStatusM = new CollectionStatusM();
+
         $item = $letterM->getFillable(); //object edit
 
         $selectArea = $collectionAreaM->list(); //Catalogo de area
@@ -49,7 +55,19 @@ class LetterC extends Controller
         $selectEnlace = []; //Catalogo de Area - enlace, al crear comienza en vacio 
         $selectEnlaceEdit = []; //Catalogo de Area - enlace, al crear comienza en vacio 
 
-        return view('letter.letter.form', compact('item', 'selectArea', 'selectAreaEdit', 'selectUser', 'selectUserEdit', 'selectEnlace', 'selectEnlaceEdit'));
+        $selectUnidad = $collectionUnidadM->list();//Catalogo de unidad
+        $selectUnidadEdit = []; //Catalogo de Unidad, al crear comienza en vacio 
+
+        $selectCoordinacion = []; //Catalogos de coordinacion vacios
+        $selectCoordinacionEdit = [];//Catalogos de coordinacion vacios
+
+        $selectStatus = $collectionStatusM->list(); //Obtenemos el catalogo de estatus
+        $selectStatusEdit = [];//Catalogos debe estar vacio
+
+        $selecTramite = []; //Los catalogos incian vacios
+        $selecTramiteEdit = []; //Los catalogos incian vacios
+
+        return view('letter.letter.form', compact('selecTramite', 'selecTramiteEdit', 'selectStatusEdit', 'selectStatus', 'selectCoordinacionEdit', 'selectCoordinacion', 'selectUnidadEdit', 'selectUnidad', 'item', 'selectArea', 'selectAreaEdit', 'selectUser', 'selectUserEdit', 'selectEnlace', 'selectEnlaceEdit'));
     }
 
     public function edit(string $id)

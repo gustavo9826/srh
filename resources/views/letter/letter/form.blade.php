@@ -84,27 +84,34 @@
                                         grid="4" />
 
                                     <x-template-form.template-form-select-required :selectValue="$selectEnlace"
-                                        :selectEdit="$selectEnlaceEdit" name="collectionAreaEnlace" tittle="Enlace"
+                                        :selectEdit="$selectUnidadEdit" name="collectionAreaEnlace" tittle="Enlace"
                                         grid="4" />
-
-
                                 </div>
 
                                 <div class="row">
+                                    <x-template-form.template-form-select-required :selectValue="$selectUnidad"
+                                        :selectEdit="$selectAreaEdit" name="collectionUnidad" tittle="Unidad"
+                                        grid="4" />
 
-
+                                    <x-template-form.template-form-select-required :selectValue="$selectCoordinacion"
+                                        :selectEdit="$selectCoordinacionEdit" name="collectionCoordinacion"
+                                        tittle="Coordinación" grid="4" />
                                 </div>
 
 
                                 <x-template-tittle.tittle-caption-secon tittle="Información de estado de documento" />
                                 <div class="row">
+                                    <x-template-form.template-form-select-required :selectValue="$selectStatus"
+                                        :selectEdit="$selectStatusEdit" name="collectionStatus" tittle="Estatus"
+                                        grid="4" />
 
+                                    <x-template-form.template-form-select-required :selectValue="$selecTramite"
+                                        :selectEdit="$selecTramiteEdit" name="collectionTramite" tittle="Tramite"
+                                        grid="4" />
                                 </div>
 
                                 <x-template-tittle.tittle-caption-secon tittle="Información de remitente" />
                                 <div class="row">
-
-
                                     <x-template-form.template-form-check name="userEsPorNomina"
                                         value="{{ !isset($item->es_por_nomina) ? 'false' : $item->es_por_nomina }}"
                                         text="¿Agregar remitente?" />
