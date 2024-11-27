@@ -49390,9 +49390,6 @@ div.tagsinput span.tag a {
 
 */
 
-
-
-
 .select2-container--default
     .select2-selection--multiple
     .select2-selection__choice:nth-child(5n + 1) {
@@ -49511,4 +49508,8 @@ div.tagsinput span.tag a {
 .custom-select option:checked {
     background-color: #007bff; /* Fondo azul */
     color: white; /* Texto blanco */
+}
+
+.btn:hover {
+    background-color: inherit;
 }

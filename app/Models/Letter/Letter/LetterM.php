@@ -37,6 +37,16 @@ class LetterM extends Model
         'id_usuario_sistema',
     ];
 
+    public function edit(string $id)
+    {
+        // Realizamos la consulta utilizando el Query Builder de Laravel
+        $query = DB::table('correspondencia.tbl_correspondencia')
+            ->where('id_tbl_correspondencia', $id)
+            ->first(); // Usamos first() para obtener un único registro
+
+        // Retornamos el usuario o null si no se encuentra
+        return $query ?? null;
+    }
     public function list($iterator, $searchValue, $idArea, $idEnlace)
     {
         // Preparar la consulta base

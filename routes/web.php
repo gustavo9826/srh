@@ -30,3 +30,5 @@ Route::get('/user/edit/{id}', [UserC::class, 'edit'])->name('user.edit')->middle
 Route::get('/letter/list', LetterC::class)->name('letter.list')->middleware('auth');
 Route::get('/letter/table', [LetterC::class, 'table'])->name('letter.table')->middleware('auth');
 Route::get('/letter/create', [LetterC::class, 'create'])->name('letter.create')->middleware('auth');
+Route::get('/letter/edit/{id}', [LetterC::class, 'edit'])->name('letter.edit')->middleware('auth');
+Route::post('/letter/save', [LetterC::class, 'save'])->name('letter.save')->middleware('auth');

@@ -24,7 +24,7 @@ function searchInit() {
 
         if (response.value && response.value.length > 0) {
             response.value.forEach(function (object) {
-                const finalUrl = `/srh/public/object/edit/${object.id}`;
+                const finalUrl = `/srh/public/letter/edit/${object.id}`;
 
                 // Generar el HTML con template literals
                 const rowHTML = `
@@ -55,7 +55,7 @@ function searchInit() {
                                     <a class="dropdown-item" href="#">
                                         <span style="background:#003366" class="icon-container-template">
                                             <div style="text-align: center;">
-                                                <i class="fa fa-object item-icon-menu"></i>
+                                                <i class="fa fa-user item-icon-menu"></i>
                                             </div>
                                         </span>
                                         Usuario
