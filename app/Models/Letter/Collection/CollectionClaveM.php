@@ -18,4 +18,22 @@ class CollectionClaveM extends Model
             ->orderBy('correspondencia.cat_clave.descripcion', 'ASC')  // Ordenamos por 'descripcion' en 'cat_clave'
             ->get();  // Ejecutamos y obtenemos los resultados
     }
+
+    //La funcion obtiene todos los resultados de la tabla clave, dependidendo del catalogo de clave que se seleccione
+    public function getData($idClave)
+    {
+        // Usamos el Query Builder para hacer la consulta
+        $result = DB::table('correspondencia.cat_clave')
+            ->selectRaw('
+                        id_cat_clave AS id, 
+                        UPPER(descripcion) AS descripcion,
+                        UPPER(redaccion) AS redaccion,
+                        UPPER(codigo) AS codigo,
+                        UPPER(copiar) AS copiar
+                    ')
+            ->where('id_cat_clave', $idClave)
+            ->first(); // Usamos first() ya que solo esperamos un único resultado
+
+        return $result;
+    }
 }

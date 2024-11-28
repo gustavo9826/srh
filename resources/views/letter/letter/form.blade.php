@@ -25,15 +25,52 @@
                                 <x-template-form.template-form-input-hidden name="letterId"
                                     value="{{ optional($item)->id_tbl_correspondencia ?? '' }}" />
 
-                                <!-- VALUE OF DISBLED -->
+                                <x-template-form.template-form-input-hidden name="fecha_captura"
+                                    value="{{ optional($item)->fecha_captura ?? '' }}" />
 
+                                <x-template-form.template-form-input-hidden name="id_cat_anio"
+                                    value="{{ optional($item)->id_cat_anio ?? '' }}" />
+
+                                <x-template-tittle.tittle-caption-secon tittle="Información de correspondencia" />
+                                <div class="contenedor">
+                                    <div class="item">
+                                        <label class="etiqueta">No. Correspondencia:</label>
+                                        <label id="_labNoCorrespondencia" class="valor"></label>
+                                    </div>
+                                    <div class="item">
+                                        <label class="etiqueta">Fecha de captura:</label>
+                                        <label id="_labFechaCaptura" class="valor"></label>
+                                    </div>
+                                    <div class="item">
+                                        <label class="etiqueta">Año:</label>
+                                        <label id="_labAño" class="valor"></label>
+                                    </div>
+                                    <div class="item">
+                                        <label class="etiqueta">Clave:</label>
+                                        <label id="_labClave" class="valor"></label>
+                                    </div>
+                                    <div class="item">
+                                        <label class="etiqueta">Clave / código:</label>
+                                        <label id="_labClaveCodigo" class="valor"></label>
+                                    </div>
+                                    <div class="item">
+                                        <label class="etiqueta">Clave / redacción:</label>
+                                        <label id="_labClaveRedaccion" class="valor"></label>
+                                    </div>
+                                    <div class="item">
+                                        <label class="etiqueta">Clave / copiar:</label>
+                                        <label id="_labClaveCopiar" class="valor"></label>
+                                    </div>
+                                </div>
+
+                                <br>
                                 <x-template-tittle.tittle-caption-secon tittle="Información general" />
 
                                 <div class="row">
-                                    <x-template-form.template-form-input-required label="Fecha de captura" type="date"
-                                        name="userName" placeholder=""
+                                    <x-template-form.template-form-input-required label="No. Documento" type="text"
+                                        name="userName" placeholder="No. Documento"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
-                                        value="{{optional($item)->fecha_captura ?? '' }}" />
+                                        value="{{optional($item)->num_documento ?? '' }}" />
 
                                     <x-template-form.template-form-input-required label="Fecha de inicio" type="date"
                                         name="userName" placeholder=""
@@ -47,10 +84,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <x-template-form.template-form-input-required label="No. Documento" type="text"
-                                        name="userName" placeholder="No. Documento"
-                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
-                                        value="{{optional($item)->num_documento ?? '' }}" />
+
 
                                     <x-template-form.template-form-input-required label="No. hojas" type="integer"
                                         name="userName" placeholder="No. hojas"
@@ -61,21 +95,20 @@
                                         name="userName" placeholder="No. tomos"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->num_tomos ?? '' }}" />
-                                </div>
 
-                                <div class="row">
                                     <x-template-form.template-form-input-required label="Lugar" type="text"
                                         name="userName" placeholder="Lugar"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->lugar ?? '' }}" />
+                                </div>
+
+                                <div class="row">
 
                                     <x-template-form.template-form-input-required label="Asunto" type="text"
                                         name="userName" placeholder="Asunto"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->asunto ?? '' }}" />
-                                </div>
 
-                                <div class="row">
                                     <x-template-form.template-form-input-required label="Observaciones" type="text"
                                         name="userName" placeholder="Observaciones"
                                         grid="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8" autocomplete=""
@@ -128,11 +161,9 @@
                                 <x-template-tittle.tittle-caption-secon tittle="Información de remitente" />
                                 <div class="row">
 
-
                                     <x-template-form.template-form-select-required :selectValue="$selectClave"
                                         :selectEdit="$selectClaveEdit" name="collectionClave" tittle="Remitente"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
-
 
                                     <x-template-form.template-form-check name="userEsPorNomina"
                                         value="{{ !isset($item->es_por_nomina) ? 'false' : $item->es_por_nomina }}"
@@ -142,7 +173,7 @@
 
                                 <div id="is_inputRemitente">
                                     <x-template-form.template-form-input-required label="Remitente" type="text"
-                                        name="userName" placeholder="Remitente"
+                                        name="userNameRe" placeholder="Remitente"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->asunto ?? '' }}" />
                                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Letter\Letter;
 
+use App\Models\Letter\Collection\CollectionDateM;
 use App\Models\Letter\Collection\CollectionStatusM;
 use App\Models\Letter\Collection\CollectionUnidadM;
 use App\Http\Controllers\Controller;
@@ -10,8 +11,6 @@ use App\Models\Letter\Collection\CollectionRelUsuarioM;
 use App\Models\Letter\Letter\LetterM;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
-
 class LetterC extends Controller
 {
     public function __invoke()
@@ -39,12 +38,14 @@ class LetterC extends Controller
     }
     public function create()
     {
-        $letterM = new LetterM();
+        $item = new LetterM();
         $collectionAreaM = new CollectionAreaM();
         $collectionUnidadM = new CollectionUnidadM();
         $collectionStatusM = new CollectionStatusM();
+        $collectionDateM = new CollectionDateM();
 
-        $item = $letterM->getFillable(); //object edit
+        $item->fecha_captura = now()->format('d/m/Y'); // Formato de fecha: día/mes/año
+        $item->id_cat_anio = $collectionDateM->idYear();
 
         $selectArea = $collectionAreaM->list(); //Catalogo de area
         $selectAreaEdit = []; //catalogo de area null

@@ -101,3 +101,38 @@ $('#collectionTramite').on('change', function () {
         console.log('no seleccionado');
     }
 });
+
+
+//Codigo que al momento de seleccionar la clave, cambian los valores
+$('#collectionClave').on('change', function () {
+    let idValue = $(this).val();  // Obtiene el valor de la opción seleccionada
+    if (idValue) { // Realiza la solicitud AJAX solo si se ha seleccionado un valor
+        $.ajax({
+            url: '/srh/public/letter/collection/collectionClave',
+            type: 'POST',
+            data: {
+                id: idValue,
+                _token: token  // Usar el token extraído de la metaetiqueta
+            },
+            success: function (response) {
+                let valueClave = response.valueOfClave;
+
+                $('#_labClave').text(valueClave.descripcion);
+                $('#_labClaveCodigo').text(valueClave.redaccion);
+                $('#_labClaveRedaccion').text(valueClave.codigo);
+                $('#_labClaveCopiar').text(valueClave.copiar);
+
+            },
+        });
+    } else {
+        clearClaveData();
+    }
+});
+
+//Limpiar los valores de clave que aparecen en el encabezado
+function clearClaveData() {
+    $('#_labClave').text('_');
+    $('#_labClaveCodigo').text('_');
+    $('#_labClaveRedaccion').text('_');
+    $('#_labClaveCopiar').text('_');
+}

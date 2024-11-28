@@ -49520,3 +49520,50 @@ div.tagsinput span.tag a {
     text-decoration: none;
     background-color: #777777;
 }
+
+/* Estilo para el contenedor principal */
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
+    gap: 10px; /* Espacio pequeño entre las columnas */
+    width: 100%; /* Asegura que el contenedor ocupe el ancho total disponible */
+    padding: 10px;
+    background-color: #fff; /* Fondo blanco */
+    border: 1px dashed #ccc; /* Borde punteado gris */
+    box-sizing: border-box; /* Para que el padding no afecte el tamaño del contenedor */
+    overflow-wrap: break-word; /* Para evitar desbordamiento de texto */
+}
+
+/* Estilo para cada item (Usuario, Apellido, etc.) */
+.item {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas si es necesario */
+    gap: 5px; /* Espacio pequeño entre la etiqueta y el valor */
+    white-space: normal; /* Permite que el texto se divida en varias líneas si es necesario */
+}
+
+/* Estilo para las etiquetas (Usuario, Apellido, etc.) */
+.etiqueta {
+    font-weight: bold; /* Las etiquetas estarán en negrita */
+    color: #333; /* Color más oscuro para las etiquetas */
+    font-family: "Roboto", sans-serif; /* Usamos la fuente Roboto */
+    display: inline-block; /* Para asegurarse de que las etiquetas se mantengan en la misma línea */
+    margin-right: 5px; /* Espacio pequeño entre la etiqueta y el valor */
+}
+
+/* Estilo para los valores (Ejemplo 1, Ejemplo 2, etc.) */
+.valor {
+    color: #555; /* Color más claro para los valores */
+    font-family: "Roboto", sans-serif; /* Usamos la misma fuente Roboto */
+    font-weight: normal; /* Los valores en peso normal */
+    display: inline-block; /* Mantenemos los valores en una sola línea */
+    word-wrap: break-word; /* Permite que los valores largos se dividan si es necesario */
+    font-size: 0.8rem; /* Tamaño de fuente reducido */
+}
+
+/* Responsividad para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .contenedor {
+        grid-template-columns: 1fr; /* En pantallas pequeñas, las columnas se apilan en una sola */
+    }
+}
