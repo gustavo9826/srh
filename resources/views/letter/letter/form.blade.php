@@ -76,9 +76,9 @@
                                 </div>
 
                                 <div class="row">
-                                    <x-template-form.template-form-input-required label="Observación" type="text"
+                                    <x-template-form.template-form-input-required label="Observaciones" type="text"
                                         name="userName" placeholder="Observaciones"
-                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
+                                        grid="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8" autocomplete=""
                                         value="{{optional($item)->observaciones ?? '' }}" />
                                 </div>
 
@@ -127,24 +127,24 @@
 
                                 <x-template-tittle.tittle-caption-secon tittle="Información de remitente" />
                                 <div class="row">
+
+
+                                    <x-template-form.template-form-select-required :selectValue="$selectClave"
+                                        :selectEdit="$selectClaveEdit" name="collectionClave" tittle="Remitente"
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
+
+
                                     <x-template-form.template-form-check name="userEsPorNomina"
                                         value="{{ !isset($item->es_por_nomina) ? 'false' : $item->es_por_nomina }}"
                                         text="¿Agregar remitente?" />
 
                                 </div>
 
-
-
-
-                                <div id="is_nomina">
-                                    <div class="row">
-
-
-
-                                        <x-template-form.template-form-input-required label="CURP" type="text"
-                                            name="curp" placeholder="CURP" autocomplete="" grid="6"
-                                            value="{{ optional($item)->name ?? '' }}" />
-                                    </div>
+                                <div id="is_inputRemitente">
+                                    <x-template-form.template-form-input-required label="Remitente" type="text"
+                                        name="userName" placeholder="Remitente"
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
+                                        value="{{optional($item)->asunto ?? '' }}" />
                                 </div>
 
 
