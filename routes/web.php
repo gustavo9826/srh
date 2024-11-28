@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Letter\Collection\CollectionTramiteC;
 use App\Http\Controllers\Letter\Collection\CollectionUnidadC;
 use App\Http\Controllers\Administration\LoginC;
 use App\Http\Controllers\Administration\RecoverC;
@@ -36,3 +37,4 @@ Route::get('/letter/edit/{id}', [LetterC::class, 'edit'])->name('letter.edit')->
 Route::post('/letter/save', [LetterC::class, 'save'])->name('letter.save')->middleware('auth');
 Route::post('/letter/collection/collectionArea', [CollectionAreaC::class, 'collection'])->name('letter.collection.area')->middleware('auth');
 Route::post('/letter/collection/collectionUnidad', [CollectionUnidadC::class, 'collection'])->name('letter.collection.unidad')->middleware('auth');
+Route::post('/letter/collection/collectionTramite', [CollectionTramiteC::class, 'collection'])->name('letter.collection.tramite')->middleware('auth');

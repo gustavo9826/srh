@@ -64,10 +64,13 @@ class LetterC extends Controller
         $selectStatus = $collectionStatusM->list(); //Obtenemos el catalogo de estatus
         $selectStatusEdit = [];//Catalogos debe estar vacio
 
-        $selecTramite = []; //Los catalogos incian vacios
-        $selecTramiteEdit = []; //Los catalogos incian vacios
+        $selectTramite = []; //Los catalogos incian vacios
+        $selectTramiteEdit = []; //Los catalogos incian vacios
 
-        return view('letter.letter.form', compact('selecTramite', 'selecTramiteEdit', 'selectStatusEdit', 'selectStatus', 'selectCoordinacionEdit', 'selectCoordinacion', 'selectUnidadEdit', 'selectUnidad', 'item', 'selectArea', 'selectAreaEdit', 'selectUser', 'selectUserEdit', 'selectEnlace', 'selectEnlaceEdit'));
+        $selectClave = []; //Los catalogos inician en vacio
+        $selectClaveEdit = []; // Los catalogos inician en vaio
+
+        return view('letter.letter.form', compact('selectClaveEdit', 'selectClave', 'selectTramite', 'selectTramiteEdit', 'selectStatusEdit', 'selectStatus', 'selectCoordinacionEdit', 'selectCoordinacion', 'selectUnidadEdit', 'selectUnidad', 'item', 'selectArea', 'selectAreaEdit', 'selectUser', 'selectUserEdit', 'selectEnlace', 'selectEnlaceEdit'));
     }
 
     public function edit(string $id)

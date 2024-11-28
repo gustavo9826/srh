@@ -115,9 +115,14 @@
                                         :selectEdit="$selectStatusEdit" name="collectionStatus" tittle="Estatus"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
 
-                                    <x-template-form.template-form-select-required :selectValue="$selecTramite"
-                                        :selectEdit="$selecTramiteEdit" name="collectionTramite" tittle="Tramite"
+                                    <x-template-form.template-form-select-required :selectValue="$selectTramite"
+                                        :selectEdit="$selectTramiteEdit" name="collectionTramite" tittle="Tramite"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
+
+                                    <x-template-form.template-form-select-required :selectValue="$selectClave"
+                                        :selectEdit="$selectClaveEdit" name="collectionClave" tittle="Clave"
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
+
                                 </div>
 
                                 <x-template-tittle.tittle-caption-secon tittle="Información de remitente" />

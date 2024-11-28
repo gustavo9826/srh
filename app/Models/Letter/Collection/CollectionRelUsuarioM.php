@@ -26,7 +26,7 @@ class CollectionRelUsuarioM extends Model
     public function idUsuarioByArea($idArea)
     {
         return DB::table('administration.users')
-            ->select(DB::raw('id, UPPER(name) as name'))
+            ->select(DB::raw('id, UPPER(name) as descripcion'))
             ->join('correspondencia.rel_area_usuario', 'administration.users.id', '=', 'correspondencia.rel_area_usuario.id_usuario')
             ->where('correspondencia.rel_area_usuario.id_cat_area', $idArea)
             ->where('correspondencia.rel_area_usuario.estatus', true)

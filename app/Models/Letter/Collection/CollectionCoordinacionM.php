@@ -10,7 +10,7 @@ class CollectionCoordinacionM extends Model
     public function list($idUnidad)
     {
         return DB::table('correspondencia.cat_coordinacion')
-            ->select(DB::raw('correspondencia.cat_coordinacion.id_cat_coordinacion AS id, UPPER(correspondencia.cat_coordinacion.descripcion) AS name'))
+            ->select(DB::raw('correspondencia.cat_coordinacion.id_cat_coordinacion AS id, UPPER(correspondencia.cat_coordinacion.descripcion) AS descripcion'))
             ->join('correspondencia.rel_unidad_coordinacion', 'correspondencia.cat_coordinacion.id_cat_coordinacion', '=', 'correspondencia.rel_unidad_coordinacion.id_cat_coordinacion')
             ->where('correspondencia.rel_unidad_coordinacion.id_cat_unidad', $idUnidad)
             ->where('correspondencia.cat_coordinacion.estatus', true)

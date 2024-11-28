@@ -11,7 +11,7 @@ class CollectionTramiteM extends Model
     {
         // Usamos el Query Builder de Laravel para construir la consulta
         $result = DB::table('correspondencia.cat_tramite')
-            ->selectRaw('correspondencia.cat_tramite.id_cat_tramite AS id, UPPER(correspondencia.cat_tramite.descripcion) AS name')
+            ->selectRaw('correspondencia.cat_tramite.id_cat_tramite AS id, UPPER(correspondencia.cat_tramite.descripcion) AS descripcion')
             ->join('correspondencia.rel_area_tramite', 'correspondencia.cat_tramite.id_cat_tramite', '=', 'correspondencia.rel_area_tramite.id_cat_tramite')
             ->where('correspondencia.rel_area_tramite.id_cat_area', $idArea)
             ->where('correspondencia.cat_tramite.estatus', true)

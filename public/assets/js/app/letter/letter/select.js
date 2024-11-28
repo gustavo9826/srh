@@ -23,15 +23,15 @@ $('#collectionArea').on('change', function () {
                 $('#collectionTramite').append('<option value="">SELECCIONE</option>');// Agregar una opción por defecto
 
                 $.each(response.selectEnlace, function (index, item) { // Iterar sobre las opciones recibidas y agregarlas al select
-                    $('#collectionAreaEnlace').append('<option value="' + item.id + '">' + item.name + '</option>');
+                    $('#collectionAreaEnlace').append('<option value="' + item.id + '">' + item.descripcion + '</option>');
                 });
 
                 $.each(response.selectUsuario, function (index, item) { // Iterar sobre las opciones recibidas y agregarlas al select
-                    $('#collectionAreaUser').append('<option value="' + item.id + '">' + item.name + '</option>');
+                    $('#collectionAreaUser').append('<option value="' + item.id + '">' + item.descripcion + '</option>');
                 });
 
                 $.each(response.selectTramite, function (index, item) { // Iterar sobre las opciones recibidas y agregarlas al select
-                    $('#collectionTramite').append('<option value="' + item.id + '">' + item.name + '</option>');
+                    $('#collectionTramite').append('<option value="' + item.id + '">' + item.descripcion + '</option>');
                 });
 
                 // Refrescar el selectpicker si estás usando Bootstrap Select
@@ -64,10 +64,37 @@ $('#collectionUnidad').on('change', function () {
 
                 $('#collectionCoordinacion').append('<option value="">SELECCIONE</option>');// Agregar una opción por defecto
                 $.each(response.selectCoordinacion, function (index, item) { // Iterar sobre las opciones recibidas y agregarlas al select
-                    $('#collectionCoordinacion').append('<option value="' + item.id + '">' + item.name + '</option>');
+                    $('#collectionCoordinacion').append('<option value="' + item.id + '">' + item.descripcion + '</option>');
                 });
 
                 $('#collectionCoordinacion').selectpicker('refresh');
+            },
+        });
+    } else {
+        console.log('no seleccionado');
+    }
+});
+
+//Codigo para la seleccion de Trmaite y como cambia el valor de los demas select que dependen de ella
+$('#collectionTramite').on('change', function () {
+    let idValue = $(this).val();  // Obtiene el valor de la opción seleccionada
+    if (idValue) { // Realiza la solicitud AJAX solo si se ha seleccionado un valor
+        $.ajax({
+            url: '/srh/public/letter/collection/collectionTramite',
+            type: 'POST',
+            data: {
+                id: idValue,
+                _token: token  // Usar el token extraído de la metaetiqueta
+            },
+            success: function (response) {
+                $('#collectionClave').empty();//limpiar catalogo
+
+                $('#collectionClave').append('<option value="">SELECCIONE</option>');// Agregar una opción por defecto
+                $.each(response.selectClave, function (index, item) { // Iterar sobre las opciones recibidas y agregarlas al select
+                    $('#collectionClave').append('<option value="' + item.id + '">' + item.descripcion + '</option>');
+                });
+
+                $('#collectionClave').selectpicker('refresh');
             },
         });
     } else {

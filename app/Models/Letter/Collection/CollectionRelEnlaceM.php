@@ -27,7 +27,7 @@ class CollectionRelEnlaceM extends Model
     public function idUsuarioByArea($idArea)
     {
         return DB::table('administration.users')
-            ->select(DB::raw('id, UPPER(name) as name'))
+            ->select(DB::raw('id, UPPER(name) as descripcion'))
             ->join('correspondencia.rel_enlace_usuario', 'administration.users.id', '=', 'correspondencia.rel_enlace_usuario.id_usuario')
             ->where('correspondencia.rel_enlace_usuario.id_cat_area', $idArea)
             ->where('correspondencia.rel_enlace_usuario.estatus', true)
