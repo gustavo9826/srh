@@ -19,7 +19,7 @@ Route::post('/login', [LoginC::class, 'authenticate']);///ROUTE_AUTHENTICATE
 ///IS_PROTECT
 Route::get('/dashboard', [DashboardC::class, 'dashboard'])->name('dashboard')->middleware('auth'); //ROUTE_DASH BOARD
 Route::get('/about', AboutC::class)->name('about')->middleware('auth'); //ROUTE_ABOUT
-Route::post('/logout', [LoginC::class, 'logout'])->middleware('auth');//ROUTE_LOGOUT
+Route::post('/logout', [LoginC::class, 'logout'])->name('logout')->middleware('auth');//ROUTE_LOGOUT
 
 //ROUTE_USER
 Route::get('/user', UserC::class)->name('user.list')->middleware('auth'); //ROUTE_USER

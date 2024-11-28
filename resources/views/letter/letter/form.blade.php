@@ -31,45 +31,54 @@
 
                                 <div class="row">
                                     <x-template-form.template-form-input-required label="Fecha de captura" type="date"
-                                        name="userName" placeholder="" grid="4" autocomplete=""
+                                        name="userName" placeholder=""
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->fecha_captura ?? '' }}" />
 
                                     <x-template-form.template-form-input-required label="Fecha de inicio" type="date"
-                                        name="userName" placeholder="" grid="4" autocomplete=""
+                                        name="userName" placeholder=""
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->fecha_inicio ?? '' }}" />
 
                                     <x-template-form.template-form-input-required label="Fecha fin" type="date"
-                                        name="userName" placeholder="" grid="4" autocomplete=""
+                                        name="userName" placeholder=""
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->fecha_fin ?? '' }}" />
                                 </div>
 
                                 <div class="row">
                                     <x-template-form.template-form-input-required label="No. Documento" type="text"
-                                        name="userName" placeholder="No. Documento" grid="4" autocomplete=""
+                                        name="userName" placeholder="No. Documento"
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->num_documento ?? '' }}" />
 
                                     <x-template-form.template-form-input-required label="No. hojas" type="integer"
-                                        name="userName" placeholder="No. hojas" grid="4" autocomplete=""
+                                        name="userName" placeholder="No. hojas"
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->num_flojas ?? '' }}" />
 
                                     <x-template-form.template-form-input-required label="No. tomos" type="integer"
-                                        name="userName" placeholder="No. tomos" grid="4" autocomplete=""
+                                        name="userName" placeholder="No. tomos"
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->num_tomos ?? '' }}" />
                                 </div>
 
                                 <div class="row">
                                     <x-template-form.template-form-input-required label="Lugar" type="text"
-                                        name="userName" placeholder="Lugar" grid="4" autocomplete=""
+                                        name="userName" placeholder="Lugar"
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->lugar ?? '' }}" />
 
                                     <x-template-form.template-form-input-required label="Asunto" type="text"
-                                        name="userName" placeholder="Asunto" grid="4" autocomplete=""
+                                        name="userName" placeholder="Asunto"
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->asunto ?? '' }}" />
                                 </div>
 
                                 <div class="row">
                                     <x-template-form.template-form-input-required label="Observación" type="text"
-                                        name="userName" placeholder="Observaciones" grid="4" autocomplete=""
+                                        name="userName" placeholder="Observaciones"
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->observaciones ?? '' }}" />
                                 </div>
 
@@ -77,25 +86,26 @@
                                 <div class="row">
 
                                     <x-template-form.template-form-select-required :selectValue="$selectArea"
-                                        :selectEdit="$selectAreaEdit" name="collectionArea" tittle="Área" grid="4" />
+                                        :selectEdit="$selectAreaEdit" name="collectionArea" tittle="Área"
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
 
                                     <x-template-form.template-form-select-required :selectValue="$selectUser"
                                         :selectEdit="$selectUserEdit" name="collectionAreaUser" tittle="Usuario"
-                                        grid="4" />
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
 
                                     <x-template-form.template-form-select-required :selectValue="$selectEnlace"
                                         :selectEdit="$selectUnidadEdit" name="collectionAreaEnlace" tittle="Enlace"
-                                        grid="4" />
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
                                 </div>
 
                                 <div class="row">
                                     <x-template-form.template-form-select-required :selectValue="$selectUnidad"
                                         :selectEdit="$selectAreaEdit" name="collectionUnidad" tittle="Unidad"
-                                        grid="4" />
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
 
                                     <x-template-form.template-form-select-required :selectValue="$selectCoordinacion"
                                         :selectEdit="$selectCoordinacionEdit" name="collectionCoordinacion"
-                                        tittle="Coordinación" grid="4" />
+                                        tittle="Coordinación" grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
                                 </div>
 
 
@@ -103,11 +113,11 @@
                                 <div class="row">
                                     <x-template-form.template-form-select-required :selectValue="$selectStatus"
                                         :selectEdit="$selectStatusEdit" name="collectionStatus" tittle="Estatus"
-                                        grid="4" />
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
 
                                     <x-template-form.template-form-select-required :selectValue="$selecTramite"
                                         :selectEdit="$selecTramiteEdit" name="collectionTramite" tittle="Tramite"
-                                        grid="4" />
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
                                 </div>
 
                                 <x-template-tittle.tittle-caption-secon tittle="Información de remitente" />

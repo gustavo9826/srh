@@ -49513,3 +49513,10 @@ div.tagsinput span.tag a {
 .btn:hover {
     background-color: inherit;
 }
+
+.dropdown-item.active,
+.dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #777777;
+}

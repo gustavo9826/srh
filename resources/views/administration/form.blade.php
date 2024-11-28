@@ -29,22 +29,25 @@
 
                                 <div class="row">
                                     <x-template-form.template-form-input-required label="Nombre" type="text"
-                                        name="userName" placeholder="Nombre" grid="6" autocomplete=""
+                                        name="userName" placeholder="Nombre"
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->name ?? '' }}" />
 
                                     <x-template-form.template-form-input-required label="Email" type="text"
                                         name="userEmail" placeholder="Correo electrónico"
-                                        value="{{ optional($item)->email ?? '' }}" autocomplete="" grid="6" />
+                                        value="{{ optional($item)->email ?? '' }}" autocomplete=""
+                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
                                 </div>
 
                                 @if (!isset($item->id)) <!-- Ocultar contenido en caso de modificar-->
                                     <div class="row">
                                         <x-template-form.template-form-input-required label="Password" type="password"
                                             name="userPassword" value="" placeholder="Password" autocomplete="new-password"
-                                            grid="6" />
+                                            grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
                                         <x-template-form.template-form-input-required label="Confirmar Password"
                                             type="password" name="userConfirmPassword" autocomplete="new-password"
-                                            placeholder="Confirmar password" value="" grid="6" />
+                                            placeholder="Confirmar password" value=""
+                                            grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
                                     </div>
                                 @endif
 
@@ -126,7 +129,8 @@
 
 
                                         <x-template-form.template-form-input-required label="CURP" type="text"
-                                            name="curp" placeholder="CURP" autocomplete="" grid="6"
+                                            name="curp" placeholder="CURP" autocomplete=""
+                                            grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4"
                                             value="{{ optional($item)->name ?? '' }}" />
                                     </div>
                                 </div>
