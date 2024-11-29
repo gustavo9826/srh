@@ -10,8 +10,10 @@ use App\Http\Controllers\Administration\UserC;
 use App\Http\Controllers\Home\AboutC;
 use App\Http\Controllers\Home\DashboardC;
 use App\Http\Controllers\Letter\Collection\CollectionAreaC;
+use App\Http\Controllers\Courses\Courses\CoursesC;
 use App\Http\Controllers\Letter\Letter\LetterC;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/login', LoginC::class)->name('login'); ///ROUTE_LOGIN
 Route::get('/register', RegisterC::class)->name('register'); ///ROUTE_REGISTER
@@ -40,3 +42,6 @@ Route::post('/letter/collection/collectionArea', [CollectionAreaC::class, 'colle
 Route::post('/letter/collection/collectionUnidad', [CollectionUnidadC::class, 'collection'])->name('letter.collection.unidad')->middleware('auth');
 Route::post('/letter/collection/collectionTramite', [CollectionTramiteC::class, 'collection'])->name('letter.collection.tramite')->middleware('auth');
 Route::post('/letter/collection/collectionClave', [CollectionClaveC::class, 'collection'])->name('letter.collection.clabe')->middleware('auth');
+
+//ROUTE_COUSER
+Route::get('/courses/list', CoursesC::class)->name('courses.list')->middleware('auth');
