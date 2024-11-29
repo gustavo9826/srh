@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Letter\Letter;
 
 use App\Models\Letter\Collection\CollectionConsecutivoM;
 use App\Models\Letter\Collection\CollectionDateM;
+use App\Models\Letter\Collection\CollectionRemitenteM;
 use App\Models\Letter\Collection\CollectionStatusM;
 use App\Models\Letter\Collection\CollectionUnidadM;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,7 @@ use App\Models\Letter\Collection\CollectionRelUsuarioM;
 use App\Models\Letter\Letter\LetterM;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
 class LetterC extends Controller
 {
     public function __invoke()
@@ -45,6 +47,7 @@ class LetterC extends Controller
         $collectionStatusM = new CollectionStatusM();
         $collectionDateM = new CollectionDateM();
         $collectionConsecutivoM = new CollectionConsecutivoM();
+        $collectionRemitenteM = new CollectionRemitenteM();
 
         $item->fecha_captura = now()->format('d/m/Y'); // Formato de fecha: día/mes/año
         $item->id_cat_anio = $collectionDateM->idYear();
@@ -74,7 +77,10 @@ class LetterC extends Controller
         $selectClave = []; //Los catalogos inician en vacio
         $selectClaveEdit = []; // Los catalogos inician en vaio
 
-        return view('letter.letter.form', compact('selectClaveEdit', 'selectClave', 'selectTramite', 'selectTramiteEdit', 'selectStatusEdit', 'selectStatus', 'selectCoordinacionEdit', 'selectCoordinacion', 'selectUnidadEdit', 'selectUnidad', 'item', 'selectArea', 'selectAreaEdit', 'selectUser', 'selectUserEdit', 'selectEnlace', 'selectEnlaceEdit'));
+        $selectRemitente = $collectionRemitenteM->list(); //Se carga el catalogo de remitente
+        $selectRemitenteEdit = []; //LA funcion de editar se inicia en falso
+
+        return view('letter.letter.form', compact('selectRemitenteEdit', 'selectRemitente', 'selectClaveEdit', 'selectClave', 'selectTramite', 'selectTramiteEdit', 'selectStatusEdit', 'selectStatus', 'selectCoordinacionEdit', 'selectCoordinacion', 'selectUnidadEdit', 'selectUnidad', 'item', 'selectArea', 'selectAreaEdit', 'selectUser', 'selectUserEdit', 'selectEnlace', 'selectEnlaceEdit'));
     }
 
     public function edit(string $id)
