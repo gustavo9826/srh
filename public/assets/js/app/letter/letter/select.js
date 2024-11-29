@@ -11,31 +11,10 @@ $('#id_cat_area').on('change', function () {
                 _token: token  // Usar el token extraído de la metaetiqueta
             },
             success: function (response) {
-
-                $('#id_usuario_enlace').empty();//limpiar catalogo
-                $('#id_usuario_area').empty();//limpiar catalogo
-                $('#id_cat_tramite').empty();//limpiar catalogo
-
-                $('#id_usuario_enlace').append('<option value="">SELECCIONE</option>');// Agregar una opción por defecto
-                $('#id_usuario_area').append('<option value="">SELECCIONE</option>');// Agregar una opción por defecto
-                $('#id_cat_tramite').append('<option value="">SELECCIONE</option>');// Agregar una opción por defecto
-
-                $.each(response.selectEnlace, function (index, item) { // Iterar sobre las opciones recibidas y agregarlas al select
-                    $('#id_usuario_enlace').append('<option value="' + item.id + '">' + item.descripcion + '</option>');
-                });
-
-                $.each(response.selectUsuario, function (index, item) { // Iterar sobre las opciones recibidas y agregarlas al select
-                    $('#id_usuario_area').append('<option value="' + item.id + '">' + item.descripcion + '</option>');
-                });
-
-                $.each(response.selectTramite, function (index, item) { // Iterar sobre las opciones recibidas y agregarlas al select
-                    $('#id_cat_tramite').append('<option value="' + item.id + '">' + item.descripcion + '</option>');
-                });
-
-                // Refrescar el selectpicker si estás usando Bootstrap Select
-                $('#id_usuario_enlace').selectpicker('refresh');
-                $('#id_usuario_area').selectpicker('refresh');
-                $('#id_cat_tramite').selectpicker('refresh');
+                //proceso de select 
+                foreachSelect(response.selectEnlace, '#id_usuario_enlace');
+                foreachSelect(response.selectUsuario, '#id_usuario_area');
+                foreachSelect(response.selectTramite, '#id_cat_tramite');
 
                 cleanSelect('#id_cat_clave'); //Se limpia el select
                 clearClaveData(); //Limpieza de encabezado
@@ -63,14 +42,9 @@ $('#id_cat_unidad').on('change', function () {
                 _token: token  // Usar el token extraído de la metaetiqueta
             },
             success: function (response) {
-                $('#id_cat_coordinacion').empty();//limpiar catalogo
 
-                $('#id_cat_coordinacion').append('<option value="">SELECCIONE</option>');// Agregar una opción por defecto
-                $.each(response.selectCoordinacion, function (index, item) { // Iterar sobre las opciones recibidas y agregarlas al select
-                    $('#id_cat_coordinacion').append('<option value="' + item.id + '">' + item.descripcion + '</option>');
-                });
-
-                $('#id_cat_coordinacion').selectpicker('refresh');
+                //Proceso de select
+                foreachSelect(response.selectCoordinacion, '#id_cat_coordinacion');
             },
         });
     } else {
@@ -90,14 +64,8 @@ $('#id_cat_tramite').on('change', function () {
                 _token: token  // Usar el token extraído de la metaetiqueta
             },
             success: function (response) {
-                $('#id_cat_clave').empty();//limpiar catalogo
-
-                $('#id_cat_clave').append('<option value="">SELECCIONE</option>');// Agregar una opción por defecto
-                $.each(response.selectClave, function (index, item) { // Iterar sobre las opciones recibidas y agregarlas al select
-                    $('#id_cat_clave').append('<option value="' + item.id + '">' + item.descripcion + '</option>');
-                });
-
-                $('#id_cat_clave').selectpicker('refresh');
+                //Proceso de select
+                foreachSelect(response.selectClave, '#id_cat_clave');
             },
         });
     } else {

@@ -8,8 +8,10 @@
                     name="{{ $name }}" id="{{ $name }}">
                     <option value="">SELECCIONE</option>
                     @foreach ($selectValue as $select)
-                        <option value="{{ $select->id }}" @if (isset($selectEdit->id) && $select->id == $selectEdit->id)
-                        selected @endif>
+                        <option value="{{ $select->id }}" 
+                            @if (old($name, isset($selectEdit->id) ? $selectEdit->id : '') == $select->id)
+                                selected
+                            @endif>
                             {{ $select->descripcion }}
                         </option>
                     @endforeach
