@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Letter\Letter;
 
+use App\Models\Letter\Collection\CollectionConsecutivoM;
 use App\Models\Letter\Collection\CollectionDateM;
 use App\Models\Letter\Collection\CollectionStatusM;
 use App\Models\Letter\Collection\CollectionUnidadM;
@@ -43,9 +44,11 @@ class LetterC extends Controller
         $collectionUnidadM = new CollectionUnidadM();
         $collectionStatusM = new CollectionStatusM();
         $collectionDateM = new CollectionDateM();
+        $collectionConsecutivoM = new CollectionConsecutivoM();
 
         $item->fecha_captura = now()->format('d/m/Y'); // Formato de fecha: día/mes/año
         $item->id_cat_anio = $collectionDateM->idYear();
+        $item->num_turno_sistema = $collectionConsecutivoM->noDocumento(1, 1);
 
         $selectArea = $collectionAreaM->list(); //Catalogo de area
         $selectAreaEdit = []; //catalogo de area null

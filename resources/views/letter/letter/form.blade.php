@@ -31,6 +31,9 @@
                                 <x-template-form.template-form-input-hidden name="id_cat_anio"
                                     value="{{ optional($item)->id_cat_anio ?? '' }}" />
 
+                                <x-template-form.template-form-input-hidden name="num_turno_sistema"
+                                    value="{{ optional($item)->num_turno_sistema ?? '' }}" />
+
                                 <x-template-tittle.tittle-caption-secon tittle="Información de correspondencia" />
                                 <div class="contenedor">
                                     <div class="item">
@@ -56,10 +59,6 @@
                                     <div class="item">
                                         <label class="etiqueta">Clave / redacción:</label>
                                         <label id="_labClaveRedaccion" class="valor"></label>
-                                    </div>
-                                    <div class="item">
-                                        <label class="etiqueta">Clave / copiar:</label>
-                                        <label id="_labClaveCopiar" class="valor"></label>
                                     </div>
                                 </div>
 

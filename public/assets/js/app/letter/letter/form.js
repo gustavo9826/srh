@@ -1,6 +1,8 @@
 
 //Scrip que se ejecuta con el formulario, para funciones u herramientas extras
 //Ejecucion cuando carga el formulario
+var token = $('meta[name="csrf-token"]').attr('content'); //Token for form
+
 $(document).ready(function () {
     $('select').selectpicker();
     //checkboxState();
@@ -11,9 +13,38 @@ $(document).ready(function () {
 function setData() {
     let fecha_captura = $('#fecha_captura').val();//fecha de captura
     $('#_labFechaCaptura').text(fecha_captura); //establecer los varoles
+
+    let num_turno_sistema = $('#num_turno_sistema').val();//fecha de captura
+    $('#_labNoCorrespondencia').text(num_turno_sistema); //establecer los varoles
+
+    getData();//Se hace busqueda de la informacion
 }
 
+//La funcion obtiene el año, clave, codigo y redaccion
+function getData() {
 
+    let id_cat_anio = $('#id_cat_anio').val();//Obtener elemento
+    let id_cat_clave = $('#collectionClave').val();//Obtener elemento
+
+    $.ajax({
+        url: '/srh/public/letter/collection/dataClave',
+        type: 'POST',
+        data: {
+            id_cat_anio: id_cat_anio,
+            id_cat_clave: id_cat_clave,
+            _token: token  // Usar el token extraído de la metaetiqueta
+        },
+        success: function (response) {
+            let item = response.nameYear;
+            let itemClave = response.dataClave;
+
+            $('#_labAño').text(item.name); //establecer los varoles
+            $('#_labClave').text(itemClave._labClave);
+            $('#_labClaveCodigo').text(itemClave._labClaveCodigo);
+            $('#_labClaveRedaccion').text(itemClave._labClaveRedaccion);
+        },
+    });
+}
 
 //La funcion obtiene el estatus del checkbox para marcar o desmarcar la casilla
 function checkboxState() {

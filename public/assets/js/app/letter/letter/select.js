@@ -1,6 +1,4 @@
 
-var token = $('meta[name="csrf-token"]').attr('content'); //Token for form
-
 //Codigo para la seleccion de area y como cambia el valor de los demas select que dependen de ella
 $('#collectionArea').on('change', function () {
     let idValue = $(this).val();  // Obtiene el valor de la opción seleccionada
@@ -120,7 +118,6 @@ $('#collectionClave').on('change', function () {
                 $('#_labClave').text(valueClave.descripcion);
                 $('#_labClaveCodigo').text(valueClave.redaccion);
                 $('#_labClaveRedaccion').text(valueClave.codigo);
-                $('#_labClaveCopiar').text(valueClave.copiar);
 
             },
         });
@@ -134,5 +131,4 @@ function clearClaveData() {
     $('#_labClave').text('_');
     $('#_labClaveCodigo').text('_');
     $('#_labClaveRedaccion').text('_');
-    $('#_labClaveCopiar').text('_');
 }
