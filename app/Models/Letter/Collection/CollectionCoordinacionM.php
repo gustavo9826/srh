@@ -17,4 +17,18 @@ class CollectionCoordinacionM extends Model
             ->orderBy('correspondencia.cat_coordinacion.descripcion', 'ASC')
             ->get();
     }
+
+    public function edit($id)
+    {
+        $query = DB::table('correspondencia.cat_estatus')
+            ->select([
+                'correspondencia.cat_estatus.id_cat_estatus AS id',
+                DB::raw('UPPER(correspondencia.cat_estatus.descripcion) AS descripcion')
+            ])
+            ->where('correspondencia.cat_estatus.id_cat_estatus', '=', $id);
+
+        // Usar first() para obtener un único resultado
+        $result = $query->first();
+        return $result;
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Letter\Letter;
 
+use App\Models\Letter\Collection\CollectionCoordinacionM;
 use App\Models\Letter\Collection\CollectionConsecutivoM;
 use App\Models\Letter\Collection\CollectionDateM;
 use App\Models\Letter\Collection\CollectionRelEnlaceM;
@@ -72,10 +73,10 @@ class LetterC extends Controller
         $collectionAreaM = new CollectionAreaM();
         $collectionRelUsuarioM = new CollectionRelUsuarioM();
         $collectionRelEnlaceM = new CollectionRelEnlaceM();
-
         $collectionUnidadM = new CollectionUnidadM();
         $collectionStatusM = new CollectionStatusM();
-        $collectionDateM = new CollectionDateM();
+        $collectionCoordinacionM = new CollectionCoordinacionM();
+
         $collectionRemitenteM = new CollectionRemitenteM();
 
         $item = $letterM->edit($id); // Obtener el elemento con el ID pasado
@@ -86,17 +87,17 @@ class LetterC extends Controller
         $selectUser = isset($item->id_cat_area) ? $collectionRelUsuarioM->idUsuarioByArea($item->id_cat_area) : [];//Validacion de id_en DB para definir si se poblan los catalogos o son vacios
         $selectUserEdit = isset($item->id_cat_area) && isset($item->id_usuario_area) ? $collectionRelUsuarioM->idUsuarioByAreaEdit($item->id_usuario_area) : [];//Validacion de id_en DB para definir si se poblan los catalogos o son vacios
 
-        $selectEnlace = isset($item->id_cat_area) ? $collectionRelEnlaceM->idUsuarioByArea($item->id_cat_area) : [];//Validacion de id_en DB para definir si se poblan los catalogos o son vacios
-        $selectEnlaceEdit =  $collectionRelUsuarioM->idUsuarioByAreaEdit($item->id_usuario_enlace);//Validacion de id_en DB para definir si se poblan los catalogos o son vacios;//$collectionRelEnlaceM->idUsuarioByAreaEdit($item->id_usuario_enlace);//isset($item->id_cat_area) && isset($item->id_usuario_enlace) ? $collectionRelEnlaceM->idUsuarioByAreaEdit($item->id_usuario_enlace) : [];//Validacion de id_en DB para definir si se poblan los catalogos o son vacios
+        $selectEnlace = isset($item->id_cat_area) ? $collectionRelEnlaceM->idUsuarioByArea($item->id_cat_area) : [];//Validacion de id_en DB para definir si se poblan los catalogos o son vaciosvacios
+        $selectEnlaceEdit = isset($item->id_cat_area) && isset($item->id_usuario_enlace) ? $collectionRelUsuarioM->idUsuarioByAreaEdit($item->id_usuario_enlace) : [];////Validacion de id_en DB para definir si se poblan los catalogos o son vaciosvacios
 
-        $selectUnidad = [];//Catalogo de unidad
-        $selectUnidadEdit = []; //Catalogo de Unidad, al crear comienza en vacio 
+        $selectUnidad = $collectionUnidadM->list();//Catalogo de unidad
+        $selectUnidadEdit = isset($item->id_cat_unidad) ? $collectionUnidadM->edit($item->id_cat_unidad) : [];
 
-        $selectCoordinacion = []; //Catalogos de coordinacion vacios
-        $selectCoordinacionEdit = [];//Catalogos de coordinacion vacios
+        $selectCoordinacion = $collectionCoordinacionM->edit(1);//isset($item->id_cat_unidad) ? $collectionCoordinacionM->list($item->id_cat_unidad) : []; //Catalogos de coordinacion vacios
+        $selectCoordinacionEdit = [];//isset($item->id_cat_unidad) && isset($item->id_cat_coordinacion) ? $collectionCoordinacionM->edit($item->id_cat_coordinacion) : [];//Catalogos de coordinacion vacios
 
-        $selectStatus = []; //Obtenemos el catalogo de estatus
-        $selectStatusEdit = [];//Catalogos debe estar vacio
+        $selectStatus = $collectionStatusM->list(); //Obtenemos el catalogo de estatus
+        $selectStatusEdit = isset($item->id_cat_estatus) ? $collectionStatusM->edit($item->id_cat_estatus) : [];//Catalogos debe estar vacio
 
         $selectTramite = []; //Los catalogos incian vacios
         $selectTramiteEdit = []; //Los catalogos incian vacios

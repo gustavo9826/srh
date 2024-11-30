@@ -125,13 +125,13 @@
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
 
                                     <x-template-form.template-form-select-required :selectValue="$selectEnlace"
-                                        :selectEdit="$selectUnidadEdit" name="id_usuario_enlace" tittle="Enlace"
+                                        :selectEdit="$selectEnlaceEdit" name="id_usuario_enlace" tittle="Enlace"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
                                 </div>
 
                                 <div class="row">
                                     <x-template-form.template-form-select-required :selectValue="$selectUnidad"
-                                        :selectEdit="$selectAreaEdit" name="id_cat_unidad" tittle="Unidad"
+                                        :selectEdit="$selectUnidadEdit" name="id_cat_unidad" tittle="Unidad"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
 
                                     <x-template-form.template-form-select-required :selectValue="$selectCoordinacion"
