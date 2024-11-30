@@ -59,7 +59,7 @@
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item"><a class="nav-link" href="#">Administracion</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('courses.list') }}">Beneficio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Categoría</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('coursescategoria.list') }}">Categoría</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Coordinación</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Estatuto Orgánico</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Modalidad</a></li>

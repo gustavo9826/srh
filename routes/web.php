@@ -11,6 +11,7 @@ use App\Http\Controllers\Home\AboutC;
 use App\Http\Controllers\Home\DashboardC;
 use App\Http\Controllers\Letter\Collection\CollectionAreaC;
 use App\Http\Controllers\Courses\Courses\CoursesC;
+use App\Http\Controllers\Courses\Coursescategoria\Courses2C;
 use App\Http\Controllers\Letter\Letter\LetterC;
 use Illuminate\Support\Facades\Route;
 
@@ -45,3 +46,4 @@ Route::post('/letter/collection/collectionClave', [CollectionClaveC::class, 'col
 
 //ROUTE_COUSER
 Route::get('/courses/list', CoursesC::class)->name('courses.list')->middleware('auth');
+Route::get('/coursescategoria/list', Courses2C::class)->name('coursescategoria.list')->middleware('auth');
