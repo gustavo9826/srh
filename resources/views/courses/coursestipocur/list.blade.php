@@ -21,7 +21,7 @@
 
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <h4 class="card-title">Categoria</h4>
+                                <h4 class="card-title">Tipo De Cursos</h4>
                                 @if($letterAdminMatch)
                                     <p class="card-description">
                                         ¿Deseas agregar un registro? <a href="{{ route('letter.create') }}"
@@ -42,7 +42,7 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        Id_Categoria
+                                        Id_Tipo_Cursos
                                     </th>
                                     <th>
                                         Descripcion
@@ -64,6 +64,6 @@
     </div>
 
     <!-- CODE SCRIPT-->
-    <script src="{{ asset('assets/js/app/courses/coursescategoria/table.js') }}"></script>
+    <script src="{{ asset('assets/js/app/courses/coursestipocur/table.js') }}"></script>
 
 </x-template-app.app-layout>

@@ -12,6 +12,14 @@ use App\Http\Controllers\Home\DashboardC;
 use App\Http\Controllers\Letter\Collection\CollectionAreaC;
 use App\Http\Controllers\Courses\Courses\CoursesC;
 use App\Http\Controllers\Courses\Coursescategoria\Courses2C;
+use App\Http\Controllers\Courses\Coursescoordinacion\Courses3C;
+use App\Http\Controllers\Courses\Coursesestatuto\Courses4C;
+use App\Http\Controllers\Courses\Coursesmodalidad\Courses5C;
+use App\Http\Controllers\Courses\Coursesnombreacc\Courses6C;
+use App\Http\Controllers\Courses\Coursesorganizacion\Courses7C;
+use App\Http\Controllers\Courses\Coursesprograma\Courses8C;
+use App\Http\Controllers\Courses\Coursestipoac\Courses9C;
+use App\Http\Controllers\Courses\Coursestipocur\Courses10C;
 use App\Http\Controllers\Letter\Letter\LetterC;
 use Illuminate\Support\Facades\Route;
 
@@ -47,3 +55,11 @@ Route::post('/letter/collection/collectionClave', [CollectionClaveC::class, 'col
 //ROUTE_COUSER
 Route::get('/courses/list', CoursesC::class)->name('courses.list')->middleware('auth');
 Route::get('/coursescategoria/list', Courses2C::class)->name('coursescategoria.list')->middleware('auth');
+Route::get('/coursescoordinacion/list', Courses3C::class)->name('coursescoordinacion.list')->middleware('auth');
+Route::get('/coursesestatuto/list', Courses4C::class)->name('coursesestatuto.list')->middleware('auth');
+Route::get('/coursesmodalidad/list', Courses5C::class)->name('coursesmodalidad.list')->middleware('auth');
+Route::get('/coursesnombreacc/list', Courses6C::class)->name('coursesnombreacc.list')->middleware('auth');
+Route::get('/coursesorganizacion/list', Courses7C::class)->name('coursesorganizacion.list')->middleware('auth');
+Route::get('/coursesprograma/list', Courses8C::class)->name('coursesprograma.list')->middleware('auth');
+Route::get('/coursestipoac/list', Courses9C::class)->name('coursestipoac.list')->middleware('auth');
+Route::get('/coursestipocur/list', Courses10C::class)->name('coursestipocur.list')->middleware('auth');

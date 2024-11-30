@@ -60,14 +60,14 @@
                         <li class="nav-item"><a class="nav-link" href="#">Administracion</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('courses.list') }}">Beneficio</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('coursescategoria.list') }}">Categoría</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Coordinación</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Estatuto Orgánico</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Modalidad</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Nombre Acción</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Organización</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Programa Institucional</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Tipo Acción</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Tipo Cursos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('coursescoordinacion.list') }}">Coordinación</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('coursesestatuto.list') }}">Estatuto Orgánico</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('coursesmodalidad.list') }}">Modalidad</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('coursesnombreacc.list') }}">Nombre Acción</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('coursesorganizacion.list') }}">Organización</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('coursesprograma.list') }}">Programa Institucional</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('coursestipoac.list') }}">Tipo Acción</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('coursestipocur.list') }}">Tipo Cursos</a></li>
                     </ul>
                 </div>
             </li>
