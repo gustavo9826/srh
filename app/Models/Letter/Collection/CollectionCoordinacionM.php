@@ -1,11 +1,20 @@
 <?php
 
 namespace App\Models\Letter\Collection;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class CollectionCoordinacionM extends Model
 {
+
+    protected $table = 'correspondencia.cat_coordinacion';
+    public $timestamps = false;
+
+    protected $fillable = [
+        'id_cat_coordinacion',
+        'descripcion',
+        'estatus',
+    ];
     //La funcion obtinene las coordinaciones dependiendo de la unidad que se seleccione
     public function list($idUnidad)
     {
@@ -20,15 +29,24 @@ class CollectionCoordinacionM extends Model
 
     public function edit($id)
     {
-        $query = DB::table('correspondencia.cat_estatus')
+        $query = DB::table('correspondencia.cat_coordinacion')
             ->select([
-                'correspondencia.cat_estatus.id_cat_estatus AS id',
-                DB::raw('UPPER(correspondencia.cat_estatus.descripcion) AS descripcion')
+                'correspondencia.cat_coordinacion.id_cat_coordinacion AS id',
+                DB::raw('UPPER(correspondencia.cat_coordinacion.descripcion) AS descripcion')
             ])
-            ->where('correspondencia.cat_estatus.id_cat_estatus', '=', $id);
-
-        // Usar first() para obtener un único resultado
+            ->where('correspondencia.cat_coordinacion.id_cat_coordinacion', '=', $id);
         $result = $query->first();
         return $result;
     }
 }
+
+/*
+ $query = DB::table('correspondencia.cat_coordinacion')
+     ->select([
+         'correspondencia.cat_coordinacion.id_cat_coordinacion AS id',
+         DB::raw('UPPER(correspondencia.cat_coordinacion.descripcion) AS descripcion')
+     ])
+     ->where('correspondencia.cat_coordinacion.id_cat_coordinacion', '=', $id);
+ $result = $query->first();
+ return $result;
+ */

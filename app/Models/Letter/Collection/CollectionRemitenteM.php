@@ -24,4 +24,20 @@ class CollectionRemitenteM extends Model
 
         return $query;
     }
+
+    public function edit($id)
+    {
+        $query = DB::table('correspondencia.cat_remitente')
+            ->select([
+                'correspondencia.cat_remitente.id_cat_remitente AS id',
+                DB::raw("UPPER(correspondencia.cat_remitente.nombre) || ' ' || 
+                UPPER(correspondencia.cat_remitente.primer_apellido) || ' ' || 
+                UPPER(correspondencia.cat_remitente.segundo_apellido) || ' - ' || 
+                UPPER(correspondencia.cat_remitente.rfc) AS descripcion")
+            ])
+            ->where('correspondencia.cat_remitente.id_cat_remitente', '=', $id);
+
+        $result = $query->first();
+        return $result;
+    }
 }

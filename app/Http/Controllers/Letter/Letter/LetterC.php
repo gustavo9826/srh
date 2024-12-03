@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Letter\Letter;
 
+use App\Models\Letter\Collection\CollectionClaveM;
+use App\Models\Letter\Collection\CollectionTramiteM;
 use App\Models\Letter\Collection\CollectionCoordinacionM;
 use App\Models\Letter\Collection\CollectionConsecutivoM;
 use App\Models\Letter\Collection\CollectionDateM;
@@ -76,8 +78,9 @@ class LetterC extends Controller
         $collectionUnidadM = new CollectionUnidadM();
         $collectionStatusM = new CollectionStatusM();
         $collectionCoordinacionM = new CollectionCoordinacionM();
-
+        $collectionTramiteM = new CollectionTramiteM();
         $collectionRemitenteM = new CollectionRemitenteM();
+        $collectionClaveM = new CollectionClaveM();
 
         $item = $letterM->edit($id); // Obtener el elemento con el ID pasado
 
@@ -93,20 +96,20 @@ class LetterC extends Controller
         $selectUnidad = $collectionUnidadM->list();//Catalogo de unidad
         $selectUnidadEdit = isset($item->id_cat_unidad) ? $collectionUnidadM->edit($item->id_cat_unidad) : [];
 
-        $selectCoordinacion = $collectionCoordinacionM->edit(1);//isset($item->id_cat_unidad) ? $collectionCoordinacionM->list($item->id_cat_unidad) : []; //Catalogos de coordinacion vacios
-        $selectCoordinacionEdit = [];//isset($item->id_cat_unidad) && isset($item->id_cat_coordinacion) ? $collectionCoordinacionM->edit($item->id_cat_coordinacion) : [];//Catalogos de coordinacion vacios
+        $selectCoordinacion = isset($item->id_cat_unidad) ? $collectionCoordinacionM->list($item->id_cat_unidad) : []; //Catalogos de coordinacion vacios
+        $selectCoordinacionEdit = isset($item->id_cat_unidad) && isset($item->id_cat_coordinacion) ? $collectionCoordinacionM->edit($item->id_cat_coordinacion) : [];//Catalogos de coordinacion vacios
 
         $selectStatus = $collectionStatusM->list(); //Obtenemos el catalogo de estatus
         $selectStatusEdit = isset($item->id_cat_estatus) ? $collectionStatusM->edit($item->id_cat_estatus) : [];//Catalogos debe estar vacio
 
-        $selectTramite = []; //Los catalogos incian vacios
-        $selectTramiteEdit = []; //Los catalogos incian vacios
+        $selectTramite = isset($item->id_cat_area) ? $collectionTramiteM->list($item->id_cat_area) : [];
+        $selectTramiteEdit = isset($item->id_cat_area) && isset($item->id_cat_tramite) ? $collectionTramiteM->edit($item->id_cat_tramite) : [];
 
-        $selectClave = []; //Los catalogos inician en vacio
-        $selectClaveEdit = []; // Los catalogos inician en vaio
+        $selectClave = isset($item->id_cat_area) && isset($item->id_cat_tramite) ? $collectionClaveM->list($item->id_cat_tramite) : [];
+        $selectClaveEdit = isset($item->id_cat_area) && isset($item->id_cat_tramite) && isset($item->id_cat_clave) ? $collectionClaveM->edit($item->id_cat_clave) : [];
 
-        $selectRemitente = []; //Se carga el catalogo de remitente
-        $selectRemitenteEdit = []; //LA funcion de editar se inicia en falso
+        $selectRemitente = $collectionRemitenteM->list();
+        $selectRemitenteEdit = isset($item->id_cat_remitente) ? $collectionRemitenteM->edit($item->id_cat_remitente) : [];
 
         return view('letter.letter.form', compact('selectRemitenteEdit', 'selectRemitente', 'selectClaveEdit', 'selectClave', 'selectTramite', 'selectTramiteEdit', 'selectStatusEdit', 'selectStatus', 'selectCoordinacionEdit', 'selectCoordinacion', 'selectUnidadEdit', 'selectUnidad', 'item', 'selectArea', 'selectAreaEdit', 'selectUser', 'selectUserEdit', 'selectEnlace', 'selectEnlaceEdit'));
     }

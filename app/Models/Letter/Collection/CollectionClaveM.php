@@ -36,4 +36,17 @@ class CollectionClaveM extends Model
 
         return $result;
     }
+
+    public function edit($id)
+    {
+        $query = DB::table('correspondencia.cat_clave')
+            ->select([
+                'correspondencia.cat_clave.id_cat_clave AS id',
+                DB::raw('UPPER(correspondencia.cat_clave.codigo) || \' - \' || UPPER(correspondencia.cat_clave.descripcion) AS descripcion')
+            ])
+            ->where('correspondencia.cat_clave.id_cat_clave', '=', $id);
+
+        $result = $query->first();
+        return $result;
+    }
 }
