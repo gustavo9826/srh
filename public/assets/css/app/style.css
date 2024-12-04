@@ -49569,7 +49569,21 @@ div.tagsinput span.tag a {
 }
 
 input[type="text"],
-                input[type="number"],
-                textarea {
-                    text-transform: uppercase;
-                }
+input[type="number"],
+textarea {
+    text-transform: uppercase;
+}
+
+/* Estilo para los inputs deshabilitados */
+input:disabled {
+    background-color: #cecece;
+    /* Fondo gris claro */
+    border: 2.8px dotted #ccc;
+    /* Líneas punteadas */
+    color: #454545;
+    /* Texto más tenue */
+    cursor: not-allowed;
+    /* Cursor tipo "no permitido" */
+    opacity: 0.6;
+    /* Opacidad para dar un aspecto más apagado */
+}

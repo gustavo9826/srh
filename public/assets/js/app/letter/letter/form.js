@@ -5,9 +5,27 @@ var token = $('meta[name="csrf-token"]').attr('content'); //Token for form
 
 $(document).ready(function () {
     $('select').selectpicker();
-    checkboxState();
+    //checkboxState();
     setData();
+    getRole();
 });
+
+//La funcion desabilita los campos dependiendo del rol de usuario
+function getRole() {
+    let bool_user_role = $('#bool_user_role').val();
+    let new_variable = (bool_user_role && bool_user_role.trim() !== '') ? true : false;
+    if (!new_variable) {
+        $('#num_documento').prop('disabled', true);
+        $('#fecha_inicio').prop('disabled', true);
+        $('#fecha_fin').prop('disabled', true);
+        $('#num_flojas').prop('disabled', true);
+        $('#num_tomos').prop('disabled', true);
+        $('#lugar').prop('disabled', true);
+        $('#asunto').prop('disabled', true);
+
+        $('#id_cat_area').prop('disabled', true);
+    }
+}
 
 //la funcion obtiene los datos al iniciar el formulario, como fecha inicio, año etc
 function setData() {
@@ -46,6 +64,7 @@ function getData() {
     });
 }
 
+/*
 //La funcion obtiene el estatus del checkbox para marcar o desmarcar la casilla
 function checkboxState() {
     let nameCheckbox = document.getElementById('rfc_remitente_bool').value; //se obitnee el valor del checkbox
@@ -66,4 +85,4 @@ document.getElementById('rfc_remitente_bool').addEventListener('change', functio
         $('#rfc_remitente_aux').val('');
     }
 });
-
+*/

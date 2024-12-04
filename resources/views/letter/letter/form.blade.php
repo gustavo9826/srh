@@ -1,5 +1,6 @@
 <!-- TEMPLATE APP -->
 <x-template-app.app-layout>
+    <?php include(resource_path('views/config.php')); ?>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="main-panel">
         <div class="content-wrapper">
@@ -21,6 +22,9 @@
                         <div>
                             <form action="{{ route('letter.save') }}" method="POST" class="form-sample">
                                 @csrf
+
+                                <x-template-form.template-form-input-hidden name="bool_user_role"
+                                    value="{{  $letterAdminMatch }}" />
 
                                 <x-template-form.template-form-input-hidden name="id_tbl_correspondencia"
                                     value="{{ optional($item)->id_tbl_correspondencia ?? '' }}" />
@@ -69,17 +73,17 @@
                                 <x-template-tittle.tittle-caption-secon tittle="Información general" />
 
                                 <div class="row">
-                                    <x-template-form.template-form-input-required :disabled="true" label="No. Documento" type="text"
+                                    <x-template-form.template-form-input-required label="No. Documento" type="text"
                                         name="num_documento" placeholder="NO. DOCUMENTO"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->num_documento ?? '' }}" />
 
-                                    <x-template-form.template-form-input-required :disabled="true"  label="Fecha de inicio" type="date"
+                                    <x-template-form.template-form-input-required label="Fecha de inicio" type="date"
                                         name="fecha_inicio" placeholder=""
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->fecha_inicio ?? '' }}" />
 
-                                    <x-template-form.template-form-input-required :disabled="true"  label="Fecha fin" type="date"
+                                    <x-template-form.template-form-input-required label="Fecha fin" type="date"
                                         name="fecha_fin" placeholder=""
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->fecha_fin ?? '' }}" />
@@ -88,29 +92,29 @@
                                 <div class="row">
 
 
-                                    <x-template-form.template-form-input-required :disabled="true"  label="No. hojas" type="integer"
+                                    <x-template-form.template-form-input-required label="No. hojas" type="integer"
                                         name="num_flojas" placeholder="NO. FOJAS"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->num_flojas ?? '' }}" />
 
-                                    <x-template-form.template-form-input-required :disabled="true"  label="No. tomos" type="integer"
+                                    <x-template-form.template-form-input-required label="No. tomos" type="integer"
                                         name="num_tomos" placeholder="NO. TOMOS"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->num_tomos ?? '' }}" />
 
-                                    <x-template-form.template-form-input-required :disabled="true"  label="Lugar" type="text" name="lugar"
+                                    <x-template-form.template-form-input-required label="Lugar" type="text" name="lugar"
                                         placeholder="LUGAR" grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4"
                                         autocomplete="" value="{{optional($item)->lugar ?? '' }}" />
                                 </div>
 
                                 <div class="row">
 
-                                    <x-template-form.template-form-input-required :disabled="true"  label="Asunto" type="text"
+                                    <x-template-form.template-form-input-required label="Asunto" type="text"
                                         name="asunto" placeholder="ASUNTO"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->asunto ?? '' }}" />
 
-                                    <x-template-form.template-form-input-required :disabled="true"  label="Observaciones" type="text"
+                                    <x-template-form.template-form-input-required label="Observaciones" type="text"
                                         name="observaciones" placeholder="OBSERVACIONES"
                                         grid="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8" autocomplete=""
                                         value="{{optional($item)->observaciones ?? '' }}" />
@@ -166,6 +170,7 @@
                                         :selectEdit="$selectRemitenteEdit" name="id_cat_remitente" tittle="Remitente"
                                         grid="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" />
 
+                                    
                                     <x-template-form.template-form-check name="rfc_remitente_bool"
                                         value="{{ !isset($item->rfc_remitente_bool) ? 'false' : $item->rfc_remitente_bool }}"
                                         text="¿Agregar remitente?" />
@@ -173,7 +178,7 @@
                                 </div>
 
                                 <div id="is_inputRemitente">
-                                    <x-template-form.template-form-input-required :disabled="true"  label="Remitente" type="text"
+                                    <x-template-form.template-form-input-required label="Remitente" type="text"
                                         name="rfc_remitente_aux" placeholder="REMITENTE"
                                         grid="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" autocomplete=""
                                         value="{{optional($item)->rfc_remitente_aux ?? '' }}" />

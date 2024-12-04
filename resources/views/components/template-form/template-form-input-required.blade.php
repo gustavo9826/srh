@@ -4,7 +4,7 @@
         <div class="col-sm-9">
             <input type="{{ $type }}" name="{{ $name }}" id="{{ $name }}" placeholder="{{ $placeholder }}"
                 autocomplete="{{ $autocomplete }}" value="{{ old($name, $value) }}" class="form-control"
-                style="font-size: 1rem;" @if($disabled) disabled @endif />
+                style="font-size: 1rem;" />
 
             @error($name)
                 <small style="color:red; font-family: Arial, sans-serif;">
