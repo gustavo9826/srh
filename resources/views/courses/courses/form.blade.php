@@ -34,40 +34,7 @@
                                         <label for="estatus">Estatus</label>
                                         <input type="checkbox" id="estatus" name="estatus" class="toggle-switch" {{ optional($item)->estatus ? 'checked' : '' }}>
                                     </div>
-                                    
-                                    <style>
-                                    .toggle-switch {
-                                        appearance: none;
-                                        width: 40px;
-                                        height: 20px;
-                                        background-color: grey;
-                                        border-radius: 10px;
-                                        position: relative;
-                                        cursor: pointer;
-                                        outline: none;
-                                        transition: background-color 0.3s;
-                                    }
-                                    
-                                    .toggle-switch:checked {
-                                        background-color: #10312b;
-                                    }
-                                    
-                                    .toggle-switch::before {
-                                        content: '';
-                                        position: absolute;
-                                        width: 18px;
-                                        height: 18px;
-                                        background-color: white;
-                                        border-radius: 50%;
-                                        top: 1px;
-                                        left: 1px;
-                                        transition: transform 0.3s;
-                                    }
-                                    
-                                    .toggle-switch:checked::before {
-                                        transform: translateX(20px);
-                                    }
-                                    </style>
+                                
                             </div>
 
                             <x-template-button.button-form-footer routeBack="{{ route('courses.list') }}" />
