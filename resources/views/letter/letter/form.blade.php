@@ -170,20 +170,7 @@
                                         :selectEdit="$selectRemitenteEdit" name="id_cat_remitente" tittle="Remitente"
                                         grid="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" />
 
-                                    
-                                    <x-template-form.template-form-check name="rfc_remitente_bool"
-                                        value="{{ !isset($item->rfc_remitente_bool) ? 'false' : $item->rfc_remitente_bool }}"
-                                        text="¿Agregar remitente?" />
-
                                 </div>
-
-                                <div id="is_inputRemitente">
-                                    <x-template-form.template-form-input-required label="Remitente" type="text"
-                                        name="rfc_remitente_aux" placeholder="REMITENTE"
-                                        grid="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" autocomplete=""
-                                        value="{{optional($item)->rfc_remitente_aux ?? '' }}" />
-                                </div>
-
 
                                 <x-template-button.button-form-footer routeBack="{{ route('letter.list') }}" />
 

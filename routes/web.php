@@ -11,9 +11,8 @@ use App\Http\Controllers\Home\AboutC;
 use App\Http\Controllers\Home\DashboardC;
 use App\Http\Controllers\Letter\Collection\CollectionAreaC;
 use App\Http\Controllers\Letter\Letter\LetterC;
-use App\Http\Controllers\Report\GeneratePdfC;
+use App\Http\Controllers\Letter\Report\ReporteCorrespondenciaC;
 use Illuminate\Support\Facades\Route;
-
 
 Route::get('/login', LoginC::class)->name('login'); ///ROUTE_LOGIN
 Route::get('/register', RegisterC::class)->name('register'); ///ROUTE_REGISTER
@@ -45,6 +44,5 @@ Route::post('/letter/collection/collectionTramite', [CollectionTramiteC::class, 
 Route::post('/letter/collection/collectionClave', [CollectionClaveC::class, 'collection'])->name('letter.collection.clabe')->middleware('auth');
 Route::post('/letter/collection/dataClave', [CollectionClaveC::class, 'dataClave'])->name('letter.collection.dataClave')->middleware('auth');
 
-
 //Generate PDF
-Route::get('/generate-pdf', [GeneratePdfC::class, 'generatePdf']);
+Route::get('/letter/generate-pdf/correspondencia/{id}', [ReporteCorrespondenciaC::class, 'generatePdf'])->middleware('auth');

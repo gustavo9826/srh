@@ -49576,14 +49576,27 @@ textarea {
 
 /* Estilo para los inputs deshabilitados */
 input:disabled {
-    background-color: #cecece;
+    background-color: white;
     /* Fondo gris claro */
     border: 2.8px dotted #ccc;
     /* Líneas punteadas */
-    color: #454545;
+    color: #d7d8da;
     /* Texto más tenue */
     cursor: not-allowed;
     /* Cursor tipo "no permitido" */
-    opacity: 0.6;
+    opacity: 0;
     /* Opacidad para dar un aspecto más apagado */
+}
+
+select:disabled {
+    background-color: #cecece;   /* Fondo gris claro */
+    border: 2.8px dotted #ccc;   /* Líneas punteadas */
+    color: #454545;              /* Texto más tenue */
+    cursor: not-allowed;         /* Cursor tipo "no permitido" */
+    opacity: 0.6;                /* Opacidad para dar un aspecto más apagado */
+}
+
+.form-control:disabled, .asColorPicker-input:disabled, .dataTables_wrapper select:disabled, .jsgrid .jsgrid-table .jsgrid-filter-row input:disabled[type="text"], .jsgrid .jsgrid-table .jsgrid-filter-row select:disabled, .jsgrid .jsgrid-table .jsgrid-filter-row input:disabled[type="number"], .select2-container--default .select2-selection--single:disabled, .select2-container--default .select2-selection--single .select2-search__field:disabled, .typeahead:disabled, .tt-query:disabled, .tt-hint:disabled, .form-control[readonly], .asColorPicker-input[readonly], .dataTables_wrapper select[readonly], .jsgrid .jsgrid-table .jsgrid-filter-row input[readonly][type="text"], .jsgrid .jsgrid-table .jsgrid-filter-row select[readonly], .jsgrid .jsgrid-table .jsgrid-filter-row input[readonly][type="number"], .select2-container--default .select2-selection--single[readonly], .select2-container--default .select2-selection--single .select2-search__field[readonly], .typeahead[readonly], .tt-query[readonly], .tt-hint[readonly] {
+    background-color: #ffffff;
+    opacity: 1;
 }
