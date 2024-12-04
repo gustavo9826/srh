@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\DB;
 class CoursesM extends Model
 {
     protected $table = 'capacitacion.cat_beneficio';
+    protected $primaryKey = 'id_beneficio'; // Especifica la clave primaria
     public $timestamps = false;
     protected $fillable = [
-        'id_beneficio',
         'descripcion',
         'estatus',
     ];

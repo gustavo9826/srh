@@ -21,24 +21,20 @@
                         <br>
                        <!--<x-template-tittle.tittle-caption-secon tittle="Información Catalogo Beneficio" />-->
 
-                        <form method="POST" action="{{ route('courses.create') }}">
-                            @csrf
-                            <div class="row">
-
-                                <x-template-form.template-form-input-required label="Descripcion" type="text"
-                                    name="descripcion" placeholder="Descripcion"
-                                    grid="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8" autocomplete=""
-                                    value="{{ optional($item)->descripcion ?? '' }}" />
-
-                                    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                                        <label for="estatus">Estatus</label>
-                                        <input type="checkbox" id="estatus" name="estatus" class="toggle-switch" {{ optional($item)->estatus ? 'checked' : '' }}>
-                                    </div>
-                                
+                       <form action="{{ route('courses.save') }}" method="POST" class="form-sample">
+                        @csrf
+                        <x-template-form.template-form-input-required label="Descripcion" type="text"
+                            name="descripcion" placeholder="Descripcion"
+                            grid="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8" autocomplete=""
+                            value="{{ optional($item)->descripcion ?? '' }}" />
+                    
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <label for="estatus">Estatus</label>
+                                <input type="checkbox" id="estatus" name="estatus" class="toggle-switch" checked>
                             </div>
-
-                            <x-template-button.button-form-footer routeBack="{{ route('courses.list') }}" />
-                        </form>
+                    
+                        <x-template-button.button-form-footer routeBack="{{ route('courses.list') }}" />
+                    </form>
                     </div>
                 </div>
             </div>
