@@ -49,7 +49,7 @@
                                     }
                                     
                                     .toggle-switch:checked {
-                                        background-color: green;
+                                        background-color: #10312b;
                                     }
                                     
                                     .toggle-switch::before {
