@@ -25,16 +25,30 @@ class CollectionClaveM extends Model
         // Usamos el Query Builder para hacer la consulta
         $result = DB::table('correspondencia.cat_clave')
             ->selectRaw('
-                        id_cat_clave AS id, 
-                        UPPER(descripcion) AS descripcion,
-                        UPPER(redaccion) AS redaccion,
-                        UPPER(codigo) AS codigo,
-                        UPPER(copiar) AS copiar
-                    ')
+                    id_cat_clave AS id, 
+                    UPPER(descripcion) AS descripcion,
+                    UPPER(redaccion) AS redaccion,
+                    UPPER(codigo) AS codigo,
+                    UPPER(copiar) AS copiar
+                ')
             ->where('id_cat_clave', $idClave)
             ->first(); // Usamos first() ya que solo esperamos un único resultado
 
-        return $result;
+        if ($result) {
+            // Formateamos la respuesta según lo que espera el JavaScript
+            return [
+                '_labClave' => $result->descripcion ?? '_',
+                '_labClaveCodigo' => $result->codigo ?? '_',
+                '_labClaveRedaccion' => $result->redaccion ?? '_',
+            ];
+        } else {
+            // Si no encontramos el registro, devolvemos un valor predeterminado
+            return [
+                '_labClave' => '_',
+                '_labClaveCodigo' => '_',
+                '_labClaveRedaccion' => '_',
+            ];
+        }
     }
 
     public function edit($id)

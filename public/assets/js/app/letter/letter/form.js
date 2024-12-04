@@ -24,7 +24,7 @@ function setData() {
 function getData() {
 
     let id_cat_anio = $('#id_cat_anio').val();//Obtener elemento
-    let id_cat_clave = $('#collectionClave').val();//Obtener elemento
+    let id_cat_clave = $('#id_cat_clave_aux').val();//Obtener elemento
 
     $.ajax({
         url: '/srh/public/letter/collection/dataClave',
@@ -38,7 +38,7 @@ function getData() {
             let item = response.nameYear;
             let itemClave = response.dataClave;
 
-            $('#_labAño').text(item.name); //establecer los varoles
+            $('#_labAño').text(item.name); // establecer los valores
             $('#_labClave').text(itemClave._labClave);
             $('#_labClaveCodigo').text(itemClave._labClaveCodigo);
             $('#_labClaveRedaccion').text(itemClave._labClaveRedaccion);

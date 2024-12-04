@@ -27,21 +27,13 @@ class CollectionClaveC extends Controller
     public function dataClave(Request $request)
     {
         $collectionDateM = new CollectionDateM();
+        $collectionClaveM = new CollectionClaveM();
 
         $id_cat_anio = $request->id_cat_anio; //Se obtienen los valores
         $id_cat_clave = $request->id_cat_clave; //Se obtienen los valores
 
         $nameYear = $collectionDateM->getYearName($id_cat_anio);
-
-        if (isset($id_cat_clave)) {
-            $id_cat_clave = "Con info";
-        } else {
-            $dataClave = [
-                '_labClave' => '_',
-                '_labClaveCodigo' => '_',
-                '_labClaveRedaccion' => '_',
-            ];
-        }
+        $dataClave = $collectionClaveM->getData($id_cat_clave);
 
         return response()->json([
             'nameYear' => $nameYear,

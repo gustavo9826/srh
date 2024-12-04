@@ -49567,3 +49567,9 @@ div.tagsinput span.tag a {
         grid-template-columns: 1fr; /* En pantallas pequeñas, las columnas se apilan en una sola */
     }
 }
+
+input[type="text"],
+                input[type="number"],
+                textarea {
+                    text-transform: uppercase;
+                }

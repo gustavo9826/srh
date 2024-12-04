@@ -22,7 +22,7 @@
                             <form action="{{ route('letter.save') }}" method="POST" class="form-sample">
                                 @csrf
 
-                                <x-template-form.template-form-input-hidden name="letterId"
+                                <x-template-form.template-form-input-hidden name="id_tbl_correspondencia"
                                     value="{{ optional($item)->id_tbl_correspondencia ?? '' }}" />
 
                                 <x-template-form.template-form-input-hidden name="fecha_captura"
@@ -33,6 +33,9 @@
 
                                 <x-template-form.template-form-input-hidden name="num_turno_sistema"
                                     value="{{ optional($item)->num_turno_sistema ?? '' }}" />
+
+                                <x-template-form.template-form-input-hidden name="id_cat_clave_aux"
+                                    value="{{ optional($item)->id_cat_clave ?? '' }}" />
 
                                 <x-template-tittle.tittle-caption-secon tittle="Información de correspondencia" />
                                 <div class="contenedor">
@@ -66,17 +69,17 @@
                                 <x-template-tittle.tittle-caption-secon tittle="Información general" />
 
                                 <div class="row">
-                                    <x-template-form.template-form-input-required label="No. Documento" type="text"
-                                        name="num_documento" placeholder="No. Documento"
+                                    <x-template-form.template-form-input-required :disabled="true" label="No. Documento" type="text"
+                                        name="num_documento" placeholder="NO. DOCUMENTO"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->num_documento ?? '' }}" />
 
-                                    <x-template-form.template-form-input-required label="Fecha de inicio" type="date"
+                                    <x-template-form.template-form-input-required :disabled="true"  label="Fecha de inicio" type="date"
                                         name="fecha_inicio" placeholder=""
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->fecha_inicio ?? '' }}" />
 
-                                    <x-template-form.template-form-input-required label="Fecha fin" type="date"
+                                    <x-template-form.template-form-input-required :disabled="true"  label="Fecha fin" type="date"
                                         name="fecha_fin" placeholder=""
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->fecha_fin ?? '' }}" />
@@ -85,30 +88,30 @@
                                 <div class="row">
 
 
-                                    <x-template-form.template-form-input-required label="No. hojas" type="integer"
-                                        name="num_flojas" placeholder="No. hojas"
+                                    <x-template-form.template-form-input-required :disabled="true"  label="No. hojas" type="integer"
+                                        name="num_flojas" placeholder="NO. FOJAS"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->num_flojas ?? '' }}" />
 
-                                    <x-template-form.template-form-input-required label="No. tomos" type="integer"
-                                        name="num_tomos" placeholder="No. tomos"
+                                    <x-template-form.template-form-input-required :disabled="true"  label="No. tomos" type="integer"
+                                        name="num_tomos" placeholder="NO. TOMOS"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->num_tomos ?? '' }}" />
 
-                                    <x-template-form.template-form-input-required label="Lugar" type="text" name="lugar"
-                                        placeholder="Lugar" grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4"
+                                    <x-template-form.template-form-input-required :disabled="true"  label="Lugar" type="text" name="lugar"
+                                        placeholder="LUGAR" grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4"
                                         autocomplete="" value="{{optional($item)->lugar ?? '' }}" />
                                 </div>
 
                                 <div class="row">
 
-                                    <x-template-form.template-form-input-required label="Asunto" type="text"
-                                        name="asunto" placeholder="Asunto"
+                                    <x-template-form.template-form-input-required :disabled="true"  label="Asunto" type="text"
+                                        name="asunto" placeholder="ASUNTO"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->asunto ?? '' }}" />
 
-                                    <x-template-form.template-form-input-required label="Observaciones" type="text"
-                                        name="observaciones" placeholder="Observaciones"
+                                    <x-template-form.template-form-input-required :disabled="true"  label="Observaciones" type="text"
+                                        name="observaciones" placeholder="OBSERVACIONES"
                                         grid="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8" autocomplete=""
                                         value="{{optional($item)->observaciones ?? '' }}" />
                                 </div>
@@ -170,8 +173,8 @@
                                 </div>
 
                                 <div id="is_inputRemitente">
-                                    <x-template-form.template-form-input-required label="Remitente" type="text"
-                                        name="rfc_remitente_aux" placeholder="Ingresa remitente"
+                                    <x-template-form.template-form-input-required :disabled="true"  label="Remitente" type="text"
+                                        name="rfc_remitente_aux" placeholder="REMITENTE"
                                         grid="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" autocomplete=""
                                         value="{{optional($item)->rfc_remitente_aux ?? '' }}" />
                                 </div>

@@ -8,8 +8,8 @@ class LetterM extends Model
 {
     protected $table = 'correspondencia.tbl_correspondencia';
     public $timestamps = false;
+    protected $primaryKey = 'id_tbl_correspondencia';
     protected $fillable = [
-        'id_tbl_correspondencia',
         'num_turno_sistema',
         'num_documento',
         'fecha_captura',
@@ -92,11 +92,33 @@ class LetterM extends Model
         }
 
         // Aplicar la paginación (OFFSET y LIMIT)
-        $query->orderBy('correspondencia.tbl_correspondencia.id_tbl_correspondencia', 'ASC')
+        $query->orderBy('correspondencia.tbl_correspondencia.id_tbl_correspondencia', 'DESC')
             ->offset($iterator) // OFFSET
             ->limit(5); // LIMIT
 
         // Ejecutar la consulta y retornar los resultados
         return $query->get();
     }
+
+    //La funcion valida que el no de documento sea unico
+    public function validateNoDocument($id, $value)
+    {
+        // Realizar la consulta a la base de datos, buscando si existe un registro con el valor de documento
+        $query = DB::table('correspondencia.tbl_correspondencia')
+            ->select('correspondencia.tbl_correspondencia.id_tbl_correspondencia')
+            ->whereRaw('TRIM(correspondencia.tbl_correspondencia.num_documento) = ?', [trim($value)]);
+
+        // Si el ID está presente, agregar la condición para excluir el ID
+        if (isset($id)) {
+            $query->whereRaw('correspondencia.tbl_correspondencia.id_tbl_correspondencia <> ?', [$id]);
+        }
+
+        // Ejecutar la consulta y verificar si hay resultados
+        $result = $query->first();
+
+        // Retornar true si se encuentra algún resultado, de lo contrario false
+        return $result;//$result !== null;
+    }
+
+
 }

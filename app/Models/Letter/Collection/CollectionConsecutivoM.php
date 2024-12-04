@@ -26,4 +26,14 @@ class CollectionConsecutivoM extends Model
         // Verifica si el resultado tiene la propiedad 'documento_id'
         return $query ? $query->documento_id : null;
     }
+
+    //La funcion actualiza el consecutivo
+    public function iteratorConsecutivo($idYear, $idDoc)
+    {
+        // Usando Query Builder para hacer el UPDATE
+        DB::table('correspondencia.rel_anio_documento')
+            ->where('id_cat_anio', $idYear)
+            ->where('id_cat_tipo_documento', $idDoc)
+            ->increment('consecutivo', 1); // Aumenta el campo 'consecutivo' en 1
+    }
 }
