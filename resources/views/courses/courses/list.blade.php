@@ -24,7 +24,7 @@
                                 <h4 class="card-title">Beneficio</h4>
                                 @if($letterAdminMatch)
                                     <p class="card-description">
-                                        ¿Deseas agregar un registro? <a href="{{ route('letter.create') }}"
+                                        ¿Deseas agregar un registro? <a href="{{ route('courses.create') }}"
                                             class="text-danger" style="margin-left: 10px;">
                                             <i class="fa fa-arrow-up"></i> Agregar Registro
                                         </a>
