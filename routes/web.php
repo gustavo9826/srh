@@ -67,13 +67,31 @@ Route::get('/coursescoordinacion/list', Courses3C::class)->name('coursescoordina
 Route::get('/coursescoordinacion/create', [Courses3C::class, 'create'])->name('coursescoordinacion.create')->middleware('auth');
 Route::post('/coursescoordinacion/save', [Courses3C::class, 'save'])->name('coursescoordinacion.save')->middleware('auth');
 
-
-
-//ROUTE_COUSER ---- > Categoria
+//ROUTE_COUSER ---- > Estatuto Orgánico
 Route::get('/coursesestatuto/list', Courses4C::class)->name('coursesestatuto.list')->middleware('auth');
+Route::get('/coursesestatuto/create', [Courses4C::class, 'create'])->name('coursesestatuto.create')->middleware('auth');
+Route::post('/coursesestatuto/save', [Courses4C::class, 'save'])->name('coursesestatuto.save')->middleware('auth');
+
+//ROUTE_COUSER ---- > Modalidad
 Route::get('/coursesmodalidad/list', Courses5C::class)->name('coursesmodalidad.list')->middleware('auth');
+Route::get('/coursesmodalidad/create', [Courses5C::class, 'create'])->name('coursesmodalidad.create')->middleware('auth');
+Route::post('/coursesmodalidad/save', [Courses5C::class, 'save'])->name('coursesmodalidad.save')->middleware('auth');
+
+//ROUTE_COUSER ---- > Nombre Acción
 Route::get('/coursesnombreacc/list', Courses6C::class)->name('coursesnombreacc.list')->middleware('auth');
+Route::get('/coursesnombreacc/create', [Courses6C::class, 'create'])->name('coursesnombreacc.create')->middleware('auth');
+Route::post('/coursesnombreacc/save', [Courses6C::class, 'save'])->name('coursesnombreacc.save')->middleware('auth');
+
+//ROUTE_COUSER ---- > Organizacion
 Route::get('/coursesorganizacion/list', Courses7C::class)->name('coursesorganizacion.list')->middleware('auth');
+Route::get('/coursesorganizacion/create', [Courses7C::class, 'create'])->name('coursesorganizacion.create')->middleware('auth');
+Route::post('/coursesorganizacion/save', [Courses7C::class, 'save'])->name('coursesorganizacion.save')->middleware('auth');
+
+//ROUTE_COUSER ---- > Programa
 Route::get('/coursesprograma/list', Courses8C::class)->name('coursesprograma.list')->middleware('auth');
+Route::get('/coursesprograma/create', [Courses8C::class, 'create'])->name('coursesprograma.create')->middleware('auth');
+Route::post('/coursesprograma/save', [Courses8C::class, 'save'])->name('coursesprograma.save')->middleware('auth');
+
+//ROUTE_COUSER ---- >
 Route::get('/coursestipoac/list', Courses9C::class)->name('coursestipoac.list')->middleware('auth');
 Route::get('/coursestipocur/list', Courses10C::class)->name('coursestipocur.list')->middleware('auth');

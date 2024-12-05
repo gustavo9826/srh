@@ -8,7 +8,7 @@
                 <div class="col-md-12 grid-margin">
                     <div class="row">
                         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                            <h3 class="font-weight-bold">Catalogo</h3>
+                            <h3 class="font-weight-bold">Catálogo</h3>
                             <h5 class="font-weight-normal mb-0">Cursos</h5>
                         </div>
                     </div>
@@ -21,11 +21,11 @@
 
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <h4 class="card-title">Estatuto Organico</h4>
+                                <h4 class="card-title">Estatuto Orgánico</h4>
                                 @if($letterAdminMatch)
                                     <p class="card-description">
-                                        ¿Deseas agregar un registro? <a href="{{ route('letter.create') }}"
-                                            class="text-danger" style="margin-left: 10px;">
+                                        ¿Deseas agregar un registro? 
+                                        <a href="{{ route('coursesestatuto.create') }}" class="text-danger" style="margin-left: 10px;">
                                             <i class="fa fa-arrow-up"></i> Agregar Registro
                                         </a>
                                     </p>
@@ -41,16 +41,20 @@
                         <x-template-table.template-table>
                             <thead>
                                 <tr>
-                                    <th>
-                                        Id_Estatuto_Organico
-                                    </th>
-                                    <th>
-                                        Descripcion
-                                    </th>
-                                    <th>
-                                        Estatus
-                                    </th>
+                                    <th>Id_Estatuto_Organico</th>
+                                    <th>Descripción</th>
+                                    <th>Estatus</th>
+                                </tr>
                             </thead>
+                            <tbody>
+                                @foreach($coursesestatuto as $course)
+                                    <tr>
+                                        <td>{{ $course->id_estatuto_organico }}</td>
+                                        <td>{{ $course->descripcion }}</td>
+                                        <td>{{ $course->estatus ? 'Activo' : 'Inactivo' }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </x-template-table.template-table>
 
                         <!-- TEMPLATE PAGINATOR-->
@@ -62,6 +66,7 @@
 
         </div>
     </div>
+
 
     <!-- CODE SCRIPT-->
     <script src="{{ asset('assets/js/app/courses/coursesestatuto/table.js') }}"></script>

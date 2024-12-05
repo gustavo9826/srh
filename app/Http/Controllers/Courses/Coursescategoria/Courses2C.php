@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Courses\Coursescategoria;
+
 use App\Http\Controllers\Controller;
 use App\Models\Courses\Courses\CoursescategoriaM;
 use Illuminate\Http\Request;
