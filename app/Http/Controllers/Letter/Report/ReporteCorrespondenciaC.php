@@ -22,26 +22,46 @@ class ReporteCorrespondenciaC extends Controller
         $pdf->useTemplate($template); // Usar la plantilla importada
 
         // Configurar la fuente para el texto
-        $pdf->SetFont('Arial', '', 10);
+        $pdf->SetFont('Arial', '', 9);
+
+        //DATA CODIGO
+        $pdf->SetXY(31.9, 114.6); // Posición X, Y en el PDF
+        $pdf->Write(0, $data->codigo);
+
+        //DATA TRAMITE
+        $pdf->SetXY(31.5, 109.2); // Posición X, Y en el PDF
+        $pdf->Write(0, $data->tramite);
+
+        //DATA AREA
+        $pdf->SetXY(35, 95); // Posición X, Y en el PDF
+        $pdf->Write(0, $data->area);
+
+        //DATA COORDINACION
+        $pdf->SetXY(35, 90); // Posición X, Y en el PDF
+        $pdf->Write(0, $data->coordinacion);
+
+        //DATA UNIDAD
+        $pdf->SetXY(35, 85); // Posición X, Y en el PDF
+        $pdf->Write(0, $data->unidad);
 
         //AÑO 
-        $pdf->SetXY(163.9, 55.3); // Posición X, Y en el PDF
+        $pdf->SetXY(147, 65); // Posición X, Y en el PDF
         $pdf->Write(0, $data->anio);
 
         //FECHA DE INICIO
-        $pdf->SetXY(41.5, 54.8); // Posición X, Y en el PDF
+        $pdf->SetXY(42, 59); // Posición X, Y en el PDF
         $pdf->Write(0, $data->fecha_inicio);
 
         //FECHA DE FIN 
-        $pdf->SetXY(113, 55); // Posición X, Y en el PDF
+        $pdf->SetXY(147, 59); // Posición X, Y en el PDF
         $pdf->Write(0, $data->fecha_fin);
 
         //DATA NUM TURNO
-        $pdf->SetXY(38, 62.3); // Posición X, Y en el PDF
+        $pdf->SetXY(42, 65); // Posición X, Y en el PDF
         $pdf->Write(0, $data->num_turno_sistema);
 
         //DATA NUM DOCUMENTO
-        $pdf->SetXY(49, 70.2); // Posición X, Y en el PDF
+        $pdf->SetXY(42, 71); // Posición X, Y en el PDF
         $pdf->Write(0, $data->num_documento);
 
 

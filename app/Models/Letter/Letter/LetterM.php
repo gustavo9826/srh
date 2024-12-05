@@ -142,7 +142,7 @@ class LetterM extends Model
                 'correspondencia.cat_anio.descripcion AS anio',
                 'correspondencia.cat_tramite.descripcion AS tramite',
                 'correspondencia.cat_area.descripcion AS area',
-                'correspondencia.cat_clave.codigo AS codigo',
+                'correspondencia.cat_clave.descripcion AS codigo',
                 DB::raw("COALESCE(correspondencia.cat_clave.descripcion, '') || '/' ||
                             COALESCE(correspondencia.cat_clave.redaccion, '') AS clave"),
                 'correspondencia.cat_unidad.descripcion AS unidad',
