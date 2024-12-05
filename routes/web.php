@@ -92,6 +92,12 @@ Route::get('/coursesprograma/list', Courses8C::class)->name('coursesprograma.lis
 Route::get('/coursesprograma/create', [Courses8C::class, 'create'])->name('coursesprograma.create')->middleware('auth');
 Route::post('/coursesprograma/save', [Courses8C::class, 'save'])->name('coursesprograma.save')->middleware('auth');
 
-//ROUTE_COUSER ---- >
+//ROUTE_COUSER ---- > Tipo de acción
 Route::get('/coursestipoac/list', Courses9C::class)->name('coursestipoac.list')->middleware('auth');
+Route::get('/coursestipoac/create', [Courses9C::class, 'create'])->name('coursestipoac.create')->middleware('auth');
+Route::post('/coursestipoac/save', [Courses9C::class, 'save'])->name('coursestipoac.save')->middleware('auth');
+
+//ROUTE_COUSER ---- >
 Route::get('/coursestipocur/list', Courses10C::class)->name('coursestipocur.list')->middleware('auth');
+Route::get('/coursestipocur/create', [Courses10C::class, 'create'])->name('coursestipocur.create')->middleware('auth');
+Route::post('/coursestipocur/save', [Courses10C::class, 'save'])->name('coursestipocur.save')->middleware('auth');
