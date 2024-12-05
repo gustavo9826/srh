@@ -52,13 +52,24 @@ Route::post('/letter/collection/collectionUnidad', [CollectionUnidadC::class, 'c
 Route::post('/letter/collection/collectionTramite', [CollectionTramiteC::class, 'collection'])->name('letter.collection.tramite')->middleware('auth');
 Route::post('/letter/collection/collectionClave', [CollectionClaveC::class, 'collection'])->name('letter.collection.clabe')->middleware('auth');
 
-//ROUTE_COUSER ---- >Beneficio
+//ROUTE_COUSER ---- > Beneficio
 Route::get('/courses/list', CoursesC::class)->name('courses.list')->middleware('auth');
 Route::get('/courses/create', [CoursesC::class, 'create'])->name('courses.create')->middleware('auth');
 Route::post('/courses/save', [CoursesC::class, 'save'])->name('courses.save')->middleware('auth');
-//ROUTE_COUSER 
+
+//ROUTE_COUSER ---- > Categoria
 Route::get('/coursescategoria/list', Courses2C::class)->name('coursescategoria.list')->middleware('auth');
+Route::get('/coursescategoria/create', [Courses2C::class, 'create'])->name('coursescategoria.create')->middleware('auth');
+Route::post('/coursescategoria/save', [Courses2C::class, 'save'])->name('coursescategoria.save')->middleware('auth');
+
+//ROUTE_COUSER ---- > Coordinacion
 Route::get('/coursescoordinacion/list', Courses3C::class)->name('coursescoordinacion.list')->middleware('auth');
+Route::get('/coursescoordinacion/create', [Courses3C::class, 'create'])->name('coursescoordinacion.create')->middleware('auth');
+Route::post('/coursescoordinacion/save', [Courses3C::class, 'save'])->name('coursescoordinacion.save')->middleware('auth');
+
+
+
+//ROUTE_COUSER ---- > Categoria
 Route::get('/coursesestatuto/list', Courses4C::class)->name('coursesestatuto.list')->middleware('auth');
 Route::get('/coursesmodalidad/list', Courses5C::class)->name('coursesmodalidad.list')->middleware('auth');
 Route::get('/coursesnombreacc/list', Courses6C::class)->name('coursesnombreacc.list')->middleware('auth');

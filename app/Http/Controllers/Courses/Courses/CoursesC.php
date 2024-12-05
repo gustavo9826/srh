@@ -10,9 +10,13 @@ use Illuminate\Http\Request;
 class CoursesC extends Controller
 {
     public function __invoke()
-    {
-        return view('courses/courses/list');
-    }
+{
+    // Obtener todos los cursos
+    $courses = CoursesM::all();
+
+    // Pasar los cursos a la vista
+    return view('courses/courses/list', compact('courses'));
+}
 
     public function save(Request $request)
     {
