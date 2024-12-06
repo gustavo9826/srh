@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Letter\Report;
 use App\Models\Letter\Letter\LetterM;
 use setasign\Fpdi\Fpdi;
 use App\Http\Controllers\Controller;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReporteCorrespondenciaC extends Controller
@@ -20,16 +20,53 @@ class ReporteCorrespondenciaC extends Controller
         $template = $pdf->importPage(1); // Importar la primera página del PDF existente
         $pdf->addPage(); // Agregar una página en blanco
         $pdf->useTemplate($template); // Usar la plantilla importada
+        $fechaActual = Carbon::now(); //Fecha actual para el reporte
 
         // Configurar la fuente para el texto
         $pdf->SetFont('Arial', '', 9);
 
+        //DATA DATE ACTUAL
+        $pdf->SetXY(182, 43); // Posición X, Y en el PDF
+        $pdf->Write(0, $fechaFormateada = now()->format('d/m/Y'));
+
+        //DATA NO COPIAS
+        $pdf->SetXY(170, 167.2); // Posición X, Y en el PDF
+        $pdf->Write(0, $data->num_copias);
+
+        //DATA NO TOMOS
+        $pdf->SetXY(103, 167.2); // Posición X, Y en el PDF
+        $pdf->Write(0, $data->num_tomos);
+
+        //DATA O FOJAS
+        $pdf->SetXY(35.3, 167.2); // Posición X, Y en el PDF
+        $pdf->Write(0, $data->num_flojas);
+
+        //DATA LUGAR
+        $pdf->SetXY(37.2, 147.7); // Posición X, Y en el PDF
+        $pdf->Write(0, $data->observaciones);
+
+        //DATA LUGAR
+        $pdf->SetXY(37.2, 142.7); // Posición X, Y en el PDF
+        $pdf->Write(0, $data->lugar);
+
+        //DATA ASUNTO
+        $pdf->SetXY(37.2, 138); // Posición X, Y en el PDF
+        $pdf->Write(0, $data->asunto);
+
+        //DATA REMITENTE
+        $pdf->SetXY(37.2, 132.7); // Posición X, Y en el PDF
+        $pdf->Write(0, $data->remitente);
+
+        //DATA DESCRIPCION
+        $pdf->SetXY(32.7, 118.8); // Posición X, Y en el PDF
+        $pdf->Write(0, $data->clave);
+
         //DATA CODIGO
-        $pdf->SetXY(31.9, 114.6); // Posición X, Y en el PDF
+        $pdf->SetXY(32.7, 113.9); // Posición X, Y en el PDF
         $pdf->Write(0, $data->codigo);
 
         //DATA TRAMITE
-        $pdf->SetXY(31.5, 109.2); // Posición X, Y en el PDF
+        $pdf->SetXY(32.7, 109.2); // Posición X, Y en el PDF
         $pdf->Write(0, $data->tramite);
 
         //DATA AREA
@@ -63,10 +100,6 @@ class ReporteCorrespondenciaC extends Controller
         //DATA NUM DOCUMENTO
         $pdf->SetXY(42, 71); // Posición X, Y en el PDF
         $pdf->Write(0, $data->num_documento);
-
-
-
-
 
         // Enviar el PDF generado al navegador
         return response($pdf->Output('I'), 200)

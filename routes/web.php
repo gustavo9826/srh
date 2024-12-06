@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Cloud\ConnectionC;
+use App\Http\Controllers\Letter\Cloud\CloudOficioC;
 use App\Http\Controllers\Letter\Collection\CollectionClaveC;
 use App\Http\Controllers\Letter\Collection\CollectionTramiteC;
 use App\Http\Controllers\Letter\Collection\CollectionUnidadC;
@@ -43,6 +45,7 @@ Route::post('/letter/collection/collectionUnidad', [CollectionUnidadC::class, 'c
 Route::post('/letter/collection/collectionTramite', [CollectionTramiteC::class, 'collection'])->name('letter.collection.tramite')->middleware('auth');
 Route::post('/letter/collection/collectionClave', [CollectionClaveC::class, 'collection'])->name('letter.collection.clabe')->middleware('auth');
 Route::post('/letter/collection/dataClave', [CollectionClaveC::class, 'dataClave'])->name('letter.collection.dataClave')->middleware('auth');
-
-//Generate PDF
 Route::get('/letter/generate-pdf/correspondencia/{id}', [ReporteCorrespondenciaC::class, 'generatePdf'])->middleware('auth');
+
+
+Route::get('/oficio/cloud', [ConnectionC::class, 'connection']);
