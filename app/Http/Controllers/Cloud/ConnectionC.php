@@ -2,97 +2,61 @@
 namespace App\Http\Controllers\Cloud;
 
 use App\Http\Controllers\Controller;
-use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 class ConnectionC extends Controller
 {
+
+    public function list()
+    {
+        return view('letter/oficio/cloudList');
+    }
     public function connection()
     {
-        // Obtener las credenciales de Alfresco desde el archivo .env
-        $baseUrl = env('ALFRESCO_URL', 'http://172.16.17.12:8080');
-        $userId = env('ALFRESCO_USER', 'admin');  // Usuario
-        $password = env('ALFRESCO_PASS', 'admin'); // Contraseña
+        // URL de la API de Alfresco y el nodo específico para obtener el archivo
+        $url = "http://172.16.17.12:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/";
+        $getfile = $url . 'ae5327dc-5c95-4d72-b648-1d77176bf21c/content'; // Asegúrate de tener la ruta correcta para obtener el contenido del archivo
 
-        // Crear una instancia de Guzzle
-        $client = new Client();
+        $username = 'admin';
+        $password = 'admin';
 
-        try {
-            $authUrl = $baseUrl . '/alfresco/api/-default-/public/authentication/versions/1/tickets';
+        // Codificar las credenciales como usuario:contraseña en base64
+        $credentials = base64_encode("{$username}:{$password}");
 
-            // Datos de autenticación
-            $data = [
-                "userId" => $userId,
-                "password" => $password,
+        // Realizar la solicitud GET con la cabecera de autorización básica
+        $response = Http::withHeaders([
+            'Authorization' => 'Basic ' . $credentials
+        ])->get($getfile);
+
+        // Verificar si la solicitud fue exitosa
+        if ($response->successful()) {
+            // Obtener el contenido del archivo
+            $fileContent = $response->body();
+
+            // Definir el nombre del archivo (ajústalo según lo necesario)
+            $fileName = 'alfresco_file.txt'; // Cambiar según el tipo de archivo, por ejemplo, PDF, JPG, etc.
+
+            // Verificar si el contenido es un archivo descargable
+            $headers = [
+                'Content-Type' => $response->header('Content-Type'),
+                'Content-Disposition' => 'inline; filename="' . $fileName . '"',
             ];
 
-            // Realizar la solicitud POST para obtener el ticket de autenticación
-            $response = $client->post($authUrl, [
-                'json' => $data,
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                ],
+            // Devolver el archivo al navegador en una nueva pestaña (sin forzar la descarga)
+            return response($fileContent, 200, $headers);
+        } else {
+            // Manejar el error si la solicitud falla
+            Log::error('Error al obtener el archivo de Alfresco.', [
+                'status' => $response->status(),
+                'error_message' => $response->body()
             ]);
 
-            // Obtener el ticket de autenticación
-            $responseBody = json_decode($response->getBody()->getContents(), true);
-            if (!isset($responseBody['entry']['id'])) {
-                Log::error('El token de autenticación no se recibió correctamente.');
-                return response()->json(['error' => 'Token de autenticación inválido.'], 400);
-            }
-
-            $ticket = $responseBody['entry']['id'];
-
-            // Depuración del token
-            Log::info('Token de autenticación recibido', ['token' => $ticket]);
-
-            // UUID del archivo que deseas descargar
-            $uuid = '1b7badaf-5558-4b2a-a4c8-76567e1ca0ba';
-            $downloadUrl = $baseUrl . "/alfresco/api/-default-/public/alfresco/versions/1/nodes/{$uuid}/content";
-
-            // Realizar la solicitud GET para obtener el archivo
-            $downloadResponse = $client->get($downloadUrl, [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . $ticket,  // Usar el ticket de autenticación
-                    'Accept' => 'application/octet-stream',  // Especificamos que esperamos un archivo binario
-                ],
-            ]);
-
-            // Verificar si la respuesta fue exitosa (código 200)
-            if ($downloadResponse->getStatusCode() == 200) {
-                // Obtener el archivo
-                $fileContent = $downloadResponse->getBody()->getContents();
-
-                // Guardar el archivo en el servidor
-                $fileName = 'archivo_descargado.ext';  // Nombre del archivo
-                $filePath = storage_path('app/' . $fileName);  // Ruta para guardarlo
-
-                // Guardar el archivo en el disco
-                file_put_contents($filePath, $fileContent);
-
-                Log::info('Archivo descargado con éxito.', ['filePath' => $filePath]);
-
-                return response()->json([
-                    'message' => 'Archivo descargado con éxito.',
-                    'filePath' => $filePath,
-                ]);
-            } else {
-                Log::error('Error al descargar el archivo desde Alfresco', [
-                    'status_code' => $downloadResponse->getStatusCode(),
-                    'body' => $downloadResponse->getBody()->getContents(),
-                ]);
-                return response()->json([
-                    'error' => 'No se pudo descargar el archivo',
-                    'status_code' => $downloadResponse->getStatusCode(),
-                ], 400);
-            }
-
-        } catch (\GuzzleHttp\Exception\RequestException $e) {
-            Log::error('Error en la solicitud a Alfresco: ' . $e->getMessage());
-            return response()->json(['error' => 'Error en la solicitud a Alfresco: ' . $e->getMessage()], 500);
-        } catch (\Exception $e) {
-            Log::error('Error general: ' . $e->getMessage());
-            return response()->json(['error' => 'Error general: ' . $e->getMessage()], 500);
+            return response()->json([
+                'error' => 'Error en la solicitud',
+                'status' => $response->status(),
+                'message' => $response->body()
+            ], $response->status());
         }
     }
 }

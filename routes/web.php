@@ -49,3 +49,4 @@ Route::get('/letter/generate-pdf/correspondencia/{id}', [ReporteCorrespondenciaC
 
 
 Route::get('/oficio/cloud', [ConnectionC::class, 'connection']);
+Route::get('/oficio/cloud/list', [ConnectionC::class, 'list']);
