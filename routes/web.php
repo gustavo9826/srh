@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Cloud\ConnectionC;
+use App\Http\Controllers\Letter\Collection\CollectionYearC;
 use App\Http\Controllers\Letter\Office\OfficeC;
 use App\Http\Controllers\Letter\Collection\CollectionClaveC;
 use App\Http\Controllers\Letter\Collection\CollectionTramiteC;
@@ -52,5 +53,6 @@ Route::get('/office/list', [OfficeC::class, 'list'])->name('office.list')->middl
 Route::post('/office/table', [OfficeC::class, 'table'])->name('office.table')->middleware('auth');
 Route::get('/office/create', [OfficeC::class, 'create'])->name('office.create')->middleware('auth');
 
-
+//Collection
+Route::post('/year/getYear', [CollectionYearC::class, 'getYear'])->name('year.getYear')->middleware('auth');
 Route::get('/oficio/cloud/list', [ConnectionC::class, 'list']);

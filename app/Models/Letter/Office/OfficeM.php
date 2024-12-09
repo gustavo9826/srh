@@ -6,6 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 class OfficeM extends Model
 {
+    protected $table = 'correspondencia.tbl_oficio';
+    public $timestamps = false;
+    protected $primaryKey = 'id_tbl_oficio';
+    protected $fillable = [
+        'num_turno_sistema',
+        'fecha_inicio',
+        'fecha_fin',
+        'fecha_captura',
+        'asunto',
+        'observaciones',
+        'fecha_usuario',
+        'rfc_remitente_aux_nombre',
+        'rfc_remitente_bool',
+        'id_usuario_sistema',
+        'id_cat_area',
+        'id_tbl_usuario_area',
+        'id_tbl_usuario_enlace',
+        'id_cat_anio',
+        'id_cat_remitente',
+        'id_tbl_correspondencia',
+    ];
+
     //La funcion crea la tabla tanto para busquedas como para modelado
     public function list($iterator, $searchValue, $idUser)
     {

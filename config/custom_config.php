@@ -17,4 +17,5 @@ return [
 
     /* VARIABLES PARA LA IDENTIFICACION DE TABLAS DE <CORRESPONDENCIA></CORRESPONDENCIA*/
     'CP_TABLE_CORRESPONDENCIA' => 1, //Hace referencia a la tabla principal de correspondencia para identificar su id en la tabla de consecutivo asi como la tabla correspondencia.cat_tipo_docuemnto
+    'CP_TABLE_OFICIO' => 2, //Hace referencia a la tabla de oficio para identificar su id en la tabla de consecutivo asi como la tabla correspondencia.cat_tipo_docuemnto
 ];

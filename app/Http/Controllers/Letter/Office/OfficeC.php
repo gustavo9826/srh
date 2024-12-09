@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Letter\Office;
+use App\Models\Letter\Letter\LetterM;
 use App\Models\Letter\Office\OfficeM;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Letter\Collection\CollectionDateM;
+use App\Models\Letter\Collection\CollectionConsecutivoM;
+use App\Models\Letter\Collection\CollectionAreaM;
+use App\Models\Letter\Collection\CollectionRemitenteM;
 class OfficeC extends Controller
 {
     //La funcion retorna la vista principal de la tabla
@@ -54,6 +58,28 @@ class OfficeC extends Controller
 
     public function create()
     {
-        return view('letter/office/form');
+        $item = new LetterM();
+        $collectionDateM = new CollectionDateM();
+        $collectionConsecutivoM = new CollectionConsecutivoM();
+        $collectionAreaM = new CollectionAreaM();
+        $collectionRemitenteM = new CollectionRemitenteM();
+
+        $item->fecha_captura = now()->format('d/m/Y'); // Formato de fecha: día/mes/año
+        $item->id_cat_anio = $collectionDateM->idYear();
+        $item->num_turno_sistema = $collectionConsecutivoM->noDocumento($item->id_cat_anio, config('custom_config.CP_TABLE_OFICIO'));
+
+        $selectArea = $collectionAreaM->list(); //Catalogo de area
+        $selectAreaEdit = []; //catalogo de area null
+
+        $selectUser = []; //Catalogo de Area - usuario, al crear comienza en vacio 
+        $selectUserEdit = []; //Catalogo de Area - usuario, al crear comienza en vacio 
+
+        $selectEnlace = []; //Catalogo de Area - enlace, al crear comienza en vacio 
+        $selectEnlaceEdit = []; //Catalogo de Area - enlace, al crear comienza en vacio 
+
+        $selectRemitente = $collectionRemitenteM->list(); //Se carga el catalogo de remitente
+        $selectRemitenteEdit = []; //LA funcion de editar se inicia en falso
+
+        return view('letter/office/form', compact('selectRemitenteEdit','selectRemitente','selectEnlaceEdit', 'selectEnlace', 'selectUserEdit', 'selectUser', 'selectAreaEdit', 'selectArea', 'item'));
     }
 }

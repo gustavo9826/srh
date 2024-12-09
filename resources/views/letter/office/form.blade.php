@@ -17,8 +17,8 @@
                 <div class="card custom-card">
                     <div class="card-body">
                         <x-template-tittle.tittle-caption
-                            tittle="{{ isset($item->id_tbl_correspondencia) ? 'Modificar' : 'Agregar ' }} Correspondencia"
-                            route="{{ route('letter.list') }}" />
+                            tittle="{{ isset($item->id_tbl_oficio) ? 'Modificar' : 'Agregar ' }} Oficio"
+                            route="{{ route('office.list') }}" />
                         <div>
                             <form action="{{ route('letter.save') }}" method="POST" class="form-sample">
                                 @csrf
@@ -26,8 +26,8 @@
                                 <x-template-form.template-form-input-hidden name="bool_user_role"
                                     value="{{  $letterAdminMatch }}" />
 
-                                <x-template-form.template-form-input-hidden name="id_tbl_correspondencia"
-                                    value="{{ optional($item)->id_tbl_correspondencia ?? '' }}" />
+                                <x-template-form.template-form-input-hidden name="id_tbl_oficio"
+                                    value="{{ optional($item)->id_tbl_oficio ?? '' }}" />
 
                                 <x-template-form.template-form-input-hidden name="fecha_captura"
                                     value="{{ optional($item)->fecha_captura ?? '' }}" />
@@ -38,8 +38,6 @@
                                 <x-template-form.template-form-input-hidden name="num_turno_sistema"
                                     value="{{ optional($item)->num_turno_sistema ?? '' }}" />
 
-                                <x-template-form.template-form-input-hidden name="id_cat_clave_aux"
-                                    value="{{ optional($item)->id_cat_clave ?? '' }}" />
 
                                 <x-template-tittle.tittle-caption-secon tittle="Información de correspondencia" />
                                 <div class="contenedor">
@@ -55,26 +53,14 @@
                                         <label class="etiqueta">Año:</label>
                                         <label id="_labAño" class="valor"></label>
                                     </div>
-                                    <div class="item">
-                                        <label class="etiqueta">Clave:</label>
-                                        <label id="_labClave" class="valor"></label>
-                                    </div>
-                                    <div class="item">
-                                        <label class="etiqueta">Clave / código:</label>
-                                        <label id="_labClaveCodigo" class="valor"></label>
-                                    </div>
-                                    <div class="item">
-                                        <label class="etiqueta">Clave / redacción:</label>
-                                        <label id="_labClaveRedaccion" class="valor"></label>
-                                    </div>
                                 </div>
 
                                 <br>
                                 <x-template-tittle.tittle-caption-secon tittle="Información general" />
 
                                 <div class="row">
-                                    <x-template-form.template-form-input-required label="No. Documento" type="text"
-                                        name="num_documento" placeholder="NO. DOCUMENTO"
+                                    <x-template-form.template-form-input-required label="No. Turno Asoc." type="text"
+                                        name="num_documento" placeholder="NO. TURNO ASOCIADO"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->num_documento ?? '' }}" />
 
@@ -87,24 +73,6 @@
                                         name="fecha_fin" placeholder=""
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
                                         value="{{optional($item)->fecha_fin ?? '' }}" />
-                                </div>
-
-                                <div class="row">
-
-
-                                    <x-template-form.template-form-input-required label="No. hojas" type="integer"
-                                        name="num_flojas" placeholder="NO. FOJAS"
-                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
-                                        value="{{optional($item)->num_flojas ?? '' }}" />
-
-                                    <x-template-form.template-form-input-required label="No. tomos" type="integer"
-                                        name="num_tomos" placeholder="NO. TOMOS"
-                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
-                                        value="{{optional($item)->num_tomos ?? '' }}" />
-
-                                    <x-template-form.template-form-input-required label="Lugar" type="text" name="lugar"
-                                        placeholder="LUGAR" grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4"
-                                        autocomplete="" value="{{optional($item)->lugar ?? '' }}" />
                                 </div>
 
                                 <div class="row">
@@ -136,33 +104,6 @@
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
                                 </div>
 
-                                <div class="row">
-                                    <x-template-form.template-form-select-required :selectValue="$selectUnidad"
-                                        :selectEdit="$selectUnidadEdit" name="id_cat_unidad" tittle="Unidad"
-                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
-
-                                    <x-template-form.template-form-select-required :selectValue="$selectCoordinacion"
-                                        :selectEdit="$selectCoordinacionEdit" name="id_cat_coordinacion"
-                                        tittle="Coordinación" grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
-                                </div>
-
-
-                                <x-template-tittle.tittle-caption-secon tittle="Información de estado de documento" />
-                                <div class="row">
-                                    <x-template-form.template-form-select-required :selectValue="$selectStatus"
-                                        :selectEdit="$selectStatusEdit" name="id_cat_estatus" tittle="Estatus"
-                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
-
-                                    <x-template-form.template-form-select-required :selectValue="$selectTramite"
-                                        :selectEdit="$selectTramiteEdit" name="id_cat_tramite" tittle="Tramite"
-                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
-
-                                    <x-template-form.template-form-select-required :selectValue="$selectClave"
-                                        :selectEdit="$selectClaveEdit" name="id_cat_clave" tittle="Clave"
-                                        grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" />
-
-                                </div>
-
                                 <x-template-tittle.tittle-caption-secon tittle="Información de remitente" />
                                 <div class="row">
 
@@ -172,7 +113,7 @@
 
                                 </div>
 
-                                <x-template-button.button-form-footer routeBack="{{ route('letter.list') }}" />
+                                <x-template-button.button-form-footer routeBack="{{ route('office.list') }}" />
 
                             </form>
                         </div>
@@ -185,5 +126,5 @@
 </x-template-app.app-layout>
 
 <!-- CODE SCRIPT-->
-<script src="{{ asset('assets/js/app/letter/letter/form.js') }}"></script>
-<script src="{{ asset('assets/js/app/letter/letter/select.js') }}"></script>
+<script src="{{ asset('assets/js/app/letter/office/form.js') }}"></script>
+<script src="{{ asset('assets/js/app/letter/office/select.js') }}"></script>
