@@ -7,8 +7,7 @@
             <div class="row">
                 <div class="col-md-12 grid-margin">
                     <div class="row">
-                        <x-template-tittle.tittle-header tittle="Control de correspondencia"
-                            caption="Correspondencia" />
+                        <x-template-tittle.tittle-header tittle="Control de correspondencia" caption="Oficio" />
                     </div>
                 </div>
             </div>
@@ -20,7 +19,7 @@
                             tittle="{{ isset($item->id_tbl_oficio) ? 'Modificar' : 'Agregar ' }} Oficio"
                             route="{{ route('office.list') }}" />
                         <div>
-                            <form action="{{ route('letter.save') }}" method="POST" class="form-sample">
+                            <form action="{{ route('office.save') }}" method="POST" class="form-sample">
                                 @csrf
 
                                 <x-template-form.template-form-input-hidden name="bool_user_role"
@@ -39,10 +38,10 @@
                                     value="{{ optional($item)->num_turno_sistema ?? '' }}" />
 
 
-                                <x-template-tittle.tittle-caption-secon tittle="Información de correspondencia" />
+                                <x-template-tittle.tittle-caption-secon tittle="Información de oficio" />
                                 <div class="contenedor">
                                     <div class="item">
-                                        <label class="etiqueta">No. Correspondencia:</label>
+                                        <label class="etiqueta">No. Oficio:</label>
                                         <label id="_labNoCorrespondencia" class="valor"></label>
                                     </div>
                                     <div class="item">
@@ -59,10 +58,10 @@
                                 <x-template-tittle.tittle-caption-secon tittle="Información general" />
 
                                 <div class="row">
-                                    <x-template-form.template-form-input-required label="No. Turno Asoc." type="text"
-                                        name="num_documento" placeholder="NO. TURNO ASOCIADO"
+                                    <x-template-form.template-form-input-required label="No. Correspondencia Asoc."
+                                        type="text" name="num_correspondencia" placeholder="NO. CORRESPONDENCIA ASOCIADO"
                                         grid="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" autocomplete=""
-                                        value="{{optional($item)->num_documento ?? '' }}" />
+                                        value="{{$noLetter ?? '' }}" />
 
                                     <x-template-form.template-form-input-required label="Fecha de inicio" type="date"
                                         name="fecha_inicio" placeholder=""

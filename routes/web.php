@@ -52,6 +52,8 @@ Route::get('/letter/generate-pdf/correspondencia/{id}', [ReporteCorrespondenciaC
 Route::get('/office/list', [OfficeC::class, 'list'])->name('office.list')->middleware('auth');
 Route::post('/office/table', [OfficeC::class, 'table'])->name('office.table')->middleware('auth');
 Route::get('/office/create', [OfficeC::class, 'create'])->name('office.create')->middleware('auth');
+Route::get('/office/edit/{id}', [OfficeC::class, 'edit'])->name('office.edit')->middleware('auth');
+Route::post('/office/save', [OfficeC::class, 'save'])->name('office.save')->middleware('auth');
 
 //Collection
 Route::post('/year/getYear', [CollectionYearC::class, 'getYear'])->name('year.getYear')->middleware('auth');

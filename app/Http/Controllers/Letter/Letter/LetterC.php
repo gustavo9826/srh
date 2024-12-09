@@ -183,7 +183,7 @@ class LetterC extends Controller
 
         $now = Carbon::now(); //Hora y fecha actual
 
-        if (!isset($request->id_tbl_correspondencia)){ // || empty($request->id_tbl_correspondencia)) { // Creación de nuevo nuevo elemento
+        if (!isset($request->id_tbl_correspondencia)) { // || empty($request->id_tbl_correspondencia)) { // Creación de nuevo nuevo elemento
 
 
             $request->validate([

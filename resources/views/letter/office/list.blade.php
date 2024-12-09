@@ -48,16 +48,16 @@
                                         No. Turno
                                     </th>
                                     <th>
-                                        No. Documento asoc.
+                                        No. Correspondencia Asoc.
                                     </th>
                                     <th>
                                         Área
                                     </th>
                                     <th>
-                                        Fecha de inicio
+                                        Fecha de Inicio
                                     </th>
                                     <th>
-                                        Fecha de fin
+                                        Fecha Fin
                                     </th>
                                     <th>
                                         Año

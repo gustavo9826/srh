@@ -161,4 +161,26 @@ class LetterM extends Model
         return $query;
     }
 
+
+    //La funcion obtiene el numero de turno, a partir de su id
+    public function getTurno($id)
+    {
+        // Realizar la consulta utilizando el query builder de Laravel
+        $turno = DB::table('correspondencia.tbl_correspondencia')
+            ->where('id_tbl_correspondencia', $id)
+            ->value('num_turno_sistema');
+
+        // Si no se encuentra información, retornamos null
+        return $turno ?: null;
+    }
+
+    public function validateNoTurno($noTurno)
+    {
+        $turno = DB::table('correspondencia.tbl_correspondencia')
+            ->where('num_turno_sistema', $noTurno)
+            ->value('correspondencia.tbl_correspondencia.id_tbl_correspondencia');
+
+        // Si no se encuentra información, retornamos null
+        return $turno ?: null;
+    }
 }

@@ -21,12 +21,23 @@ class OfficeM extends Model
         'rfc_remitente_bool',
         'id_usuario_sistema',
         'id_cat_area',
-        'id_tbl_usuario_area',
-        'id_tbl_usuario_enlace',
+        'id_usuario_area',
+        'id_usuario_enlace',
         'id_cat_anio',
         'id_cat_remitente',
         'id_tbl_correspondencia',
     ];
+
+    public function edit(string $id)
+    {
+        // Realizamos la consulta utilizando el Query Builder de Laravel
+        $query = DB::table('correspondencia.tbl_oficio')
+            ->where('id_tbl_oficio', $id)
+            ->first(); // Usamos first() para obtener un único registro
+
+        // Retornamos el usuario o null si no se encuentra
+        return $query ?? null;
+    }
 
     //La funcion crea la tabla tanto para busquedas como para modelado
     public function list($iterator, $searchValue, $idUser)
@@ -36,7 +47,7 @@ class OfficeM extends Model
             ->select([
                 'correspondencia.tbl_oficio.id_tbl_oficio AS id',
                 DB::raw('correspondencia.tbl_oficio.num_turno_sistema AS num_turno_sistema'),
-                DB::raw('correspondencia.tbl_correspondencia.num_documento AS num_documento'),
+                DB::raw('correspondencia.tbl_correspondencia.num_turno_sistema AS num_documento'),
                 DB::raw('correspondencia.cat_area.descripcion AS area'),
                 DB::raw("TO_CHAR(correspondencia.tbl_oficio.fecha_inicio::date, 'DD/MM/YYYY') AS fecha_inicio"),
                 DB::raw("TO_CHAR(correspondencia.tbl_oficio.fecha_fin::date, 'DD/MM/YYYY') AS fecha_fin"),
@@ -48,8 +59,8 @@ class OfficeM extends Model
 
         // Filtrar por usuario si se proporciona el id
         if (!empty($idUser)) {
-            $query->where('correspondencia.tbl_oficio.id_tbl_usuario_area', $idUser)
-                ->orWhere('correspondencia.tbl_oficio.id_tbl_usuario_enlace', $idUser);
+            $query->where('correspondencia.tbl_oficio.id_usuario_area', $idUser)
+                ->orWhere('correspondencia.tbl_oficio.id_usuario_enlace', $idUser);
         }
 
         // Si se proporciona un valor de búsqueda, agregar condiciones de búsqueda
@@ -59,7 +70,7 @@ class OfficeM extends Model
             // Condiciones de búsqueda centralizadas en una sola cláusula
             $query->where(function ($query) use ($searchValue) {
                 $query->whereRaw("UPPER(TRIM(correspondencia.tbl_oficio.num_turno_sistema)) LIKE ?", ['%' . $searchValue . '%'])
-                    ->orWhereRaw("UPPER(TRIM(correspondencia.tbl_correspondencia.num_documento)) LIKE ?", ['%' . $searchValue . '%'])
+                    ->orWhereRaw("UPPER(TRIM(correspondencia.tbl_correspondencia.num_turno_sistema)) LIKE ?", ['%' . $searchValue . '%'])
                     ->orWhereRaw("UPPER(TRIM(correspondencia.cat_area.descripcion)) LIKE ?", ['%' . $searchValue . '%'])
                     ->orWhereRaw("UPPER(TRIM(correspondencia.cat_anio.descripcion)) LIKE ?", ['%' . $searchValue . '%'])
                     ->orWhereRaw("UPPER(TRIM(TO_CHAR(correspondencia.tbl_oficio.fecha_inicio, 'DD/MM/YYYY'))) LIKE ?", ['%' . $searchValue . '%'])

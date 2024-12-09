@@ -26,7 +26,7 @@ function searchInit() {
 
             if (response.value && response.value.length > 0) {
                 response.value.forEach(function (object) {
-                    const finalUrl = `/srh/public/letter/edit/${object.id}`;
+                    const finalUrl = `/srh/public/office/edit/${object.id}`;
                     const urlReport = `/srh/public/letter/generate-pdf/correspondencia/${object.id}`;
 
                     // Generar el HTML con template literals
