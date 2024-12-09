@@ -183,7 +183,7 @@ class LetterC extends Controller
 
         $now = Carbon::now(); //Hora y fecha actual
 
-        if (isset($request->id_tbl_correspondencia) && empty($request->id_tbl_correspondencia)) { // Creación de nuevo nuevo elemento
+        if (!isset($request->id_tbl_correspondencia)){ // || empty($request->id_tbl_correspondencia)) { // Creación de nuevo nuevo elemento
 
 
             $request->validate([
@@ -217,7 +217,7 @@ class LetterC extends Controller
             }
 
             //Agregar elementos
-            $validate = $letterM::create([
+            $letterM::create([
                 'num_turno_sistema' => $request->num_turno_sistema,
                 'num_documento' => $request->num_documento,
                 'fecha_captura' => $request->fecha_captura,

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Cloud\ConnectionC;
-use App\Http\Controllers\Letter\Cloud\CloudOficioC;
+use App\Http\Controllers\Letter\Office\OfficeC;
 use App\Http\Controllers\Letter\Collection\CollectionClaveC;
 use App\Http\Controllers\Letter\Collection\CollectionTramiteC;
 use App\Http\Controllers\Letter\Collection\CollectionUnidadC;
@@ -47,6 +47,10 @@ Route::post('/letter/collection/collectionClave', [CollectionClaveC::class, 'col
 Route::post('/letter/collection/dataClave', [CollectionClaveC::class, 'dataClave'])->name('letter.collection.dataClave')->middleware('auth');
 Route::get('/letter/generate-pdf/correspondencia/{id}', [ReporteCorrespondenciaC::class, 'generatePdf'])->middleware('auth');
 
+//ROUTE OFICIOS
+Route::get('/office/list', [OfficeC::class, 'list'])->name('office.list')->middleware('auth');
+Route::post('/office/table', [OfficeC::class, 'table'])->name('office.table')->middleware('auth');
+Route::get('/office/create', [OfficeC::class, 'create'])->name('office.create')->middleware('auth');
 
-Route::get('/oficio/cloud', [ConnectionC::class, 'connection']);
+
 Route::get('/oficio/cloud/list', [ConnectionC::class, 'list']);
