@@ -1,7 +1,7 @@
 <!-- TEMPLATE APP-->
 <?php include(resource_path('views/config.php')); ?>
 <x-template-app.app-layout>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="row">
@@ -20,36 +20,34 @@
                     <div class="card-body">
 
                         <div>
-                            <h4 class="card-title">Cloud</h4>
+                            <x-template-tittle.tittle-caption tittle="Cloud" route="{{ route('office.list') }}" />
+
+                            <x-template-form.template-form-input-hidden name="id_tbl_oficio"
+                                value="{{  $id_tbl_oficio }}" />
 
                             <x-template-tittle.tittle-caption-secon tittle="Documento seleccionado" />
                             <div class="contenedor">
                                 <div class="item">
-                                    <label class="etiqueta">No. Correspondencia:</label>
-                                    <label id="_labNoCorrespondencia" class="valor"></label>
+                                    <label class="etiqueta">No. Oficio:</label>
+                                    <label id="_noOficio" class="valor"></label>
                                 </div>
                                 <div class="item">
-                                    <label class="etiqueta">Fecha de captura:</label>
-                                    <label id="_labFechaCaptura" class="valor"></label>
+                                    <label class="etiqueta">No. Correspondencia:</label>
+                                    <label id="_noCorrespondencia" class="valor"></label>
                                 </div>
                                 <div class="item">
                                     <label class="etiqueta">Año:</label>
-                                    <label id="_labAño" class="valor"></label>
+                                    <label id="_noAnio" class="valor"></label>
                                 </div>
                                 <div class="item">
-                                    <label class="etiqueta">Clave:</label>
-                                    <label id="_labClave" class="valor"></label>
+                                    <label class="etiqueta">Fecha de inicio:</label>
+                                    <label id="_fechaInicio" class="valor"></label>
                                 </div>
                                 <div class="item">
-                                    <label class="etiqueta">Clave / código:</label>
-                                    <label id="_labClaveCodigo" class="valor"></label>
-                                </div>
-                                <div class="item">
-                                    <label class="etiqueta">Clave / redacción:</label>
-                                    <label id="_labClaveRedaccion" class="valor"></label>
+                                    <label class="etiqueta">Fecha fin:</label>
+                                    <label id="_fechaFin" class="valor"></label>
                                 </div>
                             </div>
-
                         </div>
 
                         <style>
@@ -330,6 +328,6 @@
     </div>
 
     <!-- CODE SCRIPT-->
-    <script src="{{ asset('assets/js/app/letter/letter/table.js') }}"></script>
+    <script src="{{ asset('assets/js/app/letter/office/cloud.js') }}"></script>
 
 </x-template-app.app-layout>

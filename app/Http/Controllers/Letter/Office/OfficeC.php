@@ -23,6 +23,25 @@ class OfficeC extends Controller
         return view('letter/office/list');
     }
 
+    public function cloud($id_tbl_oficio)
+    {
+        return view('letter/office/cloud', compact('id_tbl_oficio'));
+
+    }
+
+    //La funcion obtiene datos para el ebcabezado de la vista cloud
+    public function cloudData(Request $request)
+    {
+        $id_tbl_oficio = $request->id_tbl_oficio;
+        $officeM = new OfficeM();
+        $value = $officeM->dataCloud($id_tbl_oficio);
+        return response()->json([
+            'value' => $value,
+            'status' => true,
+        ]);
+    }
+
+
     //La funcion crea ta tabla dependiedp de los roles que se han ingreado
     public function table(Request $request)
     {

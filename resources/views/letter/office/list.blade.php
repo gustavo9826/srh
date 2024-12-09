@@ -36,7 +36,6 @@
                                 <x-template-table.template-search />
                             </div>
                         </div>
-
                         <!-- TEMPLATE TABLE -->
                         <x-template-table.template-table>
                             <thead>

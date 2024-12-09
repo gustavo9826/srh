@@ -54,7 +54,8 @@ Route::post('/office/table', [OfficeC::class, 'table'])->name('office.table')->m
 Route::get('/office/create', [OfficeC::class, 'create'])->name('office.create')->middleware('auth');
 Route::get('/office/edit/{id}', [OfficeC::class, 'edit'])->name('office.edit')->middleware('auth');
 Route::post('/office/save', [OfficeC::class, 'save'])->name('office.save')->middleware('auth');
-
+Route::get('/office/cloud/{id}', [OfficeC::class, 'cloud'])->name('office.cloud')->middleware('auth');
+Route::post('/office/cloud/data', [OfficeC::class, 'cloudData'])->name('office.cloud.data')->middleware('auth');
 //Collection
 Route::post('/year/getYear', [CollectionYearC::class, 'getYear'])->name('year.getYear')->middleware('auth');
 Route::get('/oficio/cloud/list', [ConnectionC::class, 'list']);
