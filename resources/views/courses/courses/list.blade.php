@@ -41,20 +41,12 @@
                         <x-template-table.template-table>
                             <thead>
                                 <tr>
-                                    <th>Id_Beneficio</th>
+                                    <th>Menu</th>
                                     <th>Descripción</th>
                                     <th>Estatus</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach($courses as $course)
-                                    <tr>
-                                        <td>{{ $course->id_beneficio }}</td>
-                                        <td>{{ $course->descripcion }}</td>
-                                        <td>{{ $course->estatus ? 'Activo' : 'Inactivo' }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                           
                         </x-template-table.template-table>
 
                         <!-- TEMPLATE PAGINATOR-->

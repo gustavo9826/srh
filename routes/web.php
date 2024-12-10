@@ -56,7 +56,8 @@ Route::post('/letter/collection/collectionClave', [CollectionClaveC::class, 'col
 Route::get('/courses/list', CoursesC::class)->name('courses.list')->middleware('auth');
 Route::get('/courses/create', [CoursesC::class, 'create'])->name('courses.create')->middleware('auth');
 Route::post('/courses/save', [CoursesC::class, 'save'])->name('courses.save')->middleware('auth');
-Route::get('/courses/table', [CoursesC::class, 'table'])->name('courses.table')->middleware('auth');
+Route::get('/courses/table', [CoursesC::class, 'searchTable']);
+
 
 //ROUTE_COUSER ---- > Categoria
 Route::get('/coursescategoria/list', Courses2C::class)->name('coursescategoria.list')->middleware('auth');
