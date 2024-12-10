@@ -63,6 +63,7 @@ Route::get('/courses/table', [CoursesC::class, 'searchTable']);
 Route::get('/coursescategoria/list', Courses2C::class)->name('coursescategoria.list')->middleware('auth');
 Route::get('/coursescategoria/create', [Courses2C::class, 'create'])->name('coursescategoria.create')->middleware('auth');
 Route::post('/coursescategoria/save', [Courses2C::class, 'save'])->name('coursescategoria.save')->middleware('auth');
+Route::post('/coursescategoria/table', [Courses2C::class, 'searchTable']);
 
 
 //ROUTE_COUSER ---- > Coordinacion

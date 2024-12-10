@@ -41,7 +41,7 @@
                         <x-template-table.template-table>
                             <thead>
                                 <tr>
-                                    <th>Id_Categoria</th>
+                                    <th>Menu</th>
                                     <th>Descripción</th>
                                     <th>Estatus</th>
                                 </tr>

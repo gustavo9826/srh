@@ -10,7 +10,7 @@ function searchInit() {
     const searchValue = document.getElementById('searchValue').value;
     const iteradorAux = (iterator * 5) - 5;
 
-    $.get('/srh/public/courses/table', {
+    $.post('/srh/public/coursescategoria/table', {
         iterator: iteradorAux,
         searchValue: searchValue
     }, function (response) {
