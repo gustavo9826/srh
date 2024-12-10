@@ -50,20 +50,31 @@
                             </div>
                         </div>
 
+                        <br>
+                        <p class="card-description"
+                            style="font-size: 1rem; font-weight: bold; color: #BC955C; font-style: italic;">
+                            Documentos de Entrada
+                        </p>
+
                         <div>
-                            <br>
                             <x-template-tittle.tittle-caption-secon tittle="Oficio" />
+
                         </div>
 
                         <div>
                             <br>
                             <x-template-tittle.tittle-caption-secon tittle="Anexos" />
-                            <!-- Tabla responsiva -->
                             <div id="_anexos_empty" class="rectangulo">
                                 Sin contenido
                             </div>
                             <div id="anexos-container"></div>
                         </div>
+
+                        <br>
+                        <p class="card-description"
+                            style="font-size: 1rem; font-weight: bold; color: #BC955C; font-style: italic;">
+                            Documentos de Salida
+                        </p>
                     </div>
                 </div>
             </div>

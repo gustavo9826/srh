@@ -36,6 +36,15 @@
                                 <x-template-table.template-search />
                             </div>
                         </div>
+
+                        <style>
+                            /*
+                            .dropdown-menu {
+                                max-height: 100px;
+                                overflow-y: auto;
+                               
+                            }*/
+                        </style>
                         <!-- TEMPLATE TABLE -->
                         <x-template-table.template-table>
                             <thead>

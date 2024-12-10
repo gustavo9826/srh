@@ -19,7 +19,7 @@
                             tittle="{{ isset($item->id_tbl_oficio) ? 'Modificar' : 'Agregar ' }} Oficio"
                             route="{{ route('office.list') }}" />
                         <div>
-                            <form action="{{ route('letter.save') }}" method="POST" class="form-sample">
+                            <form action="{{ route('office.save') }}" method="POST" class="form-sample">
                                 @csrf
 
                                 <x-template-form.template-form-input-hidden name="bool_user_role"
