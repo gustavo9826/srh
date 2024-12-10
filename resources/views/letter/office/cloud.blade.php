@@ -53,27 +53,16 @@
                         <div>
                             <br>
                             <x-template-tittle.tittle-caption-secon tittle="Oficio" />
-
-
-
-
                         </div>
 
                         <div>
                             <br>
                             <x-template-tittle.tittle-caption-secon tittle="Anexos" />
                             <!-- Tabla responsiva -->
-
                             <div id="_anexos_empty" class="rectangulo">
                                 Sin contenido
                             </div>
-
-                            <style>
-                                
-                            </style>
-
                             <div id="anexos-container"></div>
-
                         </div>
                     </div>
                 </div>
