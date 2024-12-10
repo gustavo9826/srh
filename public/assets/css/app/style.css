@@ -49824,3 +49824,19 @@ select:disabled {
         /* 1 elemento por fila en pantallas pequeñas */
     }
 }
+
+#container_anexo_entrada {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que los elementos se distribuyan en varias filas */
+    gap: 15px;
+    /* Espacio entre los elementos */
+}
+
+.custom-file-container {
+    width: 200px;
+    /* Ajusta el ancho del contenedor de cada elemento */
+    margin-bottom: 20px;
+    /* Espacio entre filas */
+    flex-grow: 0;
+}
