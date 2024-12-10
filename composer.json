@@ -6,9 +6,16 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "barryvdh/laravel-dompdf": "^3.0",
+        "guzzlehttp/guzzle": "^7.9",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+<<<<<<< HEAD
         "laravel/ui": "^4.5",
+=======
+        "setasign/fpdf": "^1.8",
+        "setasign/fpdi": "^2.6",
+>>>>>>> c0ee5d4bc4a2c60944f2109c9839cdc80afd6871
         "yajra/laravel-datatables-oracle": "^11.1"
     },
     "require-dev": {

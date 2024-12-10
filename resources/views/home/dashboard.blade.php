@@ -1,5 +1,5 @@
 <x-template-app.app-layout>
-
+    <?php include(resource_path('views/config.php')); ?>
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="row">
@@ -17,26 +17,58 @@
                 <div class="col-md-12 grid-margin transparent">
 
                     <div class="row">
-
                         <!-- item menu users-->
-                        @if(session('SESSION_ROLE_USER'))
-                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
-                                <x-template-button-dash class="card card-administration" title="Usuarios del sistema"
-                                    field="ADMINISTRACIÓN" href="{{ route('user.list') }}" value="4006"
-                                    description="Total de usuarios" />
-                            @endif
+                        @if($adminMatch)
+                            <x-template-button-dash class="card card-administration" title="Usuarios del sistema"
+                                field="ADMINISTRACIÓN" href="{{ route('user.list') }}" value="4006"
+                                description="Total de usuarios" />
+                        @endif
+                        <!-- item menu users-->
+                        @if($adminMatch)
+                            <x-template-button-dash class="card card-administration" title="Roles del sistema"
+                                field="ADMINISTRACIÓN" href="{{ route('user.list') }}" value="12"
+                                description="Total de roles" />
+                        @endif
+                    </div>
+
+                    <!-- CORRESPONDENCIA-->
+                    <div class="row">
+                        <!-- item menu administracion-->
+
+                        @if($letterMatch)
+                            <x-template-button-dash class="card card-correspondencia" title="Correspondencia"
+                                field="CORRESPONDENCIA" href="{{ route('letter.list') }}" value="0"
+                                description="Correspondencia" />
                         @endif
 
-                        <!-- item menu users-->
-                        @if(session('SESSION_ROLE_USER'))
-                            @if(in_array(config('custom_config.ADM_TOTAL'), session('SESSION_ROLE_USER')))
-                                <x-template-button-dash class="card card-administration" title="Roles del sistema"
-                                    field="ADMINISTRACIÓN" href="{{ route('user.list') }}" value="12"
-                                    description="Total de roles" />
-                            @endif
+                        <!-- item menu administracion-->
+                        @if($letterMatch)
+                            <x-template-button-dash class="card card-correspondencia" title="Expedientes"
+                                field="CORRESPONDENCIA" href="" value="0" description="Expedientes" />
+
                         @endif
 
+                        <!-- item menu administracion-->
+                        @if($letterMatch)
+                            <x-template-button-dash class="card card-correspondencia" title="Circulares"
+                                field="CORRESPONDENCIA" href="" value="0" description="Circulares" />
+                        @endif
 
+                    </div>
+
+                    <!-- CORRESPONDENCIA-->
+                    <div class="row">
+                        <!-- item menu Interno-->
+                        @if($letterMatch)
+                            <x-template-button-dash class="card card-correspondencia" title="Interno"
+                                field="CORRESPONDENCIA" href="" value="0" description="Interno" />
+                        @endif
+
+                        <!-- item menu oficios-->
+                        @if($letterMatch)
+                            <x-template-button-dash class="card card-correspondencia" title="Oficios"
+                                field="CORRESPONDENCIA" href="{{ route('office.list') }}" value="0" description="Oficios" />
+                        @endif
                     </div>
 
                 </div>

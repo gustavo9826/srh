@@ -50,7 +50,7 @@
                         <i class="ti-settings text-primary"></i>
                         Configuraci&oacuten
                     </a>
-                    <form action="logout" method="POST">
+                    <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <a class="dropdown-item" onclick="this.closest('form').submit();">
                             <i class="ti-power-off text-primary"></i>
