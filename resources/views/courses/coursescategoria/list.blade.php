@@ -46,15 +46,6 @@
                                     <th>Estatus</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach($coursescategoria as $course)
-                                    <tr>
-                                        <td>{{ $course->id_categoria }}</td>
-                                        <td>{{ $course->descripcion }}</td>
-                                        <td>{{ $course->estatus ? 'Activo' : 'Inactivo' }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
                         </x-template-table.template-table>
 
                         <!-- TEMPLATE PAGINATOR-->

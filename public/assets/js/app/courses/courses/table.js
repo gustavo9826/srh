@@ -80,6 +80,36 @@ function searchInit() {
         }
     });
 }
+//Funcion para que al pulsar el boton se incremente uno
+function paginatorMax1() {
+
+    iterator = emptyContent ? iterator : iterator += 1;
+    setValue();
+    searchInit();
+}
+
+//Funcion para que al pulsar el boton se incrementen 5
+function paginatorMax5() {
+    iterator = emptyContent ? iterator : iterator += 5;
+    setValue();
+    searchInit();
+}
+
+//Funcion para que al pulsar el boton se disminuyan 5
+function paginatorMin5() {
+    let iteratorAux = iterator;
+    iterator = (iteratorAux -= 5) > 0 ? (iterator -= 5) : 1;
+    setValue();
+    searchInit();
+}
+
+//Funcion para que al pulsar el boton se disminuyan 1
+function paginatorMin1() {
+    let iteratorAux = iterator;
+    iterator = (iteratorAux -= 1) > 0 ? (iterator -= 1) : 1;
+    setValue();
+    searchInit();
+}
 
 // Al escribir en el campo de búsqueda, se reinicia el iterador y se realiza la búsqueda
 function searchValue() {

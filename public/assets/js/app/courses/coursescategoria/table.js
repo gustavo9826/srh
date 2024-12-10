@@ -24,7 +24,7 @@ function searchInit() {
 
         if (response.value && response.value.length > 0) {
             response.value.forEach(function (object) {
-                const finalUrl = `/srh/public/courses/edit/${object.id}`;
+                const finalUrl = `/srh/public/courses/edit/${object.id_categoria}`;
 
                 // Generar el HTML con template literals
                 const rowHTML = `
@@ -71,7 +71,6 @@ function searchInit() {
                                 </div>
                             </div>
                         </td>
-                        <td>${object.id_categoria}</td>
                         <td>${object.descripcion}</td>
                         <td>${object.estatus}</td>
                     </tr>
