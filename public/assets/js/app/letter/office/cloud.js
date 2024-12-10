@@ -43,10 +43,10 @@ function getDataAnexos() {
                                     <button onclick="getInfo('${anexo.uid}')" style="background: #1D5B3B" class="custom-button" title="Ver">
                                         <i style="color: white" class="fa fa-eye"></i>
                                     </button>
-                                    <button onclick="getInfo('${anexo.uid}')" style="background: #707070" class="custom-button" title="Descargar">
+                                    <button onclick="download('${anexo.uid}')" style="background: #707070" class="custom-button" title="Descargar">
                                         <i style="color: white" class="fa fa-download"></i>
                                     </button>
-                                    <button onclick="getInfo('${anexo.id}')" style="background: #6A1B3D" class="custom-button" title="Eliminar">
+                                    <button onclick="deleteAnexo('${anexo.id}')" style="background: #6A1B3D" class="custom-button" title="Eliminar">
                                         <i style="color: white" class="fa fa-trash"></i>
                                     </button>
                                 </div>
@@ -89,3 +89,10 @@ function getDataCloud() {
     });
 }
 
+function download(uid) {
+    console.log(uid);
+}
+
+function deleteAnexo(id) {
+    console.log(id);
+}
