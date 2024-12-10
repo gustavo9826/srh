@@ -50,63 +50,6 @@
                             </div>
                         </div>
 
-
-                        <style>
-                            /* Establecemos el contenedor principal para usar Flexbox */
-                            .main-container {
-                                display: flex;
-                                flex-wrap: wrap;
-                                /* Permite que los elementos se ajusten en nuevas líneas si es necesario */
-                                gap: 20px;
-                                /* Espacio entre las columnas */
-                                justify-content: space-between;
-                            }
-
-                            /* Lado izquierdo y derecho se comportan igual */
-                            .left-side,
-                            .right-side {
-                                flex: 1;
-                                /* Hace que cada lado ocupe la misma cantidad de espacio */
-                                min-width: 300px;
-                                /* Asegura que cada lado no se haga más pequeño que 300px */
-                            }
-
-                            /* Los títulos de las secciones tienen un estilo común */
-                            .card-description {
-                                font-size: 1rem;
-                                font-weight: bold;
-                                color: #BC955C;
-                                font-style: italic;
-                                margin-bottom: 10px;
-                            }
-
-                            /* Estilo básico para los rectángulos donde se muestra el contenido */
-                            .rectangulo {
-                                border: 1px solid #ccc;
-                                padding: 15px;
-                                margin-bottom: 10px;
-                            }
-
-                            /* Media Queries para hacerlo responsivo */
-                            @media (max-width: 768px) {
-                                .main-container {
-                                    flex-direction: column;
-                                    /* En pantallas pequeñas, ponemos los elementos en una columna */
-                                    align-items: center;
-                                    /* Centramos el contenido */
-                                }
-
-                                .left-side,
-                                .right-side {
-                                    min-width: 100%;
-                                    /* Los lados ocupan el 100% del ancho en pantallas pequeñas */
-                                }
-                            }
-                        </style>
-
-
-
-
                         <!-- Contenedor principal con flexbox -->
                         <div class="main-container">
                             <!-- Lado izquierdo -->
@@ -119,7 +62,17 @@
 
                                 <div>
                                     <br>
-                                    <x-template-tittle.tittle-caption-secon tittle="Oficios" />
+
+                                    <div style="display: flex; align-items: center;">
+                                        <x-template-tittle.tittle-caption-secon tittle="Oficios" />
+                                        <label for="file_oficio_entrada" style="background-color: white; color: red; font-weight: normal; font-size:
+                                            1rem; padding: 5px 15px; cursor: pointer; display: flex; align-items:
+                                            center; text-decoration: none;">
+                                            <i class="fa fa-arrow-up" style="margin-right: 5px;"></i> Cargar
+                                        </label>
+                                        <input type="file" id="file_oficio_entrada" style="display: none;">
+                                    </div>
+
                                     <div id="container_oficio_entrada_vacio" class="rectangulo">
                                         Sin contenido
                                     </div>
@@ -147,19 +100,19 @@
                                 <div>
                                     <br>
                                     <x-template-tittle.tittle-caption-secon tittle="Oficios" />
-                                    <div id="container_oficio_entrada_vacio_" class="rectangulo">
+                                    <div id="container_oficio_salida_vacio" class="rectangulo">
                                         Sin contenido
                                     </div>
-                                    <div id="container_oficio_entrada_"></div>
+                                    <div id="container_oficio_salida"></div>
                                 </div>
 
                                 <div>
                                     <br>
                                     <x-template-tittle.tittle-caption-secon tittle="Anexos" />
-                                    <div id="container_anexo_entrada_vacio_" class="rectangulo">
+                                    <div id="container_anexo_salida_vacio" class="rectangulo">
                                         Sin contenido
                                     </div>
-                                    <div id="container_anexo_entrada_"></div>
+                                    <div id="container_anexo_salida"></div>
                                 </div>
                             </div>
                             </di </div>

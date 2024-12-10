@@ -38,7 +38,7 @@ function generateFileHTML(template) {
                     <button onclick="download('${template.uid}')" style="background: #707070" class="custom-button" title="Descargar">
                         <i style="color: white" class="fa fa-download"></i>
                     </button>
-                    <button onclick="deleteAnexo('${template.id}')" style="background: #6A1B3D" class="custom-button" title="Eliminar">
+                    <button onclick="deleteDocument('${template.id}')" style="background: #6A1B3D" class="custom-button" title="Eliminar">
                         <i style="color: white" class="fa fa-trash"></i>
                     </button>
                 </div>

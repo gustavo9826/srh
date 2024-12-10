@@ -16,6 +16,10 @@ function getDataDocument() {
     let container_anexo_entrada = $('#container_anexo_entrada');
     let container_oficio_entrada_vacio = $('#container_oficio_entrada_vacio');
     let container_oficio_entrada = $('#container_oficio_entrada');
+    let container_anexo_salida_vacio = $('#container_anexo_salida_vacio');
+    let container_anexo_salida = $('#container_anexo_salida');
+    let container_oficio_salida_vacio = $('#container_oficio_salida_vacio');
+    let container_oficio_salida = $('#container_oficio_salida');
 
     $.ajax({
         url: '/srh/public/office/cloud/anexos',
@@ -27,9 +31,13 @@ function getDataDocument() {
         success: function (response) {
             let anexosEntrada = response.anexosEntrada;  // Suponiendo que la respuesta tiene una propiedad 'value' con los datos
             let oficosEntrada = response.oficosEntrada;
+            let anexoSalida = response.anexoSalida;
+            let oficosSalida = response.oficosSalida;
 
             templateCloud(container_anexo_entrada, container_anexo_entrada_vacio, anexosEntrada); //Listamos la informacion
             templateCloud(container_oficio_entrada, container_oficio_entrada_vacio, oficosEntrada); //Listamos la informacion
+            templateCloud(container_anexo_salida, container_anexo_salida_vacio, anexoSalida);
+            templateCloud(container_oficio_salida, container_oficio_salida_vacio, oficosSalida);
 
         },
     });
@@ -57,10 +65,36 @@ function getDataCloud() {
     });
 }
 
+
+//La funcion sube el archivo que el usuario esta seleccionando
+document.getElementById('file_oficio_entrada').addEventListener('change', function (event) {
+    if (event.target.files.length > 0) {
+        let data = new FormData();// Crear el objeto FormData
+        data.append('file', event.target.files[0]);
+        $.ajax({
+            url: "/srh/public/office/cloud/upload",
+            type: 'POST',
+            data: data, // Enviar directamente el FormData
+            processData: false,  // No procesar los datos, jQuery no debe intentar convertir los datos en una cadena
+            contentType: false,  // No establecer un Content-Type porque el navegador lo hará automáticamente
+            headers: {
+                'X-CSRF-TOKEN': token  // Usar el token CSRF para proteger la solicitud
+            },
+            success: function (response) {
+                console.log('Respuesta del servidor:', response);
+            },
+            error: function (xhr, status, error) {
+                console.error('Error al subir el archivo:', error);
+            }
+        });
+    }
+});
+
+
 function download(uid) {
     console.log(uid);
 }
 
-function deleteAnexo(id) {
+function deleteDocument(id) {
     console.log(id);
 }
