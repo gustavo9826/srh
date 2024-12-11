@@ -1,3 +1,4 @@
+var token = $('meta[name="csrf-token"]').attr('content'); //Token for form
 var iterator = 1; // Se comienza el iterador en 1
 var emptyContent = false;
 
@@ -10,21 +11,21 @@ function searchInit() {
     const searchValue = document.getElementById('searchValue').value;
     const iteradorAux = (iterator * 5) - 5;
 
-    $.get('/srh/public/courses/table', {
-        iterator: iteradorAux,
-        searchValue: searchValue
-    }, function (response) {
-
-        console.log('success');
-        console.log(response);
-
-
-        const tbody = $('#template-table tbody');
-        tbody.empty(); // Limpiar la tabla
+    $.ajax({
+        url: '/srh/public/coursesorganizacion/table', 
+        type: 'POST',
+        data: {
+            iterator: iteradorAux,  // Número de página para la paginación
+            searchValue: searchValue, // Valor de búsqueda
+            _token: token,  // Usar el token extraído de la metaetiqueta
+        },
+        success: function (response) {
+            const tbody = $('#template-table tbody');
+            tbody.empty();  // Limpiar la tabla antes de agregar los nuevos resultados
 
         if (response.value && response.value.length > 0) {
             response.value.forEach(function (object) {
-                const finalUrl = `/srh/public/courses/edit/${object.id}`;
+                const finalUrl = `/srh/public/courses/edit/${object.id_organizacion}`;
 
                 // Generar el HTML con template literals
                 const rowHTML = `
@@ -71,9 +72,8 @@ function searchInit() {
                                 </div>
                             </div>
                         </td>
-                        <td>${object.id_organizacion}</td>
                         <td>${object.descripcion}</td>
-                        <td>${object.estatus}</td>
+                        <td>${object.estatus ? 'ACTIVO' : 'INACTIVO'}</td>
                     </tr>
                 `;
                 tbody.append(rowHTML);
@@ -84,6 +84,7 @@ function searchInit() {
             emptyContent = true;
             setValue();
         }
+    }
     });
 }
 

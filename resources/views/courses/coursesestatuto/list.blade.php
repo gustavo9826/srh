@@ -1,7 +1,7 @@
 <!-- TEMPLATE APP-->
 <?php include(resource_path('views/config.php')); ?>
 <x-template-app.app-layout>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- token html-->
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="row">
@@ -14,7 +14,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card custom-card">
                     <div class="card-body">
@@ -41,20 +40,12 @@
                         <x-template-table.template-table>
                             <thead>
                                 <tr>
-                                    <th>Id_Estatuto_Organico</th>
+                                    <th>Menu</th>
                                     <th>Descripción</th>
                                     <th>Estatus</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach($coursesestatuto as $course)
-                                    <tr>
-                                        <td>{{ $course->id_estatuto_organico }}</td>
-                                        <td>{{ $course->descripcion }}</td>
-                                        <td>{{ $course->estatus ? 'Activo' : 'Inactivo' }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                            
                         </x-template-table.template-table>
 
                         <!-- TEMPLATE PAGINATOR-->

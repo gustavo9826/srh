@@ -1,7 +1,7 @@
 <!-- TEMPLATE APP-->
 <?php include(resource_path('views/config.php')); ?>
 <x-template-app.app-layout>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- token html-->
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="row">
@@ -41,20 +41,12 @@
                         <x-template-table.template-table>
                             <thead>
                                 <tr>
-                                    <th>Id_Organizacion</th>
+                                    <th>Menu</th>
                                     <th>Descripción</th>
                                     <th>Estatus</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach($coursesorganizacion  as $course)
-                                    <tr>
-                                        <td>{{ $course->id_organizacion }}</td>
-                                        <td>{{ $course->descripcion }}</td>
-                                        <td>{{ $course->estatus ? 'Activo' : 'Inactivo' }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                         
                         </x-template-table.template-table>
 
                         <!-- TEMPLATE PAGINATOR-->

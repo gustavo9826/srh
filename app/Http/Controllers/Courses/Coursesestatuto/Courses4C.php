@@ -44,4 +44,20 @@ class Courses4C extends Controller
 
         return view('courses.coursesestatuto.form', compact('item'));
     }
+    public function searchTable(Request $request)
+    {
+        $searchValue = $request->get('searchValue');  // Término de búsqueda
+        $iterator = $request->get('iterator', 0);  // Si no se pasa iterador, por defecto será 0 (primera página)
+    
+        // Filtrar los cursos que coincidan con la búsqueda
+        $courses = CoursesestatutoM::where('descripcion', 'like', '%' . $searchValue . '%')
+                           ->offset($iterator)
+                           ->limit(5)  // Límite de resultados por página
+                           ->get();
+    
+        return response()->json([
+            'value' => $courses
+        ]);
+    }
+    
 }

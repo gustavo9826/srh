@@ -11,17 +11,17 @@ function searchInit() {
     const searchValue = document.getElementById('searchValue').value;
     const iteradorAux = (iterator * 5) - 5;
 
-    $.get('/srh/public/coursescoordinacion/table', {
-        iterator: iteradorAux,
-        searchValue: searchValue
-    }, function (response) {
-
-        console.log('success');
-        console.log(response);
-
-
-        const tbody = $('#template-table tbody');
-        tbody.empty(); // Limpiar la tabla
+    $.ajax({
+        url: '/srh/public/coursescoordinacion/table', 
+        type: 'POST',
+        data: {
+            iterator: iteradorAux,  // Número de página para la paginación
+            searchValue: searchValue, // Valor de búsqueda
+            _token: token,  // Usar el token extraído de la metaetiqueta
+        },
+        success: function (response) {
+            const tbody = $('#template-table tbody');
+            tbody.empty();  // Limpiar la tabla antes de agregar los nuevos resultados
 
         if (response.value && response.value.length > 0) {
             response.value.forEach(function (object) {
@@ -73,7 +73,7 @@ function searchInit() {
                             </div>
                         </td>
                         <td>${object.descripcion}</td>
-                        <td>${object.estatus}</td>
+                       <td>${object.estatus ? 'ACTIVO' : 'INACTIVO'}</td>
                     </tr>
                 `;
                 tbody.append(rowHTML);
@@ -84,6 +84,7 @@ function searchInit() {
             emptyContent = true;
             setValue();
         }
+    }
     });
 }
 
