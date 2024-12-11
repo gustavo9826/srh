@@ -1,3 +1,4 @@
+var token = $('meta[name="csrf-token"]').attr('content'); //Token for form
 var iterator = 1;  // Se comienza el iterador en 1
 var emptyContent = false;
 

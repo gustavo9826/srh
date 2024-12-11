@@ -10,7 +10,7 @@ function searchInit() {
     const searchValue = document.getElementById('searchValue').value;
     const iteradorAux = (iterator * 5) - 5;
 
-    $.post('/srh/public/coursescategoria/table', {
+    $.get('/srh/public/coursescategoria/table', {
         iterator: iteradorAux,
         searchValue: searchValue
     }, function (response) {
@@ -72,7 +72,7 @@ function searchInit() {
                             </div>
                         </td>
                         <td>${object.descripcion}</td>
-                        <td>${object.estatus}</td>
+                        <td>${object.estatus ? 'ACTIVO' : 'INACTIVO'}</td>
                     </tr>
                 `;
                 tbody.append(rowHTML);
