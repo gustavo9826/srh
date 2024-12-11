@@ -56,7 +56,7 @@ Route::post('/letter/collection/collectionClave', [CollectionClaveC::class, 'col
 Route::get('/courses/list', CoursesC::class)->name('courses.list')->middleware('auth');
 Route::get('/courses/create', [CoursesC::class, 'create'])->name('courses.create')->middleware('auth');
 Route::post('/courses/save', [CoursesC::class, 'save'])->name('courses.save')->middleware('auth');
-Route::get('/courses/table', [CoursesC::class, 'searchTable']);
+Route::post('/courses/table', [CoursesC::class, 'searchTable']);
 
 
 //ROUTE_COUSER ---- > Categoria
@@ -70,11 +70,13 @@ Route::get('/coursescategoria/table', [Courses2C::class, 'searchTable']);
 Route::get('/coursescoordinacion/list', Courses3C::class)->name('coursescoordinacion.list')->middleware('auth');
 Route::get('/coursescoordinacion/create', [Courses3C::class, 'create'])->name('coursescoordinacion.create')->middleware('auth');
 Route::post('/coursescoordinacion/save', [Courses3C::class, 'save'])->name('coursescoordinacion.save')->middleware('auth');
+Route::get('/coursescoordinacion/table', [Courses3C::class, 'searchTable']);
 
 //ROUTE_COUSER ---- > Estatuto Orgánico
 Route::get('/coursesestatuto/list', Courses4C::class)->name('coursesestatuto.list')->middleware('auth');
 Route::get('/coursesestatuto/create', [Courses4C::class, 'create'])->name('coursesestatuto.create')->middleware('auth');
 Route::post('/coursesestatuto/save', [Courses4C::class, 'save'])->name('coursesestatuto.save')->middleware('auth');
+Route::get('/coursesestatuto/table', [Courses4C::class, 'searchTable']);
 
 //ROUTE_COUSER ---- > Modalidad
 Route::get('/coursesmodalidad/list', Courses5C::class)->name('coursesmodalidad.list')->middleware('auth');

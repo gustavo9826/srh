@@ -12,75 +12,86 @@ function searchInit() {
     const searchValue = document.getElementById('searchValue').value; // Obtén el valor de búsqueda
     const iteradorAux = (iterator * 5) - 5;
 
-    $.get('/srh/public/courses/table', {
+    /*$.get('/srh/public/courses/table', {
         iterator: iteradorAux,  // Número de página para la paginación
         searchValue: searchValue  // Valor de búsqueda
-    }, function (response) {
-        const tbody = $('#template-table tbody');
-        tbody.empty();  // Limpiar la tabla antes de agregar los nuevos resultados
+    }, function (response) {*/
+    $.ajax({
+        url: '/srh/public/courses/table', 
+        type: 'POST',
+        data: {
+            iterator: iteradorAux,  // Número de página para la paginación
+            searchValue: searchValue, // Valor de búsqueda
+            _token: token,  // Usar el token extraído de la metaetiqueta
+        },
+        success: function (response) {
+            const tbody = $('#template-table tbody');
+            tbody.empty();  // Limpiar la tabla antes de agregar los nuevos resultados
 
-        if (response.value && response.value.length > 0) {
-            response.value.forEach(function (object) {
-                const finalUrl = `/srh/public/courses/edit/${object.id_beneficio}`;
+            if (response.value && response.value.length > 0) {
+                response.value.forEach(function (object) {
+                    const finalUrl = `/srh/public/courses/edit/${object.id_beneficio}`;
 
-                // Generar el HTML con template literals
-                const rowHTML = `
-                    <tr>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-transparent dropdown-toggle-split icon-btn" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: transparent;" data-toggle="tooltip" data-placement="top" title="Menu">
-                                    <i class="fas fa-ellipsis-h" style="color: #9F2241; font-size: 2rem;"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
-                                    <h6 class="dropdown-header">Acciones</h6>
-                                    <a class="dropdown-item" href="${finalUrl}">
-                                        <span style="background:#1D5B3B" class="icon-container-template">
-                                            <div style="text-align: center;">
-                                                <i class="fa fa-pencil item-icon-menu"></i>
-                                            </div>
-                                        </span>
-                                        Modificar
-                                    </a>
-                                    <button class="dropdown-item" onclick="showModalTempleta(${object.id})">
-                                        <span style="background:#707070" class="icon-container-template">
-                                            <div style="text-align: center;">
-                                                <i class="fa fa-unlock item-icon-menu"></i>
-                                            </div>
-                                        </span>
-                                        Cloud
+                    // Generar el HTML con template literals
+                    const rowHTML = `
+                        <tr>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-transparent dropdown-toggle-split icon-btn" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: transparent;" data-toggle="tooltip" data-placement="top" title="Menu">
+                                        <i class="fas fa-ellipsis-h" style="color: #9F2241; font-size: 2rem;"></i>
                                     </button>
-                                    <a class="dropdown-item" href="#">
-                                        <span style="background:#003366" class="icon-container-template">
-                                            <div style="text-align: center;">
-                                                <i class="fa fa-user item-icon-menu"></i>
-                                            </div>
-                                        </span>
-                                        Usuario
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <span style="background:#6A1B3D" class="icon-container-template">
-                                            <div style="text-align: center;">
-                                                <i class="fa fa-trash item-icon-menu"></i>
-                                            </div>
-                                        </span>
-                                        Eliminar
-                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
+                                        <h6 class="dropdown-header">Acciones</h6>
+                                        <a class="dropdown-item" href="${finalUrl}">
+                                            <span style="background:#1D5B3B" class="icon-container-template">
+                                                <div style="text-align: center;">
+                                                    <i class="fa fa-pencil item-icon-menu"></i>
+                                                </div>
+                                            </span>
+                                            Modificar
+                                        </a>
+                                        <button class="dropdown-item" onclick="showModalTempleta(${object.id})">
+                                            <span style="background:#707070" class="icon-container-template">
+                                                <div style="text-align: center;">
+                                                    <i class="fa fa-unlock item-icon-menu"></i>
+                                                </div>
+                                            </span>
+                                            Cloud
+                                        </button>
+                                        <a class="dropdown-item" href="#">
+                                            <span style="background:#003366" class="icon-container-template">
+                                                <div style="text-align: center;">
+                                                    <i class="fa fa-user item-icon-menu"></i>
+                                                </div>
+                                            </span>
+                                            Usuario
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                            <span style="background:#6A1B3D" class="icon-container-template">
+                                                <div style="text-align: center;">
+                                                    <i class="fa fa-trash item-icon-menu"></i>
+                                                </div>
+                                            </span>
+                                            Eliminar
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td>${object.descripcion}</td>
-                        <td>${object.estatus ? 'ACTIVO' : 'INACTIVO'}</td>
-                    </tr>
-                `;
-                tbody.append(rowHTML);
-            });
-            emptyContent = false;
-        } else {
-            tbody.html('<tr><td colspan="8" class="text-center">No se encontraron resultados</td></tr>');
-            emptyContent = true;
-        }
+                            </td>
+                            <td>${object.descripcion}</td>
+                            <td>${object.estatus ? 'ACTIVO' : 'INACTIVO'}</td>
+                        </tr>
+                    `;
+                    tbody.append(rowHTML);
+                });
+                emptyContent = false;
+            } else {
+                tbody.html('<tr><td colspan="8" class="text-center">No se encontraron resultados</td></tr>');
+                emptyContent = true;
+            }
+        } // Aquí termina la llave que te faltaba
     });
 }
+
 //Funcion para que al pulsar el boton se incremente uno
 function paginatorMax1() {
 

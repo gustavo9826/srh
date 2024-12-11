@@ -1,3 +1,4 @@
+var token = $('meta[name="csrf-token"]').attr('content'); //Token for form
 var iterator = 1; // Se comienza el iterador en 1
 var emptyContent = false;
 
@@ -10,7 +11,7 @@ function searchInit() {
     const searchValue = document.getElementById('searchValue').value;
     const iteradorAux = (iterator * 5) - 5;
 
-    $.get('/srh/public/courses/table', {
+    $.get('/srh/public/coursescoordinacion/table', {
         iterator: iteradorAux,
         searchValue: searchValue
     }, function (response) {
@@ -24,7 +25,7 @@ function searchInit() {
 
         if (response.value && response.value.length > 0) {
             response.value.forEach(function (object) {
-                const finalUrl = `/srh/public/courses/edit/${object.id}`;
+                const finalUrl = `/srh/public/courses/edit/${object.id_coordinacion}`;
 
                 // Generar el HTML con template literals
                 const rowHTML = `
@@ -71,7 +72,6 @@ function searchInit() {
                                 </div>
                             </div>
                         </td>
-                        <td>${object.id_coordinacion}</td>
                         <td>${object.descripcion}</td>
                         <td>${object.estatus}</td>
                     </tr>

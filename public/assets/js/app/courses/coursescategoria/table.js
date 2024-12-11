@@ -1,11 +1,12 @@
+var token = $('meta[name="csrf-token"]').attr('content'); //Token for form
 var iterator = 1; // Se comienza el iterador en 1
 var emptyContent = false;
 
 $(document).ready(function () {
-    searchInit();
-    setValue();
+    searchInit(); // Inicializa la búsqueda cuando la página carga
+    setValue();  // Inicializa paginador 
 });
-
+// Esta función se encarga de hacer la petición AJAX al backend
 function searchInit() {
     const searchValue = document.getElementById('searchValue').value;
     const iteradorAux = (iterator * 5) - 5;
