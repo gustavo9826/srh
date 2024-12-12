@@ -24,7 +24,7 @@ function searchInit() {
             tbody.empty();  // Limpiar la tabla antes de agregar los nuevos resultados
         if (response.value && response.value.length > 0) {
             response.value.forEach(function (object) {
-                const finalUrl = `/srh/public/courses/edit/${object.id_estatuto_organico}`;
+                const finalUrl = `/srh/public/coursesestatuto/edit/${object.id_estatuto_organico}`;
 
                 // Generar el HTML con template literals
                 const rowHTML = `
@@ -44,15 +44,15 @@ function searchInit() {
                                         </span>
                                         Modificar
                                     </a>
-
-                                    <a class="dropdown-item" href="#">
-                                        <span style="background:#6A1B3D" class="icon-container-template">
-                                            <div style="text-align: center;">
-                                                <i class="fa fa-trash item-icon-menu"></i>
-                                            </div>
-                                        </span>
-                                        Eliminar
-                                    </a>
+                                    <!-- Aquí se agrega la opción para eliminar -->
+                                        <a class="dropdown-item" href="#" onclick="confirmDelete(${object.id_estatuto_organico})">
+                                            <span style="background:#6A1B3D" class="icon-container-template">
+                                                <div style="text-align: center;">
+                                                    <i class="fa fa-trash item-icon-menu"></i>
+                                                </div>
+                                            </span>
+                                            Eliminar
+                                        </a>
                                 </div>
                             </div>
                         </td>
@@ -117,4 +117,30 @@ function searchValue() {
     iterator = 1;
     setValue();
     searchInit();
+}
+
+function confirmDelete(id) {
+    if (confirm('¿Estás seguro de que deseas eliminar este curso?')) {
+        deleteCourse(id);
+    }
+}
+
+// Función para eliminar el curso
+function deleteCourse(id) {
+    $.ajax({
+        url: '/srh/public/coursesestatuto/delete/' + id,  // Verifica que esta ruta sea correcta
+        type: 'DELETE',  // Cambia el método a DELETE si es necesario
+        data: {
+            _token: token  // Incluye el token CSRF
+        },
+        success: function(response) {
+            alert('Curso eliminado exitosamente');
+            searchInit();  // Actualiza la tabla después de la eliminación
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al eliminar el curso:', error);
+            alert('Hubo un error al intentar eliminar el curso. Por favor, inténtalo de nuevo.');
+        }
+    });
+
 }

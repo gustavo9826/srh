@@ -15,17 +15,6 @@ class CoursescoordinacionM extends Model
         'id_usuario_sistema',
         'fecha_usuario',
     ];
-
-    public function edit(string $id)
-    {
-        // Realizamos la consulta utilizando el Query Builder de Laravel
-        $query = DB::table('capacitacion.cat_coordinacion')
-            ->where('id_coordinacion', $id)
-            ->first(); // Usamos first() para obtener un único registro
-
-        // Retornamos el usuario o null si no se encuentra
-        return $query ?? null;
-    }
     public function list($iterator, $searchValue )
     {
         // Preparar la consulta base
@@ -54,5 +43,15 @@ class CoursescoordinacionM extends Model
 
         // Ejecutar la consulta y retornar los resultados
         return $query->get();
+    }
+    public function edit(string $id)
+    {
+        // Realizamos la consulta utilizando el Query Builder de Laravel
+        $query = DB::table('capacitacion.cat_coordinacion')
+            ->where('id_coordinacion', $id)
+            ->first(); // Usamos first() para obtener un único registro
+
+        // Retornamos el usuario o null si no se encuentra
+        return $query ?? null;
     }
 }

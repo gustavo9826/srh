@@ -68,4 +68,35 @@ class Courses2C extends Controller
             'status' => true,
         ]);
     }
+    public function destroy($id)
+    {
+        try {
+            $course = CoursescategoriaM::findOrFail($id);
+            $course->delete();
+            return response()->json(['success' => 'Curso eliminado exitosamente']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error al eliminar el curso'], 500);
+        }
+    }
+    public function edit(Request $request, $id)
+    {
+        $course = CoursescategoriaM::find($id);
+
+        if ($request->isMethod('post')) {
+            // Validar los datos del formulario
+            $request->validate([
+                'descripcion' => 'required|string|max:255',
+            ]);
+
+            // Actualizar los datos del curso
+            $course->descripcion = $request->input('descripcion');
+            $course->estatus = $request->input('estatus') ? true : false;
+            $course->save();
+
+            // Redirigir a la lista de cursos con un mensaje de éxito
+            return redirect()->route('coursescategoria.list')->with('success', 'Curso actualizado exitosamente.');
+        }
+
+        return view('courses.coursescategoria.edit', compact('course'));
+    }
 }

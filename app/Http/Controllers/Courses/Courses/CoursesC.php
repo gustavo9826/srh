@@ -100,7 +100,7 @@ class CoursesC extends Controller
             return redirect()->route('courses.list')->with('success', 'Curso actualizado exitosamente.');
         }
 
-        return view('courses.courses.courses.form', compact('course'));
+        return view('courses.courses.edit', compact('course'));
     }
 }
 

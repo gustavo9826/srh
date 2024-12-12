@@ -16,16 +16,6 @@ class CoursescategoriaM extends Model
         'fecha_usuario',
     ];
 
-    public function edit(string $id)
-    {
-        // Realizamos la consulta utilizando el Query Builder de Laravel
-        $query = DB::table('capacitacion.cat_categoria')
-            ->where('id_categoria', $id)
-            ->first(); // Usamos first() para obtener un único registro
-
-        // Retornamos el usuario o null si no se encuentra
-        return $query ?? null;
-    }
     public function list($iterator, $searchValue, $idArea, $idEnlace)
     {
         // Preparar la consulta base
@@ -67,5 +57,15 @@ class CoursescategoriaM extends Model
 
         // Ejecutar la consulta y retornar los resultados
         return $query->get();
+    }
+    public function edit(string $id)
+    {
+        // Realizamos la consulta utilizando el Query Builder de Laravel
+        $query = DB::table('capacitacion.cat_categoria')
+            ->where('id_categoria', $id)
+            ->first(); // Usamos first() para obtener un único registro
+
+        // Retornamos el usuario o null si no se encuentra
+        return $query ?? null;
     }
 }

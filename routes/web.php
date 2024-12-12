@@ -60,38 +60,45 @@ Route::post('/courses/table', [CoursesC::class, 'searchTable']);
 Route::match(['get', 'post'], '/courses/edit/{id}', [CoursesC::class, 'edit'])->name('courses.edit')->middleware('auth');
 Route::delete('/courses/delete/{id}', [CoursesC::class, 'destroy']);
 
-
-
 //ROUTE_COUSER ---- > Categoria
 Route::get('/coursescategoria/list', Courses2C::class)->name('coursescategoria.list')->middleware('auth');
 Route::get('/coursescategoria/create', [Courses2C::class, 'create'])->name('coursescategoria.create')->middleware('auth');
 Route::post('/coursescategoria/save', [Courses2C::class, 'save'])->name('coursescategoria.save')->middleware('auth');
 Route::post('/coursescategoria/table', [Courses2C::class, 'searchTable']);
-
+Route::match(['get', 'post'], '/coursescategoria/edit/{id}', [Courses2C::class, 'edit'])->name('coursescategoria.edit')->middleware('auth');
+Route::delete('/coursescategoria/delete/{id}', [Courses2C::class, 'destroy']);
 
 //ROUTE_COUSER ---- > Coordinacion
 Route::get('/coursescoordinacion/list', Courses3C::class)->name('coursescoordinacion.list')->middleware('auth');
 Route::get('/coursescoordinacion/create', [Courses3C::class, 'create'])->name('coursescoordinacion.create')->middleware('auth');
 Route::post('/coursescoordinacion/save', [Courses3C::class, 'save'])->name('coursescoordinacion.save')->middleware('auth');
 Route::post('/coursescoordinacion/table', [Courses3C::class, 'searchTable']);
+Route::match(['get', 'post'], '/coursescoordinacion/edit/{id}', [Courses3C::class, 'edit'])->name('coursescoordinacion.edit')->middleware('auth');
+Route::delete('/coursescoordinacion/delete/{id}', [Courses3C::class, 'destroy']);
 
 //ROUTE_COUSER ---- > Estatuto Orgánico
 Route::get('/coursesestatuto/list', Courses4C::class)->name('coursesestatuto.list')->middleware('auth');
 Route::get('/coursesestatuto/create', [Courses4C::class, 'create'])->name('coursesestatuto.create')->middleware('auth');
 Route::post('/coursesestatuto/save', [Courses4C::class, 'save'])->name('coursesestatuto.save')->middleware('auth');
 Route::post('/coursesestatuto/table', [Courses4C::class, 'searchTable']);
+Route::match(['get', 'post'], '/coursesestatuto/edit/{id}', [Courses4C::class, 'edit'])->name('coursesestatuto.edit')->middleware('auth');
+Route::delete('/coursesestatuto/delete/{id}', [Courses4C::class, 'destroy']);
 
 //ROUTE_COUSER ---- > Modalidad
 Route::get('/coursesmodalidad/list', Courses5C::class)->name('coursesmodalidad.list')->middleware('auth');
 Route::get('/coursesmodalidad/create', [Courses5C::class, 'create'])->name('coursesmodalidad.create')->middleware('auth');
 Route::post('/coursesmodalidad/save', [Courses5C::class, 'save'])->name('coursesmodalidad.save')->middleware('auth');
 Route::post('/coursesmodalidad/table', [Courses5C::class, 'searchTable']);
+Route::match(['get', 'post'], '/coursesmodalidad/edit/{id}', [Courses5C::class, 'edit'])->name('coursesmodalidad.edit')->middleware('auth');
+Route::delete('/coursesmodalidad/delete/{id}', [Courses5C::class, 'destroy']);
 
 //ROUTE_COUSER ---- > Nombre Acción
 Route::get('/coursesnombreacc/list', Courses6C::class)->name('coursesnombreacc.list')->middleware('auth');
 Route::get('/coursesnombreacc/create', [Courses6C::class, 'create'])->name('coursesnombreacc.create')->middleware('auth');
 Route::post('/coursesnombreacc/save', [Courses6C::class, 'save'])->name('coursesnombreacc.save')->middleware('auth');
 Route::post('/coursesnombreacc/table', [Courses6C::class, 'searchTable']);
+Route::match(['get', 'post'], '/coursesnombreacc/edit/{id}', [Courses6C::class, 'edit'])->name('coursesnombreacc.edit')->middleware('auth');
+Route::delete('/coursesnombreacc/delete/{id}', [Courses6C::class, 'destroy']);
 
 //ROUTE_COUSER ---- > Organizacion
 Route::get('/coursesorganizacion/list', Courses7C::class)->name('coursesorganizacion.list')->middleware('auth');
