@@ -1,4 +1,9 @@
 var token = $('meta[name="csrf-token"]').attr('content'); //Token for form
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': token
+    }
+});
 var iterator = 1;  // Se comienza el iterador en 1
 var emptyContent = false;
 
@@ -50,8 +55,8 @@ function searchInit() {
                                             </span>
                                             Modificar
                                         </a>
-                                        
-                                        <a class="dropdown-item" href="#">
+                                       <!-- Aquí se agrega la opción para eliminar -->
+                                        <a class="dropdown-item" href="#" onclick="confirmDelete(${object.id_beneficio})">
                                             <span style="background:#6A1B3D" class="icon-container-template">
                                                 <div style="text-align: center;">
                                                     <i class="fa fa-trash item-icon-menu"></i>
@@ -122,3 +127,31 @@ function setValue() {
     document.getElementById("is_iteratorMin").innerHTML = iteratorAux -= 1;
     document.getElementById("is_iteratorMax").innerHTML = iteratorAux += 2;
 }
+
+
+// Función para la confirmación de eliminación
+function confirmDelete(id) {
+    if (confirm('¿Estás seguro de que deseas eliminar este curso?')) {
+        deleteCourse(id);
+    }
+}
+
+// Función para eliminar el curso
+function deleteCourse(id) {
+    $.ajax({
+        url: '/srh/public/courses/delete/' + id,  // Verifica que esta ruta sea correcta
+        type: 'DELETE',  // Cambia el método a DELETE si es necesario
+        data: {
+            _token: token  // Incluye el token CSRF
+        },
+        success: function(response) {
+            alert('Curso eliminado exitosamente');
+            searchInit();  // Actualiza la tabla después de la eliminación
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al eliminar el curso:', error);
+            alert('Hubo un error al intentar eliminar el curso. Por favor, inténtalo de nuevo.');
+        }
+    });
+}
+

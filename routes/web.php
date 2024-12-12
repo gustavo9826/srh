@@ -57,6 +57,9 @@ Route::get('/courses/list', CoursesC::class)->name('courses.list')->middleware('
 Route::get('/courses/create', [CoursesC::class, 'create'])->name('courses.create')->middleware('auth');
 Route::post('/courses/save', [CoursesC::class, 'save'])->name('courses.save')->middleware('auth');
 Route::post('/courses/table', [CoursesC::class, 'searchTable']);
+Route::match(['get', 'post'], '/courses/edit/{id}', [CoursesC::class, 'edit'])->name('courses.edit')->middleware('auth');
+Route::delete('/courses/delete/{id}', [CoursesC::class, 'destroy']);
+
 
 
 //ROUTE_COUSER ---- > Categoria
