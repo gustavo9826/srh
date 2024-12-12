@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12 grid-margin">
                     <div class="row">
-                        <x-template-tittle.tittle-header tittle="Catalogo de cursos" caption="Tipo Accion" />
+                        <x-template-tittle.tittle-header tittle="Catalogo de cursos" caption="Tipo cursos" />
                     </div>
                 </div>
             </div>
@@ -15,7 +15,7 @@
                 <div class="card custom-card">
                     <div class="card-body">
                         <x-template-tittle.tittle-caption
-                            tittle="{{ isset($item->id_tipocursos) ? 'Modificar' : 'Agregar ' }} Curso Tipo Acción"
+                            tittle="{{ isset($item->id_tipocursos) ? 'Modificar' : 'Agregar ' }} Tipo Cursos"
                             route="{{ route('coursestipocur.list') }}" />
                         
                         <br>

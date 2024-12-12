@@ -105,21 +105,29 @@ Route::get('/coursesorganizacion/list', Courses7C::class)->name('coursesorganiza
 Route::get('/coursesorganizacion/create', [Courses7C::class, 'create'])->name('coursesorganizacion.create')->middleware('auth');
 Route::post('/coursesorganizacion/save', [Courses7C::class, 'save'])->name('coursesorganizacion.save')->middleware('auth');
 Route::post('/coursesorganizacion/table', [Courses7C::class, 'searchTable']);
+Route::match(['get', 'post'], '/coursesorganizacion/edit/{id}', [Courses7C::class, 'edit'])->name('coursesorganizacion.edit')->middleware('auth');
+Route::delete('/coursesorganizacion/delete/{id}', [Courses7C::class, 'destroy']);
 
 //ROUTE_COUSER ---- > Programa
 Route::get('/coursesprograma/list', Courses8C::class)->name('coursesprograma.list')->middleware('auth');
 Route::get('/coursesprograma/create', [Courses8C::class, 'create'])->name('coursesprograma.create')->middleware('auth');
 Route::post('/coursesprograma/save', [Courses8C::class, 'save'])->name('coursesprograma.save')->middleware('auth');
 Route::post('/coursesprograma/table', [Courses8C::class, 'searchTable']);
+Route::match(['get', 'post'], '/coursesprograma/edit/{id}', [Courses8C::class, 'edit'])->name('coursesprograma.edit')->middleware('auth');
+Route::delete('/coursesprograma/delete/{id}', [Courses8C::class, 'destroy']);
 
 //ROUTE_COUSER ---- > Tipo de acción
 Route::get('/coursestipoac/list', Courses9C::class)->name('coursestipoac.list')->middleware('auth');
 Route::get('/coursestipoac/create', [Courses9C::class, 'create'])->name('coursestipoac.create')->middleware('auth');
 Route::post('/coursestipoac/save', [Courses9C::class, 'save'])->name('coursestipoac.save')->middleware('auth');
 Route::post('/coursestipoac/table', [Courses9C::class, 'searchTable']);
+Route::match(['get', 'post'], '/coursestipoac/edit/{id}', [Courses9C::class, 'edit'])->name('coursestipoac.edit')->middleware('auth');
+Route::delete('/coursestipoac/delete/{id}', [Courses9C::class, 'destroy']);
 
 //ROUTE_COUSER ---- >
 Route::get('/coursestipocur/list', Courses10C::class)->name('coursestipocur.list')->middleware('auth');
 Route::get('/coursestipocur/create', [Courses10C::class, 'create'])->name('coursestipocur.create')->middleware('auth');
 Route::post('/coursestipocur/save', [Courses10C::class, 'save'])->name('coursestipocur.save')->middleware('auth');
 Route::post('/coursestipocur/table', [Courses10C::class, 'searchTable']);
+Route::match(['get', 'post'], '/coursestipocur/edit/{id}', [Courses10C::class, 'edit'])->name('coursestipocur.edit')->middleware('auth');
+Route::delete('/coursestipocur/delete/{id}', [Courses10C::class, 'destroy']);
