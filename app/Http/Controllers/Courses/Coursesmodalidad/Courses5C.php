@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Courses\Coursesmodalidad;
 use App\Http\Controllers\Controller;
 use App\Models\Courses\Courses\CoursesmodalidadM;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\MessagesC;
 
 class Courses5C extends Controller
 {
@@ -20,6 +23,8 @@ class Courses5C extends Controller
     public function save(Request $request)
     {
         $coursesmodalidadM = new CoursesmodalidadM();
+        $messagesC = new MessagesC();
+        $now = Carbon::now(); // Usando Carbon para la fecha actual
         // Validar los datos del formulario
         $request->validate([
             'descripcion' => 'required|string|max:255',
@@ -28,11 +33,14 @@ class Courses5C extends Controller
         // Crear usuario
         $coursesmodalidadM::create([
             'descripcion' => $request->descripcion,
-            'estatus' => $request->estatus ?? false, // Manejar estatus como false si es null
+            'estatus' => $request->estatus ?? false,// Manejar estatus como false si es null
+            'id_usuario_sistema' => Auth::user()->id,
+            'fecha_usuario' => $now,  
         ]);
 
         // Redirigir a la lista de cursos con un mensaje de éxito
-        return redirect()->route('coursesmodalidad.list')->with('success', 'Curso guardado exitosamente.');
+        //return redirect()->route('coursesmodalidad.list')->with('success', 'Curso guardado exitosamente.');
+        return $messagesC->messageSuccessRedirect('coursesmodalidad.list', 'Curso guardado exitosamente.');
     }
 
     public function create()

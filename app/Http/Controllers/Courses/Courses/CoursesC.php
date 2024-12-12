@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Courses\Courses;
 use App\Http\Controllers\Controller;
 use App\Models\Courses\Courses\CoursesM;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\MessagesC;
 
 class CoursesC extends Controller
 {
@@ -20,19 +23,25 @@ class CoursesC extends Controller
     public function save(Request $request)
     {
         $coursesM = new CoursesM();
+        $messagesC = new MessagesC();
+        $now = Carbon::now(); // Usando Carbon para la fecha actual
         // Validar los datos del formulario
         $request->validate([
             'descripcion' => 'required|string|max:255',
+           
         ]);
 
         // Crear usuario
         $coursesM::create([
             'descripcion' => $request->descripcion,
-            'estatus' => $request->estatus ?? false, // Manejar estatus como false si es null
+            'estatus' => $request->estatus ?? false,
+            'id_usuario_sistema' => Auth::user()->id,
+            'fecha_usuario' => $now, // Manejar estatus como false si es null
         ]);
 
         // Redirigir a la lista de cursos con un mensaje de éxito
-        return redirect()->route('courses.list')->with('success', 'Curso guardado exitosamente.');
+        //return redirect()->route('courses.list')->with('success', 'Curso guardado exitosamente.');
+        return $messagesC->messageSuccessRedirect('courses.list', 'Curso guardado exitosamente.');
     }
 
     public function create()

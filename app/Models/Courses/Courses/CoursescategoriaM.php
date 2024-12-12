@@ -12,6 +12,8 @@ class CoursescategoriaM extends Model
     protected $fillable = [
         'descripcion',
         'estatus',
+        'id_usuario_sistema',
+        'fecha_usuario',
     ];
 
     public function edit(string $id)

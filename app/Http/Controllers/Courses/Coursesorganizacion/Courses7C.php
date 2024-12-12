@@ -5,14 +5,15 @@ namespace App\Http\Controllers\Courses\Coursesorganizacion;
 use App\Http\Controllers\Controller;
 use App\Models\Courses\Courses\CoursesorganizacionM;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\MessagesC;
 class Courses7C extends Controller
 {
     public function __invoke()
     {
         // Obtener todos los cursos de coordinación
         $coursesorganizacion = CoursesorganizacionM::all();
-    
         // Pasar los cursos a la vista
         return view('courses/coursesorganizacion/list', compact('coursesorganizacion'));
     }
@@ -20,6 +21,8 @@ class Courses7C extends Controller
     public function save(Request $request)
     {
         $coursesorganizacionM = new CoursesorganizacionM();
+        $messagesC = new MessagesC();
+        $now = Carbon::now(); // Usando Carbon para la fecha actual
         // Validar los datos del formulario
         $request->validate([
             'descripcion' => 'required|string|max:255',
@@ -29,10 +32,13 @@ class Courses7C extends Controller
         $coursesorganizacionM::create([
             'descripcion' => $request->descripcion,
             'estatus' => $request->estatus ?? false, // Manejar estatus como false si es null
+            'id_usuario_sistema' => Auth::user()->id,
+            'fecha_usuario' => $now, 
         ]);
 
         // Redirigir a la lista de cursos con un mensaje de éxito
-        return redirect()->route('coursesorganizacion.list')->with('success', 'Curso guardado exitosamente.');
+        //return redirect()->route('coursesorganizacion.list')->with('success', 'Curso guardado exitosamente.');
+        return $messagesC->messageSuccessRedirect('coursesorganizacion.list', 'Curso guardado exitosamente.');
     }
 
     public function create()

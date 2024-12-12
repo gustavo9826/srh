@@ -45,22 +45,7 @@ function searchInit() {
                                         </span>
                                         Modificar
                                     </a>
-                                    <button class="dropdown-item" onclick="showModalTempleta(${object.id})">
-                                        <span style="background:#707070" class="icon-container-template">
-                                            <div style="text-align: center;">
-                                                <i class="fa fa-unlock item-icon-menu"></i>
-                                            </div>
-                                        </span>
-                                        Cloud
-                                    </button>
-                                    <a class="dropdown-item" href="#">
-                                        <span style="background:#003366" class="icon-container-template">
-                                            <div style="text-align: center;">
-                                                <i class="fa fa-user item-icon-menu"></i>
-                                            </div>
-                                        </span>
-                                        Usuario
-                                    </a>
+                                    
                                     <a class="dropdown-item" href="#">
                                         <span style="background:#6A1B3D" class="icon-container-template">
                                             <div style="text-align: center;">

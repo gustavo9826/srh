@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Courses\Coursesestatuto;
 use App\Http\Controllers\Controller;
 use App\Models\Courses\Courses\CoursesestatutoM;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\MessagesC;
 
 class Courses4C extends Controller
 {
@@ -20,6 +23,8 @@ class Courses4C extends Controller
     public function save(Request $request)
     {
         $coursesestatutoM = new CoursesestatutoM();
+        $messagesC = new MessagesC();
+        $now = Carbon::now(); // Usando Carbon para la fecha actual
         // Validar los datos del formulario
         $request->validate([
             'descripcion' => 'required|string|max:255',
@@ -29,10 +34,13 @@ class Courses4C extends Controller
         $coursesestatutoM::create([
             'descripcion' => $request->descripcion,
             'estatus' => $request->estatus ?? false, // Manejar estatus como false si es null
+            'id_usuario_sistema' => Auth::user()->id,
+            'fecha_usuario' => $now, 
         ]);
 
         // Redirigir a la lista de cursos con un mensaje de éxito
-        return redirect()->route('coursesestatuto.list')->with('success', 'Curso guardado exitosamente.');
+        //return redirect()->route('coursesestatuto.list')->with('success', 'Curso guardado exitosamente.');
+        return $messagesC->messageSuccessRedirect('coursesestatuto.list', 'Curso guardado exitosamente.');
     }
 
     public function create()
