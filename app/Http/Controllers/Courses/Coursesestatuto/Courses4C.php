@@ -69,19 +69,21 @@ class Courses4C extends Controller
     }
 
     public function destroy($id)
-    {
-        try {
+    {   
+           try {
             $course = CoursesestatutoM::findOrFail($id);
-            $course->delete();
-            return response()->json(['success' => 'Curso eliminado exitosamente']);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Error al eliminar el curso'], 500);
-        }
+                $course->delete();
+                return response()->json(['success' => true, 'message' => 'Eliminado exitosamente.']); 
+            } catch (\Exception $e) {
+                return response()->json(['error' => 'Error al eliminar el curso'], 500);
+                
+            }
+            
     }
     public function edit(Request $request, $id)
     {
         $course = CoursesestatutoM ::find($id);
-
+        $messagesC = new MessagesC();
         if ($request->isMethod('post')) {
             // Validar los datos del formulario
             $request->validate([
@@ -92,9 +94,9 @@ class Courses4C extends Controller
             $course->descripcion = $request->input('descripcion');
             $course->estatus = $request->input('estatus') ? true : false;
             $course->save();
-
+            return $messagesC->messageSuccessRedirect('coursesestatuto.list', 'Curso actualizado exitosamente.');
             // Redirigir a la lista de cursos con un mensaje de éxito
-            return redirect()->route('coursesestatuto.list')->with('success', 'Curso actualizado exitosamente.');
+            //return redirect()->route('coursesestatuto.list')->with('success', 'Curso actualizado exitosamente.');
         }
 
         return view('courses.coursesestatuto.edit', compact('course'));

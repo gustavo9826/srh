@@ -68,18 +68,21 @@ class Courses5C extends Controller
         ]);
     }
     public function destroy($id)
-    {
-        try {
+    {   
+           try {
             $course = CoursesmodalidadM::findOrFail($id);
-            $course->delete();
-            return response()->json(['success' => 'Curso eliminado exitosamente']);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Error al eliminar el curso'], 500);
-        }
+                $course->delete();
+                return response()->json(['success' => true, 'message' => 'Eliminado exitosamente.']); 
+            } catch (\Exception $e) {
+                return response()->json(['error' => 'Error al eliminar el curso'], 500);
+                
+            }
+            
     }
     public function edit(Request $request, $id)
     {
         $course = CoursesmodalidadM ::find($id);
+        $messagesC = new MessagesC();
 
         if ($request->isMethod('post')) {
             // Validar los datos del formulario
@@ -93,7 +96,8 @@ class Courses5C extends Controller
             $course->save();
 
             // Redirigir a la lista de cursos con un mensaje de éxito
-            return redirect()->route('coursesmodalidad.list')->with('success', 'Curso actualizado exitosamente.');
+           // return redirect()->route('coursesmodalidad.list')->with('success', 'Curso actualizado exitosamente.');
+           return $messagesC->messageSuccessRedirect('coursesmodalidad.list', 'Curso actualizado exitosamente.');
         }
 
         return view('courses.coursesmodalidad.edit', compact('course'));

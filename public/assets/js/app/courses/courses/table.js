@@ -1,4 +1,4 @@
-var token = $('meta[name="csrf-token"]').attr('content'); //Token for form
+var token = $('meta[name="csrf-token"]').attr('content'); // Token for form
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': token
@@ -6,10 +6,42 @@ $.ajaxSetup({
 });
 var iterator = 1;  // Se comienza el iterador en 1
 var emptyContent = false;
+var courseIdToDelete = null; // Variable para almacenar el ID del curso a eliminar
 
 $(document).ready(function () {
     searchInit(); // Inicializa la búsqueda cuando la página carga
     setValue();  // Inicializa paginador 
+
+    // Obtener elementos del DOM
+    var modal = document.getElementById("deleteModal");
+    var span = document.getElementsByClassName("close")[0];
+    var confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+    var cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
+    var successMessage = document.getElementById("successMessage");
+
+    // Cuando el usuario hace clic en <span> (x), cerrar el modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Cuando el usuario hace clic en el botón de cancelar, cerrar el modal
+    cancelDeleteBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Cuando el usuario hace clic en cualquier lugar fuera del modal, cerrarlo
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Cuando el usuario confirma la eliminación
+    confirmDeleteBtn.onclick = function() {
+        if (courseIdToDelete) {
+            deleteCourse(courseIdToDelete);
+        }
+    }
 });
 
 // Esta función se encarga de hacer la petición AJAX al backend
@@ -17,10 +49,6 @@ function searchInit() {
     const searchValue = document.getElementById('searchValue').value; // Obtén el valor de búsqueda
     const iteradorAux = (iterator * 5) - 5;
 
-    /*$.get('/srh/public/courses/table', {
-        iterator: iteradorAux,  // Número de página para la paginación
-        searchValue: searchValue  // Valor de búsqueda
-    }, function (response) {*/
     $.ajax({
         url: '/srh/public/courses/table', 
         type: 'POST',
@@ -78,26 +106,25 @@ function searchInit() {
                 tbody.html('<tr><td colspan="8" class="text-center">No se encontraron resultados</td></tr>');
                 emptyContent = true;
             }
-        } // Aquí termina la llave que te faltaba
+        }
     });
 }
 
-//Funcion para que al pulsar el boton se incremente uno
+// Función para que al pulsar el botón se incremente uno
 function paginatorMax1() {
-
     iterator = emptyContent ? iterator : iterator += 1;
     setValue();
     searchInit();
 }
 
-//Funcion para que al pulsar el boton se incrementen 5
+// Función para que al pulsar el botón se incrementen 5
 function paginatorMax5() {
     iterator = emptyContent ? iterator : iterator += 5;
     setValue();
     searchInit();
 }
 
-//Funcion para que al pulsar el boton se disminuyan 5
+// Función para que al pulsar el botón se disminuyan 5
 function paginatorMin5() {
     let iteratorAux = iterator;
     iterator = (iteratorAux -= 5) > 0 ? (iterator -= 5) : 1;
@@ -105,7 +132,7 @@ function paginatorMin5() {
     searchInit();
 }
 
-//Funcion para que al pulsar el boton se disminuyan 1
+// Función para que al pulsar el botón se disminuyan 1
 function paginatorMin1() {
     let iteratorAux = iterator;
     iterator = (iteratorAux -= 1) > 0 ? (iterator -= 1) : 1;
@@ -128,25 +155,23 @@ function setValue() {
     document.getElementById("is_iteratorMax").innerHTML = iteratorAux += 2;
 }
 
-
 // Función para la confirmación de eliminación
 function confirmDelete(id) {
-    if (confirm('¿Estás seguro de que deseas eliminar este curso?')) {
-        deleteCourse(id);
-    }
+    courseIdToDelete = id; // Almacenar el ID del curso a eliminar
+    var modal = document.getElementById("deleteModal");
+    modal.style.display = "block"; // Mostrar el modal
 }
 
 // Función para eliminar el curso
 function deleteCourse(id) {
     $.ajax({
         url: '/srh/public/courses/delete/' + id,  // Verifica que esta ruta sea correcta
-        type: 'DELETE',  // Cambia el método a DELETE si es necesario
+        type: 'DELETE',
         data: {
             _token: token  // Incluye el token CSRF
         },
         success: function(response) {
-            alert('Curso eliminado exitosamente');
-            searchInit();  // Actualiza la tabla después de la eliminación
+            window.location.href = '/srh/public/courses/list';  // Redirigir a la lista de cursos
         },
         error: function(xhr, status, error) {
             console.error('Error al eliminar el curso:', error);
@@ -154,4 +179,3 @@ function deleteCourse(id) {
         }
     });
 }
-
