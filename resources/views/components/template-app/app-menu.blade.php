@@ -65,7 +65,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('coursesmodalidad.list') }}">Modalidad</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('coursesnombreacc.list') }}">Nombre Acción</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('coursesorganizacion.list') }}">Organización</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('coursesprograma.list') }}">Programa Institucional</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('coursesprograma.list') }}">P. Institucional</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('coursestipoac.list') }}">Tipo Acción</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('coursestipocur.list') }}">Tipo Cursos</a></li>
                     </ul>

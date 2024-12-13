@@ -59,7 +59,6 @@ Route::post('/courses/save', [CoursesC::class, 'save'])->name('courses.save')->m
 Route::post('/courses/table', [CoursesC::class, 'searchTable']);
 Route::match(['get', 'post'], '/courses/edit/{id}', [CoursesC::class, 'edit'])->name('courses.edit')->middleware('auth');
 Route::delete('/courses/delete/{id}', [CoursesC::class, 'destroy']);
-
 //ROUTE_COUSER ---- > Categoria
 Route::get('/coursescategoria/list', Courses2C::class)->name('coursescategoria.list')->middleware('auth');
 Route::get('/coursescategoria/create', [Courses2C::class, 'create'])->name('coursescategoria.create')->middleware('auth');
@@ -131,3 +130,4 @@ Route::post('/coursestipocur/save', [Courses10C::class, 'save'])->name('coursest
 Route::post('/coursestipocur/table', [Courses10C::class, 'searchTable']);
 Route::match(['get', 'post'], '/coursestipocur/edit/{id}', [Courses10C::class, 'edit'])->name('coursestipocur.edit')->middleware('auth');
 Route::delete('/coursestipocur/delete/{id}', [Courses10C::class, 'destroy']);
+
