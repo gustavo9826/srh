@@ -68,7 +68,7 @@ class CoursesM extends Model
         // Ejecutar la consulta y retornar los resultados
         return $query->get();
     }
-    public function edit(string $id)
+   /* public function edit(string $id)
     {
         // Realizamos la consulta utilizando el Query Builder de Laravel
         $query = DB::table('capacitacion.cat_beneficio')
@@ -77,5 +77,5 @@ class CoursesM extends Model
 
         // Retornamos el usuario o null si no se encuentra
         return $query ?? null;
-    }
+    }*/
 }

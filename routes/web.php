@@ -20,6 +20,7 @@ use App\Http\Controllers\Courses\Coursesorganizacion\Courses7C;
 use App\Http\Controllers\Courses\Coursesprograma\Courses8C;
 use App\Http\Controllers\Courses\Coursestipoac\Courses9C;
 use App\Http\Controllers\Courses\Coursestipocur\Courses10C;
+use App\Http\Controllers\Courses\Tableinstructor\InstructorsC;
 use App\Http\Controllers\Letter\Letter\LetterC;
 use Illuminate\Support\Facades\Route;
 
@@ -130,4 +131,9 @@ Route::post('/coursestipocur/save', [Courses10C::class, 'save'])->name('coursest
 Route::post('/coursestipocur/table', [Courses10C::class, 'searchTable']);
 Route::match(['get', 'post'], '/coursestipocur/edit/{id}', [Courses10C::class, 'edit'])->name('coursestipocur.edit')->middleware('auth');
 Route::delete('/coursestipocur/delete/{id}', [Courses10C::class, 'destroy']);
+
+//ROUTE_COUSER ---- >Tabla instructores
+Route::get('/tableinstructor/list', InstructorsC::class)->name('tableinstructor.list')->middleware('auth');
+
+
 
