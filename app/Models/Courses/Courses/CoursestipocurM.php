@@ -4,7 +4,7 @@ namespace App\Models\Courses\Courses;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-/*class CoursestipocurM extends Model
+class CoursestipocurM extends Model
 {
     protected $table = 'capacitacion.cat_tipocursos';
     protected $primaryKey = 'id_tipocursos'; // Especifica la clave primaria
@@ -55,4 +55,4 @@ use Illuminate\Support\Facades\DB;
         // Ejecutar la consulta y retornar los resultados
         return $query->get();
     }
-}*/
+}
