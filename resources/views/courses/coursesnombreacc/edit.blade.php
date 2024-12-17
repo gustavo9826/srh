@@ -24,6 +24,13 @@
                                 name="descripcion" placeholder="Descripcion"
                                 grid="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8" autocomplete=""
                                 value="{{ $course->descripcion }}" />
+
+                                
+                                <x-template-form.template-form-input-required label="Nombre" type="text"
+                            name="nombre" placeholder="Nombre"
+                            grid="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8" autocomplete=""
+                            value="{{ $course->nombre }}" />
+                            
                             
                             <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <label for="estatus">Estatus</label>

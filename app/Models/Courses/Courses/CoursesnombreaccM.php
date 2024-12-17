@@ -14,6 +14,8 @@ class CoursesnombreaccM extends Model
         'estatus',
         'id_usuario_sistema',
         'fecha_usuario',
+        'nombre',
+
     ];
 
     public function edit(string $id)
@@ -33,7 +35,8 @@ class CoursesnombreaccM extends Model
         ->select([
             'capacitacion.cat_nombre_accion.id_nombre_accion AS id',
             DB::raw('UPPER(capacitacion.cat_nombre_accion.descripcion) AS descripcion'),
-            DB::raw('CASE WHEN capacitacion.cat_nombre_accion.estatus = 1 THEN TRUE ELSE FALSE END AS estatus')
+            DB::raw('CASE WHEN capacitacion.cat_nombre_accion.estatus = 1 THEN TRUE ELSE FALSE END AS estatus'),
+            DB::raw('UPPER(capacitacion.cat_nombre_accion.nombre) AS nombre'),
         ]); 
 
         // Si se proporciona un valor de búsqueda, agregar condiciones de búsqueda
@@ -43,7 +46,8 @@ class CoursesnombreaccM extends Model
             // Condiciones de búsqueda centralizadas en una sola cláusula
             $query->where(function ($query) use ($searchValue) {
                 $query->whereRaw("UPPER(TRIM(capacitacion.cat_nombre_accion.descripcion)) LIKE ?", ['%' . $searchValue . '%'])
-                    ->orWhereRaw("UPPER(TRIM(capacitacion.cat_nombre_accion.estatus)) LIKE ?", ['%' . $searchValue . '%']);
+                    ->orWhereRaw("UPPER(TRIM(capacitacion.cat_nombre_accion.estatus)) LIKE ?", ['%' . $searchValue . '%'])
+                    ->orWhereRaw("UPPER(TRIM(capacitacion.cat_nombre_accion.nombre)) LIKE ?", ['%' . $searchValue . '%']);
             });
         }
 

@@ -36,6 +36,7 @@ class Courses8C extends Controller
             'estatus' => $request->estatus ?? false, // Manejar estatus como false si es null
             'id_usuario_sistema' => Auth::user()->id,
             'fecha_usuario' => $now,
+            'nombre' => $request->nombre,
         ]);
 
         // Redirigir a la lista de cursos con un mensaje de éxito
@@ -48,7 +49,8 @@ class Courses8C extends Controller
         $item = new CoursesprogramaM();
         $item->id_programa_institucional = '';  // Valor por defecto
         $item->descripcion = '';    // Valor por defecto
-        $item->estatus = '';     
+        $item->estatus = '';   
+        $item->nombre = '';      
 
         return view('courses.coursesprograma.form', compact('item'));
     }
@@ -93,6 +95,7 @@ class Courses8C extends Controller
             // Actualizar los datos del curso
             $course->descripcion = $request->input('descripcion');
             $course->estatus = $request->input('estatus') ? true : false;
+            $course->nombre = $request->input('nombre');
             $course->save();
 
             // Redirigir a la lista de cursos con un mensaje de éxito

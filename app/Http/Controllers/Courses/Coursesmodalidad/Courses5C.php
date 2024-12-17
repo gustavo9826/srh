@@ -49,6 +49,7 @@ class Courses5C extends Controller
         $item->id_estatuto_organico = '';  // Valor por defecto
         $item->descripcion = '';    // Valor por defecto
         $item->estatus = '';     
+       
 
         return view('courses.coursesmodalidad.form', compact('item'));
     }

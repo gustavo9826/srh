@@ -14,6 +14,7 @@ class CoursesestatutoM extends Model
         'estatus',
         'id_usuario_sistema',
         'fecha_usuario',
+        'nombre',
     ];
 
     public function edit(string $id)
@@ -33,7 +34,8 @@ class CoursesestatutoM extends Model
         ->select([
             'capacitacion.cat_estatuto_organico.id_estatuto_organico AS id',
             DB::raw('UPPER(capacitacion.cat_estatuto_organico.descripcion) AS descripcion'),
-            DB::raw('CASE WHEN capacitacion.cat_estatuto_organico.estatus = 1 THEN TRUE ELSE FALSE END AS estatus')
+            DB::raw('CASE WHEN capacitacion.cat_estatuto_organico.estatus = 1 THEN TRUE ELSE FALSE END AS estatus'),
+            DB::raw('UPPER(capacitacion.cat_estatuto_organico.nombre) AS nombre'),
         ]); 
 
         // Si se proporciona un valor de búsqueda, agregar condiciones de búsqueda
@@ -43,7 +45,8 @@ class CoursesestatutoM extends Model
             // Condiciones de búsqueda centralizadas en una sola cláusula
             $query->where(function ($query) use ($searchValue) {
                 $query->whereRaw("UPPER(TRIM(capacitacion.cat_estatuto_organico.descripcion)) LIKE ?", ['%' . $searchValue . '%'])
-                    ->orWhereRaw("UPPER(TRIM(capacitacion.cat_estatuto_organico.estatus)) LIKE ?", ['%' . $searchValue . '%']);
+                    ->orWhereRaw("UPPER(TRIM(capacitacion.cat_estatuto_organico.estatus)) LIKE ?", ['%' . $searchValue . '%'])
+                    ->orWhereRaw("UPPER(TRIM(capacitacion.cat_estatuto_organico.nombre)) LIKE ?", ['%' . $searchValue . '%']);
             });
         }
 
