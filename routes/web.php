@@ -11,6 +11,7 @@ use App\Http\Controllers\Home\AboutC;
 use App\Http\Controllers\Home\DashboardC;
 use App\Http\Controllers\Letter\Collection\CollectionAreaC;
 use App\Http\Controllers\Courses\Courses\CoursesC;
+use App\Http\Controllers\Courses\Coursesauditoria\Courses11C;
 use App\Http\Controllers\Courses\Coursescategoria\Courses2C;
 use App\Http\Controllers\Courses\Coursescoordinacion\Courses3C;
 use App\Http\Controllers\Courses\Coursesestatuto\Courses4C;
@@ -125,13 +126,22 @@ Route::post('/coursestipoac/table', [Courses9C::class, 'searchTable']);
 Route::match(['get', 'post'], '/coursestipoac/edit/{id}', [Courses9C::class, 'edit'])->name('coursestipoac.edit')->middleware('auth');
 Route::delete('/coursestipoac/delete/{id}', [Courses9C::class, 'destroy']);
 
-//ROUTE_COUSER ---- >
+//ROUTE_COUSER ---- > Tipo Cursos
 Route::get('/coursestipocur/list', Courses10C::class)->name('coursestipocur.list')->middleware('auth');
 Route::get('/coursestipocur/create', [Courses10C::class, 'create'])->name('coursestipocur.create')->middleware('auth');
 Route::post('/coursestipocur/save', [Courses10C::class, 'save'])->name('coursestipocur.save')->middleware('auth');
 Route::post('/coursestipocur/table', [Courses10C::class, 'searchTable']);
 Route::match(['get', 'post'], '/coursestipocur/edit/{id}', [Courses10C::class, 'edit'])->name('coursestipocur.edit')->middleware('auth');
 Route::delete('/coursestipocur/delete/{id}', [Courses10C::class, 'destroy']);
+
+//ROUTE_COUSER ---- > Auditoria
+Route::get('/coursesauditoria/list', Courses11C::class)->name('coursesauditoria.list')->middleware('auth');
+Route::get('/coursesauditoria/create', [Courses11C::class, 'create'])->name('coursesauditoria.create')->middleware('auth');
+Route::post('/coursesauditoria/save', [Courses11C::class, 'save'])->name('coursesauditoria.save')->middleware('auth');
+Route::post('/coursesauditoria/table', [Courses11C::class, 'searchTable']);
+Route::match(['get', 'post'], '/coursesauditoria/edit/{id}', [Courses11C::class, 'edit'])->name('coursesauditoria.edit')->middleware('auth');
+Route::delete('/coursesauditoria/delete/{id}', [Courses11C::class, 'destroy']);
+
 
 //ROUTE_COUSER ---- >Tabla instructores
 Route::get('/tableinstructor/list', InstructorsC::class)->name('tableinstructor.list')->middleware('auth');
