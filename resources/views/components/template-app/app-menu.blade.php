@@ -69,6 +69,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('coursestipoac.list') }}">Tipo Acción</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('coursestipocur.list') }}">Tipo Cursos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('tableinstructor.list') }}">Instructores</a></li>
+                        
                     </ul>
                 </div>
             </li>

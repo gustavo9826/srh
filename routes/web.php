@@ -22,6 +22,7 @@ use App\Http\Controllers\Courses\Coursestipoac\Courses9C;
 use App\Http\Controllers\Courses\Coursestipocur\Courses10C;
 use App\Http\Controllers\Courses\Tableinstructor\InstructorsC;
 use App\Http\Controllers\Letter\Letter\LetterC;
+use App\Http\Controllers\Courses\Alfresco\AlfrescoC;
 use Illuminate\Support\Facades\Route;
 
 
@@ -134,6 +135,19 @@ Route::delete('/coursestipocur/delete/{id}', [Courses10C::class, 'destroy']);
 
 //ROUTE_COUSER ---- >Tabla instructores
 Route::get('/tableinstructor/list', InstructorsC::class)->name('tableinstructor.list')->middleware('auth');
+
+//ROUTE_COUSER ---- >Alfresco
+
+// Ruta para mostrar el formulario de carga de archivo
+Route::get('/alfresco/upload', [AlfrescoC::class, 'showUploadForm'])->name('alfresco.upload.form');
+
+// Ruta para manejar la carga de archivo
+Route::post('/upload-file', [AlfrescoC::class, 'uploadFile'])->name('alfresco.upload.file');
+
+
+
+
+
 
 
 

@@ -4,8 +4,68 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92cafe4c6980aa6535b103fcd101a622",
+    "content-hash": "e66c12a60200f293c61c35508116d7fa",
     "packages": [
+        {
+            "name": "ajtarragona/alfresco-laravel",
+            "version": "v2.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ajtarragona/alfresco-laravel.git",
+                "reference": "651ed338dd90df0800e1012b2aa8aa1c10392697"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ajtarragona/alfresco-laravel/zipball/651ed338dd90df0800e1012b2aa8aa1c10392697",
+                "reference": "651ed338dd90df0800e1012b2aa8aa1c10392697",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": ">=6.0",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ajtarragona\\AlfrescoLaravel\\AlfrescoLaravelServiceProvider"
+                    ],
+                    "aliases": {
+                        "Alfresco": "Ajtarragona\\AlfrescoLaravel\\Facades\\Alfresco"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ajtarragona\\AlfrescoLaravel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ruben Macias",
+                    "email": "ruben.macias@studiogenesis.es"
+                },
+                {
+                    "name": "Txomin Medrano",
+                    "email": "tmedrano@tarragona.cat"
+                }
+            ],
+            "description": "Integration of Alfresco in Laravel",
+            "keywords": [
+                "Alfresco",
+                "laravel",
+                "laravel5"
+            ],
+            "support": {
+                "issues": "https://github.com/ajtarragona/alfresco-laravel/issues",
+                "source": "https://github.com/ajtarragona/alfresco-laravel/tree/v2.0.10"
+            },
+            "time": "2024-09-18T09:04:41+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.12.1",
@@ -7921,12 +7981,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
