@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <x-template-tittle.tittle-caption
                             tittle="{{ isset($item->id_tipocursos) ? 'Cargar' : '' }} Subir Archivos"
-                            route="{{ route('alfresco.upload.form') }}" />
+                            route="{{ route('tableinstructor.list') }}" />
                         
                         <br>
                         <form action="{{ route('alfresco.upload.file') }}" method="POST" enctype="multipart/form-data">
@@ -60,7 +60,7 @@
                                 <input type="checkbox" id="estatus" name="estatus" class="toggle-switch" checked>
                             </div>
 
-                            <x-template-button.button-form-footer routeBack="{{ route('tableinstructor.list') }}" />
+                            <x-template-button.button-form-footer routeBack="{{ route('alfresco.upload.form') }}" />
                         </form>
                     </div>
                 </div>
