@@ -46,7 +46,6 @@
                                     <th>Constancia de Evaluación</th>
                                     <th>Curriculum Vitae</th>
                                     <th>Apto Para Impartir Cursos</th>
-                                    <th>Cursos Impartidos</th>
 
                                 </tr>
                             </thead>

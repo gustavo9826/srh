@@ -57,7 +57,6 @@
                 </a>
                 <div class="collapse" id="ui-basic-courses">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="#">Administracion</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('coursesauditoria.list') }}">Auditoria</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('courses.list') }}">Beneficio</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('coursescategoria.list') }}">Categoría</a></li>

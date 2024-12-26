@@ -15,7 +15,7 @@
                 <div class="card custom-card">
                     <div class="card-body">
                         <x-template-tittle.tittle-caption
-                            tittle="{{ isset($item->id_tipocursos) ? 'Cargar' : 'Agregar ' }} Subir Archivos"
+                            tittle="{{ isset($item->id_tipocursos) ? 'Cargar' : '' }} Subir Archivos"
                             route="{{ route('alfresco.upload.form') }}" />
                         
                         <br>
@@ -23,7 +23,7 @@
                             @csrf  <!-- Campo CSRF para proteger la solicitud -->
 
                             <x-template-form.template-form-input-required label="Curp" type="text"
-                                name="name" placeholder="Nombre"
+                                name="name" placeholder="Curp"
                                 grid="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" autocomplete=""
                                 value="" />
                             <br><br>
